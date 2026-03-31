@@ -38,4 +38,22 @@ flowchart TD
 | 5. QA & Revisión | AVA (NTE-QA) · T-800 (NTE-SECURITY) | Reporte de bugs en Jira + security clearance |
 | 6. Entrega | Optimus · Marvin · David | App en producción + documentación en Confluence |
 
+---
+
+## SCRUM: Detalle del Proceso
+
+La Fase 4 (Desarrollo Iterativo) opera bajo **sprints semanales** con Jira (proyecto `NTE-SW`).
+
+Consulta el documento completo del proceso SCRUM:
+
+**[→ Workflow SCRUM Detallado: Ceremonias · Jira · Branches · Definition of Done](./flujo-scrum-detallado.md)**
+
+Incluye:
+- Sprint Planning, Daily Standup, Sprint Review, Retrospectiva
+- Columnas del board Jira y lifecycle de tickets
+- Convención de branches y commits (Conventional Commits)
+- Definition of Done completo
+- Gestión de hotfixes en producción
+- KPIs del proceso ágil
+
 [← Todos los flujos](./README.md)
