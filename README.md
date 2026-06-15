@@ -229,6 +229,168 @@ Secretos:      Azure Key Vault → secret/nte-email-smtp
 
 ---
 
+## 🖥️ Configuracion del Servidor VPS
+
+**Host:** `74.208.190.119` · **Acceso:** `ssh root@74.208.190.119`
+
+### Especificaciones
+
+| Parametro | Valor |
+|---|---|
+| OS | Ubuntu 24.04.4 LTS (Noble) |
+| Kernel | 6.8.0-106-generic |
+| RAM | 15 GB |
+| Disco | 464 GB (`/dev/vda1`) |
+| Swap | 2 GB (`/swapfile`, persistente en `/etc/fstab`) |
+
+### Stack Instalado
+
+| Software | Version |
+|---|---|
+| Node.js | v22.22.3 |
+| npm | 10.9.8 |
+| OpenClaw | 2026.6.6 (8c802aa) |
+| ClaWHub | 0.9.0 |
+
+### Servicios y Puertos
+
+| Servicio | Puerto | Acceso | Unit |
+|---|---|---|---|
+| `openclaw-gateway` | `127.0.0.1:18789`, `127.0.0.1:18791` | Solo localhost | `~/.config/systemd/user/openclaw-gateway.service` |
+| SSH | `0.0.0.0:22` | Publico | `ssh.service` |
+
+El gateway **no esta expuesto al exterior** — solo escucha en localhost.
+
+### Firewall (UFW)
+
+```
+Default: deny incoming, allow outgoing
+22/tcp  ALLOW IN  (SSH)
+```
+
+### Fail2ban — Proteccion SSH
+
+Configuracion en `/etc/fail2ban/jail.local`:
+
+```ini
+[DEFAULT]
+bantime  = 1h
+findtime = 10m
+maxretry = 5
+ignoreip = 127.0.0.1/8 ::1
+
+[sshd]
+enabled  = true
+maxretry = 3
+bantime  = 24h
+```
+
+```bash
+fail2ban-client status sshd       # ver IPs baneadas
+fail2ban-client unban <IP>        # desbanear una IP
+```
+
+### Integraciones Activas
+
+| Servicio | Estado | Notas |
+|---|---|---|
+| Slack | Activo | Socket Mode, reconecta cada ~35 min (normal) |
+| OpenAI Codex (`gpt-5.4`) | ⚠️ Error de auth | Refresh token expirado — re-autenticar desde UI de OpenClaw |
+| Google Service Account | Configurado | `openclaw@nissiproject.iam.gserviceaccount.com` |
+| GitHub | Configurado | Usuario: `mmrodriguez1987` |
+| Jira | Configurado | `https://nissitechnology.atlassian.net/` |
+
+### Acceso al Dashboard
+
+El gateway corre en `127.0.0.1:18789` del servidor y tiene dos interfaces: **web** (navegador) y **TUI** (terminal). Ambas requieren el token de autenticacion.
+
+**Token:** `9d1014108ad2fdb57f692c5022096aff8d8c243e96203b60`
+
+---
+
+#### Opcion A — Dashboard Web (recomendado)
+
+El dashboard web es una interfaz completa accesible desde el navegador. Como el gateway solo escucha en localhost del servidor, se accede via tunel SSH.
+
+**Paso 1 — Configurar `~/.ssh/config`** (solo la primera vez):
+
+```bash
+nano ~/.ssh/config
+```
+
+Agrega este bloque y guarda (`Ctrl+O`, `Enter`, `Ctrl+X`):
+
+```
+Host openclaw-vps
+    HostName 74.208.190.119
+    User root
+    LocalForward 18789 127.0.0.1:18789
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+```
+
+Ajusta permisos:
+
+```bash
+chmod 600 ~/.ssh/config
+```
+
+**Paso 2 — Abrir el tunel** (dejar corriendo en una terminal):
+
+```bash
+ssh -N openclaw-vps
+```
+
+Te pedira la contrasena. La terminal quedara sin output — es correcto, el tunel esta activo.
+
+**Paso 3 — Abrir en el navegador:**
+
+```
+http://localhost:18789
+```
+
+Si pide autenticacion, ingresa el token de arriba.
+
+Para cerrar el tunel: `Ctrl+C` en esa terminal.
+
+---
+
+#### Opcion B — TUI (terminal)
+
+Acceso directo desde dentro del servidor, sin tunel.
+
+```bash
+# 1. Conectarte al servidor
+ssh root@74.208.190.119
+
+# 2. Abrir el TUI
+openclaw tui --url ws://127.0.0.1:18789 --token 9d1014108ad2fdb57f692c5022096aff8d8c243e96203b60 --session main
+```
+
+---
+
+### Pendientes de Seguridad
+
+- [ ] **Re-autenticar OpenAI Codex** — Error `refresh_token_reused` activo. Hacerlo desde la UI de OpenClaw.
+- [ ] **Migrar servicio al usuario `openclaw`** — Actualmente corre como `root`. Config en `/root/.openclaw/`, mover en ventana de mantenimiento.
+- [ ] **Deshabilitar SSH por contrasena** — Activar solo llave publica: `PasswordAuthentication no` en `/etc/ssh/sshd_config`.
+- [ ] **Actualizar kernel** — Disponible `6.8.0-124-generic`. Requiere reinicio planificado.
+
+---
+
+## 📋 Historial de Cambios del Servidor
+
+### 2026-06-14
+- Revision inicial del servidor via SSH
+- Detectado error OAuth en integracion OpenAI Codex (`refresh_token_reused`)
+
+### 2026-06-15
+- **[+] Swap 2 GB** — Creado `/swapfile`, persistente via `/etc/fstab`
+- **[+] Fail2ban** — Instalado y configurado con jail SSH (3 intentos, ban 24h)
+- **[+] Usuario `openclaw`** — Creado usuario de sistema (`nologin`) para futura migracion del servicio
+
+---
+
 ## 🔧 Comandos OpenClaw Frecuentes
 
 ```bash
