@@ -231,7 +231,7 @@ Secretos:      Azure Key Vault → secret/nte-email-smtp
 
 ## 🖥️ Configuracion del Servidor VPS
 
-**Host:** `74.208.190.119` · **Acceso:** `ssh root@74.208.190.119`
+**Host:** `0.0.0.0` · **Acceso:** `ssh root@0.0.0.0`
 
 ### Especificaciones
 
@@ -322,7 +322,7 @@ Agrega este bloque y guarda (`Ctrl+O`, `Enter`, `Ctrl+X`):
 
 ```
 Host openclaw-vps
-    HostName 74.208.190.119
+    HostName 0.0.0.0
     User root
     LocalForward 18789 127.0.0.1:18789
     ServerAliveInterval 60
@@ -361,10 +361,10 @@ Acceso directo desde dentro del servidor, sin tunel.
 
 ```bash
 # 1. Conectarte al servidor
-ssh root@74.208.190.119
+ssh root@0.0.0.0
 
 # 2. Abrir el TUI
-openclaw tui --url ws://127.0.0.1:18789 --token 9d1014108ad2fdb57f692c5022096aff8d8c243e96203b60 --session main
+openclaw tui --url ws://127.0.0.1:18789 --token xxxxxxxxx --session main
 ```
 
 ---
