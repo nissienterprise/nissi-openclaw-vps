@@ -3,41 +3,41 @@
 # 🚀 NTE-PUBLISHER
 ### WordPress Publisher Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Haiku_4-5cb85c?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Haiku_4-5cb85c?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 
 </div>
 
-## 🎯 Qué hace
+## 🎯 What it does
 
-Monitorea el canal `#nte-content` en Slack esperando la aprobación de Michael. Cuando la detecta, publica el draft en WordPress, genera la imagen destacada con IA, y dispara NTE-PROPAGATOR.
+Monitors the `#nte-content` Slack channel waiting for Michael's approval. Once detected, it publishes the draft on WordPress, generates the featured image with AI, and triggers NTE-PROPAGATOR.
 
-## 🔍 Detección de Aprobación
+## 🔍 Approval Detection
 
-NTE-PUBLISHER reconoce estas señales en Slack:
-- Reacción emoji ✅ en el mensaje del draft
-- Respuesta que contenga: "approved", "publicar", "adelante", "go"
-- Mensaje directo: "publica el artículo X"
+NTE-PUBLISHER recognizes these signals on Slack:
+- ✅ emoji reaction on the draft message
+- A reply containing: "approved", "publish", "go ahead", "go"
+- Direct message: "publish article X"
 
-## ⚙️ Proceso de Publicación
+## ⚙️ Publishing Process
 
 ```mermaid
 flowchart LR
-    A["🔔 Aprobación detectada\nen Slack"] --> B["🔍 Identifica qué post\naprobó Michael"]
-    B --> C["🎨 Genera imagen destacada\nvía DALL-E API"]
+    A["🔔 Approval detected\non Slack"] --> B["🔍 Identifies which post\nMichael approved"]
+    B --> C["🎨 Generates featured image\nvia DALL-E API"]
     C --> D["📤 WordPress REST API\nstatus: draft → published"]
-    D --> E["✅ Confirma publicación\nen Slack"]
-    E --> F["📡 Activa NTE-PROPAGATOR\ncon URL del artículo"]
+    D --> E["✅ Confirms publication\non Slack"]
+    E --> F["📡 Triggers NTE-PROPAGATOR\nwith the article URL"]
 ```
 
-## 🖼️ Generación de Imagen Destacada
+## 🖼️ Featured Image Generation
 
 ```
-Prompt DALL-E: "Professional technology illustration for blog post about 
-[tema del artículo], corporate style, blue and white color palette, 
+DALL-E Prompt: "Professional technology illustration for blog post about 
+[article topic], corporate style, blue and white color palette, 
 no text, modern minimalist, suitable for Nissi Technology Enterprises blog"
 ```
 
-> **¿Por qué Haiku 4?** La tarea de NTE-PUBLISHER es simple: detectar un patrón en Slack y hacer 2-3 llamadas a APIs. No requiere razonamiento complejo. Haiku ejecuta esto perfectamente a una fracción del costo.
+> **Why Haiku 4?** NTE-PUBLISHER's task is simple: detect a pattern on Slack and make 2-3 API calls. It does not require complex reasoning. Haiku executes this perfectly at a fraction of the cost.
 
 [← NTE-COPYWRITER](./nte-copywriter.md) | [NTE-PROPAGATOR →](./nte-propagator.md)

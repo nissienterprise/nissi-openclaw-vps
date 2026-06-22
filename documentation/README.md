@@ -2,60 +2,60 @@
 
 # 🧠 NTE · OpenClaw Intelligence Hub
 
-### Documentación Oficial del Sistema de Automatización con IA
+### Official Documentation for the AI Automation System
 **Nissi Technology Enterprises Inc. · Miami, FL · 2026**
 
 ---
 
-*"La tecnología no es un fin, sino el medio por el cual transformamos organizaciones y comunidades."*
+*"Technology is not an end in itself, but the means by which we transform organizations and communities."*
 **— Nissi Technology Enterprises**
 
 ---
 
-[![Agentes Activos](https://img.shields.io/badge/Agentes_Activos-19-4a90d9?style=for-the-badge&logo=robot)](./03-agentes/)
-[![Motor IA](https://img.shields.io/badge/Motor_IA-Claude_Anthropic-ff6b35?style=for-the-badge)](./05-stack-tecnologico/)
-[![Plataforma](https://img.shields.io/badge/Plataforma-OpenClaw_VPS-1a3a5c?style=for-the-badge)](./02-infraestructura/)
-[![Estado](https://img.shields.io/badge/Estado-En_Construcción_2026-5cb85c?style=for-the-badge)](./06-roadmap/)
-[![Secretos](https://img.shields.io/badge/Secretos-Azure_Key_Vault-0078D4?style=for-the-badge&logo=microsoftazure)](./02-infraestructura/)
-[![Repos](https://img.shields.io/badge/Repos-GitHub-181717?style=for-the-badge&logo=github)](./05-stack-tecnologico/)
+[![Active Agents](https://img.shields.io/badge/Active_Agents-19-4a90d9?style=for-the-badge&logo=robot)](./03-agents/)
+[![AI Engine](https://img.shields.io/badge/AI_Engine-Claude_Anthropic-ff6b35?style=for-the-badge)](./05-tech-stack/)
+[![Platform](https://img.shields.io/badge/Platform-OpenClaw_VPS-1a3a5c?style=for-the-badge)](./02-infrastructure/)
+[![Status](https://img.shields.io/badge/Status-Under_Construction_2026-5cb85c?style=for-the-badge)](./06-roadmap/)
+[![Secrets](https://img.shields.io/badge/Secrets-Azure_Key_Vault-0078D4?style=for-the-badge&logo=microsoftazure)](./02-infrastructure/)
+[![Repos](https://img.shields.io/badge/Repos-GitHub-181717?style=for-the-badge&logo=github)](./05-tech-stack/)
 
 </div>
 
 ---
 
-## 📖 ¿Qué es este repositorio?
+## 📖 What is this repository?
 
-Este es el **hub central de documentación** del proyecto de automatización total de Nissi Technology Enterprises utilizando **OpenClaw** — una instancia del Claude Agent SDK desplegada en un VPS seguro en la nube.
+This is the **central documentation hub** for Nissi Technology Enterprises' total automation project, built on **OpenClaw** — an instance of the Claude Agent SDK deployed on a secure cloud VPS.
 
-Aquí encontrarás todo lo necesario para entender, operar, expandir y mantener el ecosistema de **19 agentes de IA** que automatizan las operaciones administrativas, de marketing y de desarrollo de software de NTE.
+Here you'll find everything needed to understand, operate, expand, and maintain the ecosystem of **19 AI agents** that automate NTE's administrative, marketing, and software development operations.
 
 ---
 
-## 🗺️ Mapa de la Documentación
+## 🗺️ Documentation Map
 
 ```
-documentacion/
+documentation/
 │
-├── 📌 README.md                    ← Estás aquí
+├── 📌 README.md                    ← You are here
 │
-├── 🏢 01-empresa/
-│   ├── mision-vision-valores.md    ← ADN de NTE que guía todos los agentes
-│   └── servicios.md                ← Catálogo de servicios (base de conocimiento)
+├── 🏢 01-company/
+│   ├── mission-vision-values.md    ← NTE's DNA that guides all agents
+│   └── services.md                 ← Service catalog (knowledge base)
 │
-├── 🖥️  02-infraestructura/
-│   ├── vps-setup.md                ← VPS Ubuntu 22.04 + Docker + Azure Key Vault
-│   └── seguridad.md                ← Las 10 reglas de seguridad de OpenClaw
+├── 🖥️  02-infrastructure/
+│   ├── vps-setup.md                ← Ubuntu 22.04 VPS + Docker + Azure Key Vault
+│   └── security.md                 ← OpenClaw's 10 security rules
 │
-├── 🤖 03-agentes/
-│   ├── README.md                   ← Diagrama completo + tabla de todos los agentes
-│   ├── jarvis.md                   ← JARVIS — Agente Principal Orquestador
+├── 🤖 03-agents/
+│   ├── README.md                   ← Full diagram + table of all agents
+│   ├── jarvis.md                   ← JARVIS — Main Orchestrator Agent
 │   │
-│   ├── wing-administrativa/
+│   ├── administrative-wing/
 │   │   ├── samantha.md             ← SAMANTHA — Customer Experience
 │   │   ├── walle.md                ← WALL-E — Content & Marketing
 │   │   └── hal.md                  ← HAL — Analytics & Reporting
 │   │
-│   ├── wing-software/
+│   ├── software-wing/
 │   │   ├── david.md                ← DAVID — Project Manager
 │   │   ├── bishop.md               ← BISHOP — Backend Developer
 │   │   ├── sonny.md                ← SONNY — Frontend Developer
@@ -66,63 +66,63 @@ documentacion/
 │   │   ├── t800.md                 ← T-800 — Security Agent
 │   │   └── marvin.md               ← MARVIN — Technical Writer
 │   │
-│   └── flujos-especializados/
+│   └── specialized-flows/
 │       ├── blog-automation/
-│       │   ├── README.md           ← Flujo completo blog semanal
-│       │   ├── johnny5.md          ← JOHNNY 5 — Investigador de tendencias
-│       │   ├── c3po.md             ← C-3PO — Redactor de artículos
-│       │   ├── r2d2.md             ← R2-D2 — Publicador en WordPress
-│       │   └── baymax.md           ← BAYMAX — Distribuidor en redes sociales
+│       │   ├── README.md           ← Full weekly blog flow
+│       │   ├── johnny5.md          ← JOHNNY 5 — Trend Researcher
+│       │   ├── c3po.md             ← C-3PO — Article Writer
+│       │   ├── r2d2.md             ← R2-D2 — WordPress Publisher
+│       │   └── baymax.md           ← BAYMAX — Social Media Distributor
 │       │
 │       └── lead-management/
-│           ├── README.md           ← Flujo completo de leads
-│           ├── eva.md              ← EVA — Captador multicanal de leads
-│           └── tars.md             ← TARS — Nurturing y seguimiento
+│           ├── README.md           ← Full lead flow
+│           ├── eva.md              ← EVA — Multichannel Lead Capture
+│           └── tars.md             ← TARS — Nurturing and Follow-up
 │
-├── 🔄 04-flujos/
-│   ├── flujo-blog-semanal.md       ← Diagrama secuencial del blog
-│   ├── flujo-leads.md              ← Diagrama del ciclo de vida de leads
-│   ├── flujo-desarrollo-software.md← Las 6 fases de desarrollo automatizado
-│   └── flujo-customer-service.md   ← Flujo omnicanal de atención
+├── 🔄 04-flows/
+│   ├── weekly-blog-flow.md         ← Sequential blog diagram
+│   ├── leads-flow.md               ← Lead lifecycle diagram
+│   ├── software-development-flow.md← The 6 phases of automated development
+│   └── customer-service-flow.md    ← Omnichannel support flow
 │
-├── 🛠️  05-stack-tecnologico/
-│   └── herramientas.md             ← Jira, QuickBooks, GitHub, Azure KV, email NTE
+├── 🛠️  05-tech-stack/
+│   └── tools.md                    ← Jira, QuickBooks, GitHub, Azure KV, NTE email
 │
 ├── 🗓️  06-roadmap/
-│   └── implementacion-2026.md      ← 4 fases · Abril → Diciembre 2026
+│   └── implementation-2026.md      ← 4 phases · April → December 2026
 │
 ├── 💬 07-prompts/
-│   ├── nte-main-system-prompt.md   ← System prompt completo de JARVIS
-│   └── prompts-por-agente.md       ← Guías de prompt para cada agente
+│   ├── nte-main-system-prompt.md   ← JARVIS's full system prompt
+│   └── prompts-by-agent.md         ← Prompt guides for each agent
 │
 ├── 📊 08-kpis/
-│   └── metricas-exito.md           ← KPIs y metas del proyecto
+│   └── success-metrics.md          ← Project KPIs and goals
 │
-├── 💰 09-presupuesto/
-│   └── costos-estimados.md         ← Desglose de costos y ROI proyectado
+├── 💰 09-budget/
+│   └── estimated-costs.md          ← Cost breakdown and projected ROI
 │
-├── 🌿 10-ambientes/
-│   └── ambientes.md                ← Development · Staging · Production
+├── 🌿 10-environments/
+│   └── environments.md             ← Development · Staging · Production
 │
 └── 📋 11-logging/
-    ├── README.md                   ← Stack recomendado · Arquitectura · Esquema de logs
-    ├── 02-nte-logger.md            ← API del logger central · trace_id · Ejemplos de uso
-    ├── 03-infraestructura.md       ← Loki · Promtail · Docker Compose · Labels Docker
-    └── 04-grafana.md               ← Dashboards · LogQL · Alertas · Provisioning
+    ├── README.md                   ← Recommended stack · Architecture · Log schema
+    ├── 02-nte-logger.md            ← Central logger API · trace_id · Usage examples
+    ├── 03-infrastructure.md        ← Loki · Promtail · Docker Compose · Docker Labels
+    └── 04-grafana.md               ← Dashboards · LogQL · Alerts · Provisioning
 ```
 
 ---
 
-## ⚡ Vista Rápida: Los 19 Agentes
+## ⚡ Quick View: The 19 Agents
 
 ```mermaid
 mindmap
   root((🧠 JARVIS<br/>Opus 4))
-    🏢 Wing Administrativa
+    🏢 Administrative Wing
       🎧 Samantha<br/>Sonnet 4
       ✍️ WALL-E<br/>Sonnet 4
       📊 HAL<br/>Haiku 4
-    ⚙️ Wing Software R&D
+    ⚙️ Software R&D Wing
       🗂️ David<br/>Opus 4
       ⚙️ Bishop<br/>Sonnet 4
       🎨 Sonny<br/>Sonnet 4
@@ -144,50 +144,50 @@ mindmap
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Quick Start
 
-| Si quieres... | Ve a... |
+| If you want to... | Go to... |
 |---|---|
-| Entender la visión completa | [01-empresa/mision-vision-valores.md](./01-empresa/mision-vision-valores.md) |
-| Ver todos los agentes y su jerarquía | [03-agentes/README.md](./03-agentes/README.md) |
-| Configurar el servidor por primera vez | [02-infraestructura/vps-setup.md](./02-infraestructura/vps-setup.md) |
-| Ver el protocolo de seguridad | [02-infraestructura/seguridad.md](./02-infraestructura/seguridad.md) |
-| Ver el prompt de JARVIS | [07-prompts/nte-main-system-prompt.md](./07-prompts/nte-main-system-prompt.md) |
-| Entender los 3 ambientes del sistema | [10-ambientes/ambientes.md](./10-ambientes/ambientes.md) |
-| Ver el sistema de logging y observabilidad | [11-logging/README.md](./11-logging/README.md) |
-| Ver el stack tecnológico completo | [05-stack-tecnologico/herramientas.md](./05-stack-tecnologico/herramientas.md) |
-| Entender el flujo del blog automatizado | [04-flujos/flujo-blog-semanal.md](./04-flujos/flujo-blog-semanal.md) |
-| Ver el pipeline de gestión de leads | [04-flujos/flujo-leads.md](./04-flujos/flujo-leads.md) |
-| Revisar el roadmap de implementación | [06-roadmap/implementacion-2026.md](./06-roadmap/implementacion-2026.md) |
-| Ver los KPIs y métricas de éxito | [08-kpis/metricas-exito.md](./08-kpis/metricas-exito.md) |
+| Understand the full vision | [01-company/mission-vision-values.md](./01-company/mission-vision-values.md) |
+| See all agents and their hierarchy | [03-agents/README.md](./03-agents/README.md) |
+| Set up the server for the first time | [02-infrastructure/vps-setup.md](./02-infrastructure/vps-setup.md) |
+| See the security protocol | [02-infrastructure/security.md](./02-infrastructure/security.md) |
+| See JARVIS's prompt | [07-prompts/nte-main-system-prompt.md](./07-prompts/nte-main-system-prompt.md) |
+| Understand the system's 3 environments | [10-environments/environments.md](./10-environments/environments.md) |
+| See the logging and observability system | [11-logging/README.md](./11-logging/README.md) |
+| See the full tech stack | [05-tech-stack/tools.md](./05-tech-stack/tools.md) |
+| Understand the automated blog flow | [04-flows/weekly-blog-flow.md](./04-flows/weekly-blog-flow.md) |
+| See the lead management pipeline | [04-flows/leads-flow.md](./04-flows/leads-flow.md) |
+| Review the implementation roadmap | [06-roadmap/implementation-2026.md](./06-roadmap/implementation-2026.md) |
+| See KPIs and success metrics | [08-kpis/success-metrics.md](./08-kpis/success-metrics.md) |
 
 ---
 
-## 🧭 Principios de Diseño del Sistema
+## 🧭 System Design Principles
 
-> **1. Sandbox First** — Todos los sub-agentes corren en contenedores Docker efímeros. Jarvis (NTE-MAIN) es el único con acceso al filesystem del VPS.
+> **1. Sandbox First** — All sub-agents run in ephemeral Docker containers. Jarvis (NTE-MAIN) is the only one with access to the VPS filesystem.
 
-> **2. Human-in-the-Loop** — El sistema nunca toma decisiones críticas sin aprobación de Michael. Escala automáticamente por Slack.
+> **2. Human-in-the-Loop** — The system never makes critical decisions without Michael's approval. It escalates automatically via Slack.
 
-> **3. Modelo Mínimo Suficiente** — Cada agente usa el modelo de menor costo que cumpla su tarea con calidad. Opus solo donde el razonamiento complejo es imprescindible.
+> **3. Minimum Sufficient Model** — Each agent uses the lowest-cost model that can complete its task with quality. Opus only where complex reasoning is essential.
 
-> **4. Fe & Integridad** — Ningún agente ejecuta acciones que contradigan los valores cristianos de NTE. Esto está codificado en el system prompt de cada agente.
+> **4. Faith & Integrity** — No agent performs actions that contradict NTE's Christian values. This is encoded into every agent's system prompt.
 
-> **5. Observabilidad Total** — Cada acción queda registrada. HAL (NTE-ANALYTICS) reporta KPIs semanalmente a Michael.
+> **5. Total Observability** — Every action is logged. HAL (NTE-ANALYTICS) reports KPIs to Michael weekly.
 
-> **6. Secretos en Azure Key Vault** — Cero passwords en código o en repositorios. Todo secreto vive en Azure Key Vault.
+> **6. Secrets in Azure Key Vault** — Zero passwords in code or repositories. Every secret lives in Azure Key Vault.
 
-> **7. Comunicación Inter-Agente** — Los agentes se pasan trabajo entre sí directamente a través del protocolo de mensajería interna de OpenClaw.
+> **7. Inter-Agent Communication** — Agents hand off work directly to each other through OpenClaw's internal messaging protocol.
 
-> **8. Tres Ambientes** — Development (fake data), Staging (data real + demos), Production (producción).
+> **8. Three Environments** — Development (fake data), Staging (real data + demos), Production (live).
 
 ---
 
 <div align="center">
 
 **Nissi Technology Enterprises Inc.**
-Miami, FL · Fundada 2016 · Vianney & Michael Rodriguez
+Miami, FL · Founded 2016 · Vianney & Michael Rodriguez
 
-*Automatización con Propósito · Fe · Integridad · Innovación · Excelencia*
+*Automation with Purpose · Faith · Integrity · Innovation · Excellence*
 
 </div>

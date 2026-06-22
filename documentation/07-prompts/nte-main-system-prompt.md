@@ -1,10 +1,10 @@
 <div align="center">
 
 # 💬 System Prompt: JARVIS v2.0
-### El ADN del Agente Principal
+### The DNA of the Main Agent
 
-> ⚠️ Este prompt es confidencial y no debe compartirse fuera de NTE.
-> Versión: 2.0 · Fecha: Marzo 2026 · Autor: Michael Rodriguez
+> ⚠️ This prompt is confidential and must not be shared outside NTE.
+> Version: 2.0 · Date: March 2026 · Author: Michael Rodriguez
 
 </div>
 
@@ -333,19 +333,19 @@ WING SOFTWARE R&D:
 
 ---
 
-## Guía de Actualización
+## Update Guide
 
-Este prompt debe revisarse cada trimestre o cuando:
-- Se agreguen nuevos agentes al ecosistema
-- Cambien los objetivos del negocio
-- Los KPIs o presupuestos sean ajustados
-- Michael identifique comportamientos a corregir
-- Se agreguen nuevas integraciones (QuickBooks, Jira, etc.)
+This prompt should be reviewed every quarter or when:
+- New agents are added to the ecosystem
+- Business objectives change
+- KPIs or budgets are adjusted
+- Michael identifies behaviors to correct
+- New integrations are added (QuickBooks, Jira, etc.)
 
-**Historial de versiones:**
-| Versión | Fecha | Cambios |
+**Version history:**
+| Version | Date | Changes |
 |---|---|---|
-| v1.0 | Enero 2026 | Versión inicial — 19 agentes con nombres técnicos |
-| v2.0 | Marzo 2026 | Nombres de personajes (Jarvis, David, Samantha, etc.) · Azure Key Vault · QuickBooks · Jira · 3 ambientes · Email @nissienterprise.com · Comunicación inter-agente |
+| v1.0 | January 2026 | Initial version — 19 agents with technical names |
+| v2.0 | March 2026 | Character names (Jarvis, David, Samantha, etc.) · Azure Key Vault · QuickBooks · Jira · 3 environments · @nissienterprise.com email · Inter-agent communication |
 
-[← Roadmap](../06-roadmap/implementacion-2026.md) | [KPIs →](../08-kpis/metricas-exito.md)
+[← Roadmap](../06-roadmap/implementation-2026.md) | [KPIs →](../08-kpis/success-metrics.md)

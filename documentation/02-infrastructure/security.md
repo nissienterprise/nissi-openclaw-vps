@@ -1,9 +1,9 @@
 <div align="center">
 
-# 🔒 Las 10 Reglas de Seguridad de OpenClaw
-### Protocolo de Seguridad Obligatorio — NTE
+# 🔒 OpenClaw's 10 Security Rules
+### Mandatory Security Protocol — NTE
 
-> ⚠️ **CRÍTICO:** Aplicar TODAS las reglas antes de poner cualquier agente en producción.
+> ⚠️ **CRITICAL:** Apply ALL rules before putting any agent into production.
 
 </div>
 
@@ -11,9 +11,9 @@
 
 ```mermaid
 flowchart LR
-    R1["1️⃣ Mantener\nActualizado"] --> R2["2️⃣ No Exponer\nGateway"] --> R3["3️⃣ Tokens de\nAutenticación"]
-    R4["4️⃣ Modo\nSandbox Docker"] --> R5["5️⃣ chmod 700\nCredenciales"] --> R6["6️⃣ Secretos en\nAzure Key Vault"]
-    R7["7️⃣ Sub-agentes\nAnti-Injection"] --> R8["8️⃣ Allowlist de\nComandos"] --> R9["9️⃣ Aislamiento\nde Red"] --> R10["🔟 NUNCA en\nEquipo Personal"]
+    R1["1️⃣ Keep\nUp to Date"] --> R2["2️⃣ Don't Expose\nthe Gateway"] --> R3["3️⃣ Authentication\nTokens"]
+    R4["4️⃣ Docker\nSandbox Mode"] --> R5["5️⃣ chmod 700\nCredentials"] --> R6["6️⃣ Secrets in\nAzure Key Vault"]
+    R7["7️⃣ Sub-agents\nAnti-Injection"] --> R8["8️⃣ Command\nAllowlist"] --> R9["9️⃣ Network\nIsolation"] --> R10["🔟 NEVER on\nPersonal Equipment"]
 
     style R1 fill:#1a3a5c,color:#fff
     style R2 fill:#1a3a5c,color:#fff
@@ -29,77 +29,77 @@ flowchart LR
 
 ---
 
-## Regla 1 · Mantener Siempre Actualizado
+## Rule 1 · Always Keep Updated
 
 ```bash
-# Ejecutar semanalmente (automatizado via Optimus)
+# Run weekly (automated via Optimus)
 sudo apt update && sudo apt upgrade -y
 npm update -g @anthropic-ai/claude-code
 ```
 
-> Los parches de seguridad son críticos. Un servidor desactualizado puede ser comprometido en horas. Optimus (NTE-DEVOPS) tiene este comando en su heartbeat semanal.
+> Security patches are critical. An outdated server can be compromised within hours. Optimus (NTE-DEVOPS) has this command in its weekly heartbeat.
 
 ---
 
-## Regla 2 · No Exponer el Gateway (Puerto 18789)
+## Rule 2 · Don't Expose the Gateway (Port 18789)
 
 ```bash
-# ✅ CORRECTO — Solo localhost
+# ✅ CORRECT — localhost only
 gateway.host = "127.0.0.1"
 
-# ❌ INCORRECTO — Expone al mundo
+# ❌ INCORRECT — exposes it to the world
 gateway.host = "0.0.0.0"
 ```
 
-**Acceso siempre via SSH tunnel:**
+**Always access via SSH tunnel:**
 ```bash
-ssh -L 18789:localhost:18789 openclaw@TU_VPS_IP
+ssh -L 18789:localhost:18789 openclaw@YOUR_VPS_IP
 ```
 
 ---
 
-## Regla 3 · Tokens de Autenticación
+## Rule 3 · Authentication Tokens
 
 ```json
 // ~/.openclaw/config.json
 {
   "auth_mode": "token",
-  "token": "GENERADO_AUTOMÁTICAMENTE_NO_EDITAR"
+  "token": "AUTO_GENERATED_DO_NOT_EDIT"
 }
 ```
 
-> Nunca dejar acceso libre sin token. El token debe rotar cada 90 días. T-800 (NTE-SECURITY) genera un recordatorio automático.
+> Never leave access open without a token. The token must rotate every 90 days. T-800 (NTE-SECURITY) generates an automatic reminder.
 
 ---
 
-## Regla 4 · Modo Sandbox con Docker ⭐ La más importante
+## Rule 4 · Sandbox Mode with Docker ⭐ The most important rule
 
-NTE usa el modo **`non_main`** (recomendado para operaciones normales):
+NTE uses **`non_main`** mode (recommended for normal operations):
 
 ```mermaid
 graph LR
-    subgraph MAIN["Sin Sandbox"]
-        A["🧠 JARVIS\nAcceso completo al FS\nPuede leer/escribir\ntodo el workspace"]
+    subgraph MAIN["No Sandbox"]
+        A["🧠 JARVIS\nFull FS access\nCan read/write\nthe entire workspace"]
     end
 
-    subgraph DOCKER["Docker Sandbox (Efímero) — Un contenedor por agente"]
-        B["🎧 Samantha\nContenedor aislado"]
-        C["✍️ WALL-E\nContenedor aislado"]
-        D["⚙️ Bishop\nContenedor aislado"]
-        E["... 16 agentes más"]
+    subgraph DOCKER["Docker Sandbox (Ephemeral) — One container per agent"]
+        B["🎧 Samantha\nIsolated container"]
+        C["✍️ WALL-E\nIsolated container"]
+        D["⚙️ Bishop\nIsolated container"]
+        E["... 16 more agents"]
     end
 
-    A -->|"Delega tarea + secretos inyectados"| B & C & D & E
-    B -->|"Resultado"| A
-    C -->|"Resultado"| A
-    D -->|"Resultado"| A
+    A -->|"Delegates task + injected secrets"| B & C & D & E
+    B -->|"Result"| A
+    C -->|"Result"| A
+    D -->|"Result"| A
 
     style MAIN fill:#1a1a2e,color:#fff
     style DOCKER fill:#0d1f0d,color:#ccc
 ```
 
 ```bash
-# Modo non_main: Jarvis tiene FS, sub-agentes en Docker
+# non_main mode: Jarvis has FS access, sub-agents run in Docker
 docker run --rm --network none \
   -v /workspace:/workspace:ro \
   openclaw-sandbox:latest
@@ -107,63 +107,63 @@ docker run --rm --network none \
 
 ---
 
-## Regla 5 · Protección de Credenciales con chmod
+## Rule 5 · Credential Protection with chmod
 
 ```bash
-# Aplicar inmediatamente después de instalar
+# Apply immediately after installation
 chmod 700 -R ~/.openclaw
 
-# Verificar permisos
+# Verify permissions
 ls -la ~/.openclaw
-# drwx------ (700) — solo el usuario openclaw puede acceder
+# drwx------ (700) — only the openclaw user can access it
 ```
 
-> **NUNCA** guardar API keys en texto plano con permisos abiertos. Si alguien compromete el server, `.openclaw` con chmod 700 es su última barrera.
+> **NEVER** store API keys in plain text with open permissions. If someone compromises the server, `.openclaw` with chmod 700 is the last line of defense.
 
 ---
 
-## Regla 6 · Todos los Secretos en Azure Key Vault ⭐ OBLIGATORIO
+## Rule 6 · All Secrets in Azure Key Vault ⭐ MANDATORY
 
-> ✅ **NTE usa Azure Key Vault** como el único gestor de secretos. **Cero passwords en código, en repositorios de GitHub, o en archivos de configuración.**
+> ✅ **NTE uses Azure Key Vault** as the sole secrets manager. **Zero passwords in code, in GitHub repositories, or in configuration files.**
 
 ```bash
-# ✅ CORRECTO — Obtener secreto desde Azure Key Vault
+# ✅ CORRECT — Retrieve secret from Azure Key Vault
 export ANTHROPIC_API_KEY=$(az keyvault secret show \
   --name "anthropic-api-key" \
   --vault-name "nte-keyvault" \
   --query "value" -o tsv)
 
-# ❌ INCORRECTO — API key en el config file
+# ❌ INCORRECT — API key in the config file
 {
-  "anthropic_key": "sk-ant-..."  // NUNCA HACER ESTO
+  "anthropic_key": "sk-ant-..."  // NEVER DO THIS
 }
 
-# ❌ INCORRECTO — API key en variables de entorno hardcodeadas en Docker
-ENV ANTHROPIC_API_KEY="sk-ant-..."  // NUNCA HACER ESTO
+# ❌ INCORRECT — API key hardcoded in Docker environment variables
+ENV ANTHROPIC_API_KEY="sk-ant-..."  // NEVER DO THIS
 ```
 
-**Configuración de Azure Key Vault para NTE:**
+**Azure Key Vault configuration for NTE:**
 ```bash
 # Vault name: nte-keyvault
 # Resource Group: nte-production-rg
-# Región: East US 2
+# Region: East US 2
 
-# Crear secreto
+# Create a secret
 az keyvault secret set \
   --vault-name "nte-keyvault" \
   --name "anthropic-api-key" \
   --value "sk-ant-..."
 
-# Dar acceso a Jarvis via Managed Identity
+# Grant Jarvis access via Managed Identity
 az keyvault set-policy \
   --name "nte-keyvault" \
   --object-id [managed-identity-id] \
   --secret-permissions get list
 ```
 
-**Secretos obligatorios en Azure Key Vault:**
+**Mandatory secrets in Azure Key Vault:**
 
-| Nombre del Secreto | Descripción |
+| Secret Name | Description |
 |---|---|
 | `anthropic-api-key` | Claude API key |
 | `slack-bot-token` | Slack bot token (xoxb-...) |
@@ -172,39 +172,39 @@ az keyvault set-policy \
 | `quickbooks-oauth-token` | QuickBooks OAuth 2.0 token |
 | `quickbooks-refresh-token` | QuickBooks refresh token |
 | `github-token` | GitHub Personal Access Token |
-| `nte-email-smtp` | Credenciales SMTP @nissienterprise.com |
+| `nte-email-smtp` | SMTP credentials for @nissienterprise.com |
 | `google-calendar-token` | Google Calendar OAuth token |
 | `wordpress-api-key` | WordPress REST API key |
 | `semrush-api-key` | Semrush API key |
 | `buffer-api-key` | Buffer Pro API key |
-| `openclaw-gateway-token` | Token del gateway de OpenClaw |
-| `db-connection-string` | String de conexión a base de datos |
+| `openclaw-gateway-token` | OpenClaw gateway token |
+| `db-connection-string` | Database connection string |
 
 ---
 
-## Regla 7 · Mitigar Prompt Injection con Sub-agentes
+## Rule 7 · Mitigate Prompt Injection with Sub-agents
 
-> Los agentes que navegan la web o leen documentos de terceros son los más vulnerables a prompt injection.
+> Agents that browse the web or read third-party documents are the most vulnerable to prompt injection.
 
-**Estrategia de NTE:**
-- Johnny 5 (navega la web) → siempre en Docker con red limitada
-- Samantha (lee mensajes de desconocidos) → Docker con allowlist de acciones
-- EVA (procesa formularios externos) → Docker sin acceso a filesystem
+**NTE's strategy:**
+- Johnny 5 (browses the web) → always in Docker with restricted network access
+- Samantha (reads messages from strangers) → Docker with an action allowlist
+- EVA (processes external forms) → Docker with no filesystem access
 
 ```bash
-# Sub-agente con red limitada a APIs específicas
+# Sub-agent with network access limited to specific APIs
 docker run --rm \
-  --network=nte-restricted \  # Solo permite IPs de APIs permitidas
+  --network=nte-restricted \  # Only allows IPs of approved APIs
   -e ANTHROPIC_API_KEY \
   openclaw-sandbox:latest
 ```
 
 ---
 
-## Regla 8 · Control de Comandos con Allowlist
+## Rule 8 · Command Control with Allowlist
 
 ```json
-// Ejemplo de allowlist para Optimus (NTE-DEVOPS)
+// Example allowlist for Optimus (NTE-DEVOPS)
 {
   "allowed_commands": [
     "git pull",
@@ -214,7 +214,7 @@ docker run --rm \
     "systemctl restart nginx",
     "certbot renew"
   ],
-  "ask_on_miss": true,   // Pide aprobación por Slack para comandos no listados
+  "ask_on_miss": true,   // Requests Slack approval for commands not on the list
   "block_patterns": [
     "rm -rf",
     "DROP TABLE",
@@ -225,60 +225,60 @@ docker run --rm \
 
 ---
 
-## Regla 9 · Aislamiento de Red y Auditoría
+## Rule 9 · Network Isolation and Auditing
 
 ```bash
-# Revisar logs de auditoría (automatizado por T-800)
+# Review audit logs (automated by T-800)
 tail -f /workspace/logs/openclaw-audit.log
 
-# Activar logging completo
+# Enable full logging
 export OPENCLAW_LOG_LEVEL=audit
 export OPENCLAW_LOG_FILE=/workspace/logs/openclaw-audit.log
 ```
 
-**T-800 (NTE-SECURITY) revisa estos logs:**
-- Cada domingo a las 6 AM (reporte semanal de seguridad)
-- Inmediatamente si detecta patrones de inyección
-- Mensualmente para auditoría completa (reporte a Michael)
+**T-800 (NTE-SECURITY) reviews these logs:**
+- Every Sunday at 6 AM (weekly security report)
+- Immediately if injection patterns are detected
+- Monthly for a full audit (report to Michael)
 
 ---
 
-## Regla 10 · NUNCA en Equipo Personal
+## Rule 10 · NEVER on Personal Equipment
 
-| ✅ Correcto | ❌ Incorrecto |
+| ✅ Correct | ❌ Incorrect |
 |---|---|
-| OpenClaw en VPS aislado | OpenClaw en tu MacBook |
-| VPS dedicado sin datos personales | Servidor compartido con otros proyectos |
-| Usuario `openclaw` sin permisos root | Ejecutar como root |
-| Si el VPS se compromete → pérdida limitada | Si tu Mac se compromete → pérdida total |
+| OpenClaw on an isolated VPS | OpenClaw on your MacBook |
+| Dedicated VPS with no personal data | Server shared with other projects |
+| `openclaw` user with no root permissions | Running as root |
+| If the VPS is compromised → limited loss | If your Mac is compromised → total loss |
 
-> Si la instancia es comprometida, el atacante solo accede al VPS aislado. **NUNCA dar permisos root a OpenClaw.**
-
----
-
-## 📋 Checklist de Seguridad Pre-Producción
-
-```
-□ Sistema operativo actualizado (apt upgrade)
-□ OpenClaw actualizado a última versión
-□ Gateway en 127.0.0.1 (NO 0.0.0.0)
-□ Token de autenticación configurado
-□ Modo sandbox non_main activado
-□ chmod 700 aplicado a ~/.openclaw
-□ Azure Key Vault configurado con todos los secretos
-□ Managed Identity de Jarvis con acceso a Azure Key Vault
-□ Allowlist de comandos definida para Optimus (NTE-DEVOPS)
-□ Logs de auditoría activados
-□ UFW Firewall activo
-□ Fail2Ban instalado y configurado
-□ Cloudflare WAF activo
-□ Backups automáticos configurados
-□ T-800 (NTE-SECURITY) configurado para revisión semanal
-□ Rotación de secretos programada (90 días) en Azure Key Vault
-□ Docker containers con network isolation configurado
-□ Variables de entorno de los 3 ambientes separadas en Azure KV
-```
+> If the instance is compromised, the attacker only gains access to the isolated VPS. **NEVER grant root permissions to OpenClaw.**
 
 ---
 
-[← VPS Setup](./vps-setup.md) | [Volver al inicio](../README.md) | [Agentes →](../03-agentes/README.md)
+## 📋 Pre-Production Security Checklist
+
+```
+□ Operating system updated (apt upgrade)
+□ OpenClaw updated to the latest version
+□ Gateway on 127.0.0.1 (NOT 0.0.0.0)
+□ Authentication token configured
+□ non_main sandbox mode enabled
+□ chmod 700 applied to ~/.openclaw
+□ Azure Key Vault configured with all secrets
+□ Jarvis's Managed Identity has access to Azure Key Vault
+□ Command allowlist defined for Optimus (NTE-DEVOPS)
+□ Audit logs enabled
+□ UFW Firewall active
+□ Fail2Ban installed and configured
+□ Cloudflare WAF active
+□ Automatic backups configured
+□ T-800 (NTE-SECURITY) configured for weekly review
+□ Secret rotation scheduled (90 days) in Azure Key Vault
+□ Docker containers configured with network isolation
+□ Environment variables for the 3 environments separated in Azure KV
+```
+
+---
+
+[← VPS Setup](./vps-setup.md) | [Back to home](../README.md) | [Agents →](../03-agents/README.md)

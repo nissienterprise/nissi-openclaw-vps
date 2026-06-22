@@ -1,15 +1,15 @@
 <div align="center">
 
 # 📝 Blog Automation Pipeline
-### Del Trend al Tweet — Completamente Automatizado
+### From Trend to Tweet — Fully Automated
 
-*4 agentes especializados · Activación semanal · Aprobación humana preservada*
+*4 specialized agents · Weekly activation · Human approval preserved*
 
 </div>
 
 ---
 
-## Vista General del Flujo
+## Flow Overview
 
 ```mermaid
 sequenceDiagram
@@ -19,56 +19,56 @@ sequenceDiagram
     participant PUB as 🚀 PUBLISHER
     participant PROP as 📡 PROPAGATOR
     participant WP as 🌐 WordPress
-    participant SM as 📱 Redes Sociales
+    participant SM as 📱 Social Media
 
-    Note over TS: Lunes 2:00 AM EST
+    Note over TS: Monday 2:00 AM EST
 
     TS->>TS: Google Trends + Semrush + Reddit
-    TS->>TS: Filtra por servicios NTE
-    TS->>CW: Briefing Top 2 temas
+    TS->>TS: Filters by NTE services
+    TS->>CW: Briefing on Top 2 topics
 
-    CW->>CW: Redacta 2 artículos SEO completos
-    CW->>WP: Crea 2 Drafts vía REST API
-    CW->>M: 📨 Slack con títulos + preview links
+    CW->>CW: Writes 2 complete SEO articles
+    CW->>WP: Creates 2 Drafts via REST API
+    CW->>M: 📨 Slack with titles + preview links
 
-    Note over M: Ventana de aprobación 24-48h
+    Note over M: 24-48h approval window
 
-    M->>PUB: ✅ Aprueba
+    M->>PUB: ✅ Approves
 
-    PUB->>WP: Publica draft + imagen DALL-E
-    PUB->>PROP: URL del artículo publicado
+    PUB->>WP: Publishes draft + DALL-E image
+    PUB->>PROP: URL of the published article
 
-    PROP->>PROP: Adapta para 5 plataformas
-    PROP->>SM: Programa via Buffer (escalonado)
-    PROP->>M: 📊 Reporte de publicaciones
+    PROP->>PROP: Adapts for 5 platforms
+    PROP->>SM: Schedules via Buffer (staggered)
+    PROP->>M: 📊 Publication report
 ```
 
 ---
 
-## Los 4 Agentes
+## The 4 Agents
 
-| Agente | Rol | Modelo | Cuándo actúa |
+| Agent | Role | Model | When it acts |
 |---|---|---|---|
-| [🔍 NTE-TREND-SCOUT](./nte-trend-scout.md) | Investiga tendencias | Sonnet 4 | Lunes 2AM automático |
-| [✍️ NTE-COPYWRITER](./nte-copywriter.md) | Redacta artículos | Sonnet 4 | Tras briefing de SCOUT |
-| [🚀 NTE-PUBLISHER](./nte-publisher.md) | Publica en WordPress | Haiku 4 | Tras aprobación de Michael |
-| [📡 NTE-PROPAGATOR](./nte-propagator.md) | Distribuye en RRSS | Sonnet 4 | Tras publicación en WP |
+| [🔍 NTE-TREND-SCOUT](./nte-trend-scout.md) | Researches trends | Sonnet 4 | Monday 2AM automatic |
+| [✍️ NTE-COPYWRITER](./nte-copywriter.md) | Writes articles | Sonnet 4 | After SCOUT's briefing |
+| [🚀 NTE-PUBLISHER](./nte-publisher.md) | Publishes on WordPress | Haiku 4 | After Michael's approval |
+| [📡 NTE-PROPAGATOR](./nte-propagator.md) | Distributes on social media | Sonnet 4 | After WP publication |
 
 ---
 
-## Configuración de Aprobación en Slack
+## Slack Approval Configuration
 
 ```
-Michael puede aprobar de estas formas en el canal #nte-content:
+Michael can approve in these ways on the #nte-content channel:
 
-✅ Reaccionar con emoji ✅ al mensaje del draft
-💬 Responder "approved" o "publicar"
-🔄 Responder "cambios:" seguido de las instrucciones
-❌ Responder "rechazar" para descartar el artículo
+✅ React with the ✅ emoji on the draft message
+💬 Reply "approved" or "publish"
+🔄 Reply "changes:" followed by instructions
+❌ Reply "reject" to discard the article
 ```
 
-> Si no hay respuesta en 48 horas, NTE-MAIN envía un recordatorio. Si tampoco hay respuesta en 72 horas, el draft se archiva y se notifica a Michael.
+> If there is no response within 48 hours, NTE-MAIN sends a reminder. If there is still no response after 72 hours, the draft is archived and Michael is notified.
 
 ---
 
-[← Todos los agentes](../../README.md) | [NTE-TREND-SCOUT →](./nte-trend-scout.md)
+[← All agents](../../README.md) | [NTE-TREND-SCOUT →](./nte-trend-scout.md)

@@ -3,51 +3,51 @@
 # 📡 NTE-PROPAGATOR
 ### Social Media Propagation Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-cc7700?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-cc7700?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 
 </div>
 
-## 🎯 Qué hace
+## 🎯 What it does
 
-Toma cada artículo publicado y lo adapta creativamente para 5 plataformas distintas, programando las publicaciones de forma escalonada durante la semana para maximizar el alcance.
+Takes each published article and creatively adapts it for 5 different platforms, scheduling posts in a staggered way throughout the week to maximize reach.
 
-## 🎨 Adaptaciones por Plataforma
+## 🎨 Adaptations by Platform
 
-| Plataforma | Formato | Longitud | Estilo |
+| Platform | Format | Length | Style |
 |---|---|---|---|
-| **LinkedIn** | Extracto profesional + link | 300 palabras | Thought leadership · datos · insights |
-| **Instagram** | Caption visual + hashtags | 150 palabras + 10 hashtags | Inspiracional · visual · CTA |
-| **Facebook** | Post comunidad + pregunta | 200 palabras | Conversacional · engagement |
-| **Twitter/X** | Hilo de 4-5 tweets | 280 chars × 5 | Directo · data points · thread |
-| **YouTube Shorts** | Guión de 60 segundos | ~150 palabras | Dinámico · hook fuerte · CTA verbal |
+| **LinkedIn** | Professional excerpt + link | 300 words | Thought leadership · data · insights |
+| **Instagram** | Visual caption + hashtags | 150 words + 10 hashtags | Inspirational · visual · CTA |
+| **Facebook** | Community post + question | 200 words | Conversational · engagement |
+| **Twitter/X** | 4-5 tweet thread | 280 chars × 5 | Direct · data points · thread |
+| **YouTube Shorts** | 60-second script | ~150 words | Dynamic · strong hook · verbal CTA |
 
-## 📅 Programación Escalonada
+## 📅 Staggered Scheduling
 
 ```mermaid
 gantt
-    title Distribución semanal de contenido (artículo publicado el Lunes)
+    title Weekly content distribution (article published on Monday)
     dateFormat  DD
-    axisFormat  Día %d
+    axisFormat  Day %d
     section LinkedIn
-    Post profesional        :01, 1d
+    Professional post        :01, 1d
     section Instagram
     Post + stories          :02, 1d
-    stories día 3           :03, 1d
+    stories on day 3        :03, 1d
     section Facebook
-    Post comunidad          :03, 1d
+    Community post           :03, 1d
     section Twitter/X
-    Hilo completo           :02, 1d
-    Tweet de recordatorio   :05, 1d
+    Full thread              :02, 1d
+    Reminder tweet           :05, 1d
     section YouTube
-    Guión listo             :04, 1d
+    Script ready              :04, 1d
 ```
 
-## 🛠️ Herramientas
+## 🛠️ Tools
 
-- **Buffer API** — Programación en todas las plataformas
-- **Meta Content API** — Publicación directa en FB/IG
-- **LinkedIn API** — Posts profesionales
-- **Twitter/X API v2** — Hilos y tweets
+- **Buffer API** — Scheduling across all platforms
+- **Meta Content API** — Direct publishing to FB/IG
+- **LinkedIn API** — Professional posts
+- **Twitter/X API v2** — Threads and tweets
 
 [← NTE-PUBLISHER](./nte-publisher.md) | [Lead Management →](../lead-management/README.md)

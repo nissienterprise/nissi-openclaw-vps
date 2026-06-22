@@ -1,69 +1,69 @@
 <div align="center">
 
-# 📋 Sistema de Logging NTE
-### Observabilidad Total del Ecosistema de Agentes
+# 📋 NTE Logging System
+### Total Observability of the Agent Ecosystem
 
-> *"Si no lo puedes medir, no lo puedes mejorar."*
+> *"If you can't measure it, you can't improve it."*
 
 </div>
 
 ---
 
-## Stack Tecnológico
+## Technology Stack
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
 │                     LOGGING STACK NTE                        │
 │                                                              │
-│  🤖 Agentes Docker ──► 📤 Promtail ──► 🗄️ Loki ──► 📊 Grafana │
-│  (stdout JSON)         (recolector)   (storage)  (dashboard) │
+│  🤖 Docker Agents ──► 📤 Promtail ──► 🗄️ Loki ──► 📊 Grafana │
+│  (stdout JSON)         (collector)    (storage)  (dashboard) │
 │                                                              │
-│  + Pino (logger en cada agente — output JSON estructurado)   │
+│  + Pino (logger in each agent — structured JSON output)      │
 └──────────────────────────────────────────────────────────────┘
 ```
 
-| Componente | Rol | Puerto | Recurso |
+| Component | Role | Port | Resource |
 |---|---|---|---|
-| **Pino** | Logger JSON en cada agente | — | ~0 MB overhead |
-| **Promtail** | Recolecta logs de Docker | — | ~50 MB RAM |
-| **Loki** | Almacena y queries de logs | 3100 (interno) | ~200 MB RAM |
-| **Grafana** | Dashboard y alertas | 3000 (SSH tunnel) | ~150 MB RAM |
+| **Pino** | JSON logger in each agent | — | ~0 MB overhead |
+| **Promtail** | Collects logs from Docker | — | ~50 MB RAM |
+| **Loki** | Stores and queries logs | 3100 (internal) | ~200 MB RAM |
+| **Grafana** | Dashboard and alerts | 3000 (SSH tunnel) | ~150 MB RAM |
 
-**Total overhead del sistema de logging: ~400 MB RAM** — muy aceptable para un VPS de 8 GB.
+**Total logging system overhead: ~400 MB RAM** — very acceptable for an 8 GB VPS.
 
 ---
 
-## ¿Por qué este stack?
+## Why This Stack?
 
-| Alternativa | RAM requerida | ¿Por qué NO? |
+| Alternative | RAM required | Why NOT? |
 |---|---|---|
-| ELK Stack (Elasticsearch) | 4-8 GB | No cabe en el VPS junto a 19 agentes Docker |
-| Datadog | $15+/host/mes | Costo innecesario con todo lo que tenemos |
-| CloudWatch | Depende de uso | Lock-in con AWS, caro en volumen alto |
-| **Loki + Grafana ✅** | ~400 MB | Ligero, Docker-native, open source, potente |
+| ELK Stack (Elasticsearch) | 4-8 GB | Doesn't fit on the VPS alongside 19 Docker agents |
+| Datadog | $15+/host/month | Unnecessary cost given everything we already have |
+| CloudWatch | Depends on usage | AWS lock-in, expensive at high volume |
+| **Loki + Grafana ✅** | ~400 MB | Lightweight, Docker-native, open source, powerful |
 
 ---
 
-## Arquitectura del Sistema de Logs
+## Logging System Architecture
 
 ```mermaid
 flowchart TD
-    subgraph AGENTS["🤖 Agentes Docker"]
+    subgraph AGENTS["🤖 Docker Agents"]
         J["🧠 Jarvis\n(NTE-MAIN)"]
         D["🗂️ David\n(NTE-PM)"]
         S["🎧 Samantha\n(NTE-CX)"]
-        OT["... 16 agentes más"]
+        OT["... 16 more agents"]
     end
 
-    subgraph LOGGING["📋 Stack de Logging"]
-        PINO["📝 Pino Logger\n(JSON estructurado\nen cada agente)"]
-        STDOUT["📤 Docker stdout/stderr\n(cada container)"]
-        PROMTAIL["🔍 Promtail\n(recolector)\nlabels: agent, env, wing"]
-        LOKI["🗄️ Grafana Loki\n(storage + query)\nRetención: 90 días"]
-        GRAFANA["📊 Grafana\n(dashboard + alertas)\npuerto 3000 SSH tunnel"]
+    subgraph LOGGING["📋 Logging Stack"]
+        PINO["📝 Pino Logger\n(structured JSON\nin each agent)"]
+        STDOUT["📤 Docker stdout/stderr\n(each container)"]
+        PROMTAIL["🔍 Promtail\n(collector)\nlabels: agent, env, wing"]
+        LOKI["🗄️ Grafana Loki\n(storage + query)\nRetention: 90 days"]
+        GRAFANA["📊 Grafana\n(dashboard + alerts)\nport 3000 SSH tunnel"]
     end
 
-    subgraph ALERTS["🚨 Alertas"]
+    subgraph ALERTS["🚨 Alerts"]
         SLACK_ALERT["💬 Slack\n#nte-alerts"]
         EMAIL_ALERT["📧 Email\nt800@nissienterprise.com"]
     end
@@ -73,7 +73,7 @@ flowchart TD
     STDOUT --> PROMTAIL
     PROMTAIL --> LOKI
     LOKI --> GRAFANA
-    GRAFANA -->|"Alertas de\nerrores críticos"| SLACK_ALERT & EMAIL_ALERT
+    GRAFANA -->|"Critical error\nalerts"| SLACK_ALERT & EMAIL_ALERT
 
     style LOKI fill:#f0a500,color:#000
     style GRAFANA fill:#e05d04,color:#fff
@@ -82,19 +82,19 @@ flowchart TD
 
 ---
 
-## Esquema de Log — Cada Entrada Registra:
+## Log Schema — Each Entry Records:
 
 ```json
 {
   "timestamp":    "2026-03-29T10:30:00.123Z",
-  "trace_id":     "a3f9-bc12-...",       // ID único que une TODO un flujo multi-agente
-  "span_id":      "f1e2-4d89-...",       // ID de esta operación específica
+  "trace_id":     "a3f9-bc12-...",       // Unique ID linking an ENTIRE multi-agent flow
+  "span_id":      "f1e2-4d89-...",       // ID for this specific operation
   "level":        "INFO",                // DEBUG | INFO | WARN | ERROR | CRITICAL
-  "event_type":   "ACTION",             // Ver tabla de tipos abajo
-  "agent_name":   "Jarvis",             // Nombre del personaje
-  "agent_id":     "NTE-MAIN",           // ID técnico
+  "event_type":   "ACTION",             // See event types table below
+  "agent_name":   "Jarvis",             // Character name
+  "agent_id":     "NTE-MAIN",           // Technical ID
   "agent_email":  "jarvis@nissienterprise.com",
-  "wing":         "orchestrator",        // orchestrator | administrativa | software | blog | leads
+  "wing":         "orchestrator",        // orchestrator | administrative | software | blog | leads
   "environment":  "production",          // development | staging | production
   "message":      "Delegating blog pipeline to Johnny 5",
   "details": {
@@ -102,135 +102,135 @@ flowchart TD
     "input": "weekly_blog_trigger",
     "output": null
   },
-  "duration_ms":  142,                   // Tiempo que tomó la operación
+  "duration_ms":  142,                   // Time the operation took
   "status":       "success",             // success | failure | pending | escalated
   "triggered_by": "heartbeat",           // heartbeat | michael | [agent_id] | webhook
-  "parent_trace": null                   // trace_id del flujo padre (si fue invocado por otro agente)
+  "parent_trace": null                   // trace_id of the parent flow (if invoked by another agent)
 }
 ```
 
-### Tipos de Eventos (`event_type`)
+### Event Types (`event_type`)
 
-| Tipo | Descripción | Ejemplo |
+| Type | Description | Example |
 |---|---|---|
-| `HEARTBEAT` | Tarea programada ejecutada | Jarvis activa a Johnny 5 los lunes 2AM |
-| `ACTION` | Agente ejecuta una acción interna | C-3PO redacta artículo |
-| `COMMAND` | Agente ejecuta un comando del sistema | Optimus hace `docker restart` |
-| `API_CALL` | Llamada a API externa | TARS llama a QuickBooks API |
-| `INTER_AGENT` | Un agente invoca a otro | David asigna tarea a Bishop |
-| `DECISION` | Agente toma una decisión | EVA clasifica lead como HOT |
-| `ESCALATION` | Agente escala a Michael | Jarvis alerta en #nte-alerts |
-| `SECRET_ACCESS` | Acceso a Azure Key Vault | Jarvis obtiene credencial |
-| `JIRA_EVENT` | Operación en Jira | David crea ticket NTE-SW-142 |
-| `QB_EVENT` | Operación en QuickBooks | Jarvis draft de invoice #INV-001 |
-| `EMAIL_SENT` | Email enviado desde agente | Samantha responde a cliente |
-| `DEPLOY` | Deployment ejecutado | Optimus hace deploy a staging |
-| `SECURITY_SCAN` | Scan de seguridad | T-800 reporta vulnerabilidad |
-| `ERROR` | Error no fatal | Johnny 5 falla al acceder a Semrush |
-| `CRITICAL` | Error crítico, requiere atención | T-800 detecta intrusión |
+| `HEARTBEAT` | Scheduled task executed | Jarvis triggers Johnny 5 on Mondays at 2AM |
+| `ACTION` | Agent executes an internal action | C-3PO drafts an article |
+| `COMMAND` | Agent executes a system command | Optimus runs `docker restart` |
+| `API_CALL` | Call to an external API | TARS calls the QuickBooks API |
+| `INTER_AGENT` | One agent invokes another | David assigns a task to Bishop |
+| `DECISION` | Agent makes a decision | EVA classifies a lead as HOT |
+| `ESCALATION` | Agent escalates to Michael | Jarvis alerts in #nte-alerts |
+| `SECRET_ACCESS` | Access to Azure Key Vault | Jarvis retrieves a credential |
+| `JIRA_EVENT` | Operation in Jira | David creates ticket NTE-SW-142 |
+| `QB_EVENT` | Operation in QuickBooks | Jarvis drafts invoice #INV-001 |
+| `EMAIL_SENT` | Email sent from an agent | Samantha replies to a customer |
+| `DEPLOY` | Deployment executed | Optimus deploys to staging |
+| `SECURITY_SCAN` | Security scan | T-800 reports a vulnerability |
+| `ERROR` | Non-fatal error | Johnny 5 fails to access Semrush |
+| `CRITICAL` | Critical error, requires attention | T-800 detects an intrusion |
 
 ---
 
-## Labels de Promtail (para filtrar en Grafana)
+## Promtail Labels (for filtering in Grafana)
 
-Cada log entry tiene estas labels automáticas que permiten filtrar:
+Each log entry has these automatic labels that allow filtering:
 
-| Label | Valores posibles |
+| Label | Possible values |
 |---|---|
 | `agent` | jarvis, samantha, walle, hal, johnny5, c3po, r2d2, baymax, eva, tars, david, bishop, sonny, bb8, case, ava, optimus, t800, marvin |
 | `agent_id` | NTE-MAIN, NTE-CX, NTE-PM, etc. |
-| `wing` | orchestrator, administrativa, software, blog, leads |
+| `wing` | orchestrator, administrative, software, blog, leads |
 | `environment` | development, staging, production |
 | `level` | DEBUG, INFO, WARN, ERROR, CRITICAL |
 | `event_type` | ACTION, COMMAND, API_CALL, INTER_AGENT, DECISION, ESCALATION, ERROR, CRITICAL... |
 
 ---
 
-## Dashboards Disponibles en Grafana
+## Dashboards Available in Grafana
 
-| Dashboard | Descripción |
+| Dashboard | Description |
 |---|---|
-| **NTE Overview** | Vista general — todos los agentes, errores, actividad en tiempo real |
-| **NTE por Agente** | Drilldown de un agente específico — todas sus acciones |
-| **NTE Flujos (Traces)** | Visualizar un workflow completo usando el `trace_id` |
-| **NTE Errores** | Solo logs ERROR y CRITICAL de todos los agentes |
-| **NTE API Calls** | Todas las llamadas a APIs externas (QuickBooks, Jira, GitHub, etc.) |
-| **NTE Escalaciones** | Historial de todas las escalaciones a Michael |
-| **NTE Seguridad** | Logs de T-800 — security scans, accesos a Azure KV |
+| **NTE Overview** | General view — all agents, errors, real-time activity |
+| **NTE by Agent** | Drilldown of a specific agent — all of its actions |
+| **NTE Flows (Traces)** | Visualize a complete workflow using the `trace_id` |
+| **NTE Errors** | Only ERROR and CRITICAL logs across all agents |
+| **NTE API Calls** | All calls to external APIs (QuickBooks, Jira, GitHub, etc.) |
+| **NTE Escalations** | History of all escalations to Michael |
+| **NTE Security** | T-800 logs — security scans, Azure KV access |
 
 ---
 
-## Acceso a Grafana
+## Accessing Grafana
 
 ```bash
-# Desde tu máquina local — SSH tunnel
-ssh -L 3000:localhost:3000 openclaw@TU_VPS_IP
+# From your local machine — SSH tunnel
+ssh -L 3000:localhost:3000 openclaw@YOUR_VPS_IP
 
-# Luego en el navegador:
+# Then in the browser:
 # http://localhost:3000
-# Usuario: admin
+# User: admin
 # Password: [Azure Key Vault → secret/grafana-admin-password]
 ```
 
 ---
 
-## Archivos del Sistema de Logging
+## Logging System Files
 
 ```
 workspace/logging/
-├── nte-logger.js              ← Logger central (importar en cada agente)
-├── docker-compose.logging.yml ← Stack completo: Loki + Grafana + Promtail
-├── loki-config.yml            ← Configuración de Loki (retención 90 días)
-├── promtail-config.yml        ← Recolección de logs Docker por agente
+├── nte-logger.js              ← Central logger (import in each agent)
+├── docker-compose.logging.yml ← Full stack: Loki + Grafana + Promtail
+├── loki-config.yml            ← Loki configuration (90-day retention)
+├── promtail-config.yml        ← Docker log collection per agent
 └── grafana/
     ├── provisioning/
     │   ├── datasources/
-    │   │   └── loki.yml       ← Loki como datasource de Grafana
+    │   │   └── loki.yml       ← Loki as a Grafana datasource
     │   └── dashboards/
-    │       └── dashboards.yml ← Auto-load de dashboards
+    │       └── dashboards.yml ← Dashboard auto-load
     └── dashboards/
-        └── nte-overview.json  ← Dashboard principal NTE
+        └── nte-overview.json  ← Main NTE dashboard
 ```
 
 ---
 
-## Comandos Útiles
+## Useful Commands
 
 ```bash
-# Ver logs en tiempo real de un agente específico
+# View real-time logs for a specific agent
 docker logs -f nte-samantha
 
-# Query en Loki via CLI (LogQL)
-# Todos los errores de las últimas 24h
+# Query in Loki via CLI (LogQL)
+# All errors from the last 24h
 logcli query '{environment="production"} |= "ERROR"' --since=24h
 
-# Logs de un trace_id específico (seguir un flujo)
+# Logs for a specific trace_id (follow a flow)
 logcli query '{environment="production"} |= "a3f9-bc12"'
 
-# Todos los logs de Jarvis hoy
+# All of Jarvis's logs today
 logcli query '{agent="jarvis", environment="production"}'
 
-# Ver escalaciones de las últimas 2h
+# View escalations from the last 2h
 logcli query '{event_type="ESCALATION"}' --since=2h
 
-# Iniciar el stack de logging
+# Start the logging stack
 docker-compose -f workspace/logging/docker-compose.logging.yml up -d
 
-# Ver status del stack
+# Check stack status
 docker-compose -f workspace/logging/docker-compose.logging.yml ps
 ```
 
 ---
 
-## 📁 Documentos de Esta Sección
+## 📁 Documents in This Section
 
-| Documento | Contenido |
+| Document | Content |
 |---|---|
-| [README.md](./README.md) | Visión general, stack recomendado, esquema de logs |
-| [02-nte-logger.md](./02-nte-logger.md) | API del logger · Métodos disponibles · Ejemplos de uso · trace_id |
-| [03-infraestructura.md](./03-infraestructura.md) | Docker Compose · Loki config · Promtail config · Labels por agente |
-| [04-grafana.md](./04-grafana.md) | Dashboards · LogQL de referencia · Alertas · Provisioning |
+| [README.md](./README.md) | Overview, recommended stack, log schema |
+| [02-nte-logger.md](./02-nte-logger.md) | Logger API · Available methods · Usage examples · trace_id |
+| [03-infrastructure.md](./03-infrastructure.md) | Docker Compose · Loki config · Promtail config · Labels per agent |
+| [04-grafana.md](./04-grafana.md) | Dashboards · LogQL reference · Alerts · Provisioning |
 
 ---
 
-[← Volver al inicio](../README.md) | [Ambientes →](../10-ambientes/ambientes.md)
+[← Back to home](../README.md) | [Environments →](../10-environments/environments.md)

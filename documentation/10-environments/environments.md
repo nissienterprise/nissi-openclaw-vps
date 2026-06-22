@@ -1,38 +1,38 @@
 <div align="center">
 
-# 🌿 Los 3 Ambientes del Sistema
+# 🌿 The System's 3 Environments
 ### Development · Staging · Production
 
-> **Regla de oro:** Nunca saltar un ambiente. Nunca probar directamente en Production.
+> **Golden rule:** Never skip an environment. Never test directly in Production.
 
 </div>
 
 ---
 
-## Visión General
+## Overview
 
 ```mermaid
 flowchart LR
     subgraph DEV["🔧 DEVELOPMENT\nFake Data · Branch: develop"]
-        D1["Configurar agentes"]
-        D2["Probar flujos\ncon datos ficticios"]
-        D3["Debuggear\nintegraciones"]
+        D1["Configure agents"]
+        D2["Test flows\nwith fictitious data"]
+        D3["Debug\nintegrations"]
     end
 
-    subgraph STG["🧪 STAGING\nData Real · Branch: staging"]
-        S1["Tests automatizados\n(AVA)"]
-        S2["Demos a Michael\ny clientes"]
-        S3["Validación con\ndata real"]
+    subgraph STG["🧪 STAGING\nReal Data · Branch: staging"]
+        S1["Automated tests\n(AVA)"]
+        S2["Demos for Michael\nand clients"]
+        S3["Validation with\nreal data"]
     end
 
-    subgraph PROD["🚀 PRODUCTION\nData Real · Branch: main"]
-        P1["Sistema en\nvivo 24/7"]
-        P2["Agentes activos\ncon clientes reales"]
-        P3["Monitoreo\ncontinuo (HAL)"]
+    subgraph PROD["🚀 PRODUCTION\nReal Data · Branch: main"]
+        P1["System live\n24/7"]
+        P2["Active agents\nwith real clients"]
+        P3["Continuous\nmonitoring (HAL)"]
     end
 
-    DEV -->|"PR develop → staging\n✅ Aprobado por AVA"| STG
-    STG -->|"PR staging → main\n✅ Aprobado por AVA + T-800\n✅ Sign-off de Michael"| PROD
+    DEV -->|"PR develop → staging\n✅ Approved by AVA"| STG
+    STG -->|"PR staging → main\n✅ Approved by AVA + T-800\n✅ Sign-off from Michael"| PROD
 
     style DEV fill:#1a3a5c,color:#fff
     style STG fill:#2c1654,color:#fff
@@ -41,53 +41,53 @@ flowchart LR
 
 ---
 
-## Tabla Comparativa
+## Comparison Table
 
-| Característica | Development | Staging | Production |
+| Feature | Development | Staging | Production |
 |---|---|---|---|
-| **Propósito** | Desarrollo y configuración | Testing y demos | Sistema en vivo |
-| **Datos** | Fake data / fixtures | Data real | Data real |
+| **Purpose** | Development and configuration | Testing and demos | Live system |
+| **Data** | Fake data / fixtures | Real data | Real data |
 | **Git Branch** | `develop` | `staging` | `main` |
-| **URL Interna** | dev.nte-internal.com | staging.nte-internal.com | prod.nte-internal.com |
-| **Acceso Michael** | Libre | Por invitación | Solo lectura |
-| **Agentes activos** | Seleccionados | Todos | Todos |
+| **Internal URL** | dev.nte-internal.com | staging.nte-internal.com | prod.nte-internal.com |
+| **Michael's access** | Free | By invitation | Read only |
+| **Active agents** | Selected | All | All |
 | **QuickBooks** | Sandbox mode | Sandbox mode | Production |
-| **Jira** | Proyecto NTE-DEV | Proyecto NTE-STG | Proyectos reales |
-| **Email** | dev@... (no envía realmente) | Staging real (envía) | @nissienterprise.com |
-| **GitHub Actions** | Tests básicos | Full test suite | Deploy bloqueado hasta aprob. |
+| **Jira** | NTE-DEV project | NTE-STG project | Real projects |
+| **Email** | dev@... (doesn't actually send) | Real staging (sends) | @nissienterprise.com |
+| **GitHub Actions** | Basic tests | Full test suite | Deploy blocked until approval |
 | **Azure Key Vault prefix** | `dev/` | `staging/` | `prod/` |
-| **Docker** | Containers locales | Containers en VPS staging | Containers en VPS prod |
+| **Docker** | Local containers | Containers on staging VPS | Containers on prod VPS |
 
 ---
 
 ## 🔧 DEVELOPMENT
 
-**Objetivo:** Donde construimos y rompemos cosas. Sin miedo. Con datos falsos.
+**Goal:** Where we build and break things. No fear. With fake data.
 
-### Cuándo usar Development
+### When to use Development
 
-- Configurar un nuevo agente por primera vez
-- Probar una nueva integración (QuickBooks, Jira, etc.)
-- Desarrollar y testear nuevos flujos de trabajo
-- Hacer experimentos con prompts de agentes
-- Debuggear errores en un flujo existente
+- Configuring a new agent for the first time
+- Testing a new integration (QuickBooks, Jira, etc.)
+- Developing and testing new workflows
+- Experimenting with agent prompts
+- Debugging errors in an existing flow
 
-### Reglas de Development
+### Development Rules
 
-- Los datos son **100% fake** — nunca datos de clientes reales
-- Los agentes pueden fallar sin consecuencias
-- Los emails no salen al exterior (usar mailtrap o redirigir a test@nissienterprise.com)
-- QuickBooks en **sandbox mode** — sin transacciones reales
-- GitHub branch: `develop` — push libre sin protección
-- Los Jira tickets son en el proyecto `NTE-DEV`
+- Data is **100% fake** — never real client data
+- Agents can fail without consequences
+- Emails don't go out externally (use mailtrap or redirect to test@nissienterprise.com)
+- QuickBooks in **sandbox mode** — no real transactions
+- GitHub branch: `develop` — free push, no protection
+- Jira tickets are in the `NTE-DEV` project
 
-### Configuración de Secretos para Development
+### Secrets Configuration for Development
 
 ```bash
-# Prefijo: dev/ en Azure Key Vault
+# Prefix: dev/ in Azure Key Vault
 VAULT="nte-keyvault"
 
-# Los secretos de dev usan cuentas sandbox/test
+# Dev secrets use sandbox/test accounts
 az keyvault secret set --vault-name $VAULT \
   --name "dev/anthropic-api-key" --value "sk-ant-[dev-key]"
 
@@ -98,16 +98,16 @@ az keyvault secret set --vault-name $VAULT \
   --name "dev/nte-email-smtp-user" --value "test@nissienterprise.com"
 ```
 
-### Activar ambiente Development
+### Activate the Development environment
 
 ```bash
 export NTE_ENV=development
 export AKV_PREFIX=dev
 
-# Cargar secretos de desarrollo
+# Load dev secrets
 source /workspace/scripts/load-secrets.sh
 
-# Levantar agentes en modo dev
+# Bring up agents in dev mode
 docker-compose -f docker-compose.dev.yml up
 ```
 
@@ -115,64 +115,64 @@ docker-compose -f docker-compose.dev.yml up
 
 ## 🧪 STAGING
 
-**Objetivo:** El ambiente más importante. Aquí se valida que todo funciona con data real antes de ir a Producción.
+**Goal:** The most important environment. Here we validate that everything works with real data before going to Production.
 
-### Cuándo usar Staging
+### When to use Staging
 
-- Antes de cada deployment a Producción
-- Para hacer demos a Michael o a clientes potenciales
-- Para correr el suite completo de tests de AVA
-- Para validar que las integraciones funcionan con datos reales
-- Para hacer pruebas de carga o estrés de los agentes
+- Before every deployment to Production
+- For demos to Michael or potential clients
+- To run AVA's full test suite
+- To validate that integrations work with real data
+- To run load or stress tests on the agents
 
-### Reglas de Staging
+### Staging Rules
 
-- Usa **data real** pero en un entorno controlado
-- Los emails **sí se envían** — usar con cuidado
-- QuickBooks en **sandbox mode** — sin transacciones reales que afecten contabilidad
-- GitHub branch: `staging` — requiere **Pull Request** desde `develop`
-- Los Jira tickets son en el proyecto `NTE-STG`
-- AVA debe correr y aprobar el test suite antes de cualquier merge
-- T-800 debe hacer un security scan antes de aprobar el PR
+- Uses **real data** but in a controlled environment
+- Emails **are actually sent** — use with caution
+- QuickBooks in **sandbox mode** — no real transactions that affect accounting
+- GitHub branch: `staging` — requires a **Pull Request** from `develop`
+- Jira tickets are in the `NTE-STG` project
+- AVA must run and approve the test suite before any merge
+- T-800 must run a security scan before approving the PR
 
-### Flujo de PR para Staging
+### PR Flow for Staging
 
 ```
 develop → staging (Pull Request)
-  ✅ AVA: Tests automatizados pasan
-  ✅ T-800: Security scan limpio
-  ✅ Optimus: Deployment exitoso en staging VPS
-  → Merge aprobado por David o Jarvis
+  ✅ AVA: Automated tests pass
+  ✅ T-800: Clean security scan
+  ✅ Optimus: Successful deployment on staging VPS
+  → Merge approved by David or Jarvis
 ```
 
-### Configuración de Secretos para Staging
+### Secrets Configuration for Staging
 
 ```bash
-# Prefijo: staging/ en Azure Key Vault
+# Prefix: staging/ in Azure Key Vault
 VAULT="nte-keyvault"
 
-# Staging usa las cuentas reales pero en modo sandbox donde aplica
+# Staging uses real accounts but in sandbox mode where applicable
 az keyvault secret set --vault-name $VAULT \
   --name "staging/anthropic-api-key" --value "sk-ant-[staging-key]"
 
 az keyvault secret set --vault-name $VAULT \
   --name "staging/quickbooks-oauth-token" --value "[sandbox-token]"
 
-# Email sí funciona en staging
+# Email does work in staging
 az keyvault secret set --vault-name $VAULT \
   --name "staging/nte-email-smtp-user" --value "staging@nissienterprise.com"
 ```
 
-### Activar ambiente Staging
+### Activate the Staging environment
 
 ```bash
 export NTE_ENV=staging
 export AKV_PREFIX=staging
 
-# Cargar secretos de staging
+# Load staging secrets
 source /workspace/scripts/load-secrets.sh
 
-# Levantar agentes en modo staging
+# Bring up agents in staging mode
 docker-compose -f docker-compose.staging.yml up
 ```
 
@@ -180,50 +180,50 @@ docker-compose -f docker-compose.staging.yml up
 
 ## 🚀 PRODUCTION
 
-**Objetivo:** El sistema en vivo. Aquí trabajan los agentes con clientes reales y datos reales. Máxima estabilidad.
+**Goal:** The live system. This is where agents work with real clients and real data. Maximum stability.
 
-### Cuándo se hace deployment a Production
+### When deployment to Production happens
 
-- Solo desde `staging` via Pull Request
-- Requiere aprobación explícita de Michael en `#nte-alerts`
-- AVA debe haber corrido el test suite completo en staging
-- T-800 debe haber dado el security clearance
-- Optimus ejecuta el deployment (nunca manualmente)
-- Solo en horarios de bajo tráfico (11 PM - 5 AM EST)
+- Only from `staging` via Pull Request
+- Requires explicit approval from Michael in `#nte-alerts`
+- AVA must have run the complete test suite on staging
+- T-800 must have given security clearance
+- Optimus executes the deployment (never manually)
+- Only during low-traffic hours (11 PM - 5 AM EST)
 
-### Reglas de Production
+### Production Rules
 
-- **Solo lectura** para Michael — no se hacen cambios manuales
-- Todos los secretos usan las cuentas de producción reales
-- QuickBooks en **Production mode** — las transacciones son reales
-- GitHub branch: `main` — **totalmente protegido**
-- Zero-downtime deployment (blue/green o rolling update)
-- Rollback automatizado si HAL detecta degradación de KPIs
+- **Read only** for Michael — no manual changes are made
+- All secrets use the real production accounts
+- QuickBooks in **Production mode** — transactions are real
+- GitHub branch: `main` — **fully protected**
+- Zero-downtime deployment (blue/green or rolling update)
+- Automated rollback if HAL detects KPI degradation
 
-### Flujo de Deployment a Production
+### Production Deployment Flow
 
 ```mermaid
 flowchart TD
-    A["PR: staging → main"] --> B["AVA: Full test suite\nen staging"]
-    B -->|"✅ All tests pass"| C["T-800: Security scan\nproduction-ready"]
-    C -->|"✅ Security clear"| D["Jarvis: Notifica Michael\nen #nte-alerts"]
-    D -->|"✅ Aprobación de Michael"| E["Optimus: Blue/Green\nDeployment"]
-    E -->|"✅ Health check OK"| F["HAL: Monitorea KPIs\npor 30 min"]
-    F -->|"✅ KPIs estables"| G["🚀 Production Live"]
-    F -->|"❌ KPIs degradados"| H["Optimus: Auto-rollback"]
-    H --> I["Jarvis: Alerta a Michael\ncon diagnóstico"]
+    A["PR: staging → main"] --> B["AVA: Full test suite\non staging"]
+    B -->|"✅ All tests pass"| C["T-800: Production-ready\nsecurity scan"]
+    C -->|"✅ Security clear"| D["Jarvis: Notifies Michael\nin #nte-alerts"]
+    D -->|"✅ Michael's approval"| E["Optimus: Blue/Green\nDeployment"]
+    E -->|"✅ Health check OK"| F["HAL: Monitors KPIs\nfor 30 min"]
+    F -->|"✅ Stable KPIs"| G["🚀 Production Live"]
+    F -->|"❌ Degraded KPIs"| H["Optimus: Auto-rollback"]
+    H --> I["Jarvis: Alerts Michael\nwith diagnostics"]
 
     style G fill:#1a3a1a,color:#fff
     style H fill:#8B0000,color:#fff
 ```
 
-### Configuración de Secretos para Production
+### Secrets Configuration for Production
 
 ```bash
-# Prefijo: prod/ en Azure Key Vault
+# Prefix: prod/ in Azure Key Vault
 VAULT="nte-keyvault"
 
-# Producción usa todas las cuentas reales
+# Production uses all real accounts
 az keyvault secret set --vault-name $VAULT \
   --name "prod/anthropic-api-key" --value "sk-ant-[prod-key]"
 
@@ -236,32 +236,32 @@ az keyvault secret set --vault-name $VAULT \
 
 ---
 
-## 📋 Naming Convention por Ambiente
+## 📋 Naming Convention by Environment
 
-Para evitar confusión entre ambientes, todos los recursos siguen esta convención:
+To avoid confusion between environments, all resources follow this convention:
 
-| Recurso | Development | Staging | Production |
+| Resource | Development | Staging | Production |
 |---|---|---|---|
-| Docker containers | `nte-dev-[agente]` | `nte-stg-[agente]` | `nte-[agente]` |
+| Docker containers | `nte-dev-[agent]` | `nte-stg-[agent]` | `nte-[agent]` |
 | Jira projects | `NTE-DEV-*` | `NTE-STG-*` | `NTE-SW-*` / `NTE-MKT-*` |
 | GitHub branches | `develop` | `staging` | `main` |
-| Azure KV secrets | `dev/[secreto]` | `staging/[secreto]` | `prod/[secreto]` |
+| Azure KV secrets | `dev/[secret]` | `staging/[secret]` | `prod/[secret]` |
 | Logs directory | `/workspace/logs/dev/` | `/workspace/logs/stg/` | `/workspace/logs/prod/` |
-| Email sender | `dev@nissienterprise.com` | `staging@nissienterprise.com` | `[agente]@nissienterprise.com` |
+| Email sender | `dev@nissienterprise.com` | `staging@nissienterprise.com` | `[agent]@nissienterprise.com` |
 
 ---
 
-## 🔐 Acceso por Ambiente
+## 🔐 Access by Environment
 
-| Quién | Development | Staging | Production |
+| Who | Development | Staging | Production |
 |---|---|---|---|
-| **Michael** | Full access | Full access | Solo lectura + aprobaciones |
-| **Jarvis** | Full access | Full access | Full access (orquestador) |
+| **Michael** | Full access | Full access | Read only + approvals |
+| **Jarvis** | Full access | Full access | Full access (orchestrator) |
 | **David** | Full access | Full access | Read + ticket management |
 | **Optimus** | Full access | Full access | Deploy + monitoring only |
 | **T-800** | Full access | Full access | Security scan + read |
-| **Otros agentes** | Según tarea | Según tarea | Solo su scope |
+| **Other agents** | Per task | Per task | Their scope only |
 
 ---
 
-[← Volver al inicio](../README.md) | [Stack Tecnológico →](../05-stack-tecnologico/herramientas.md)
+[← Back to home](../README.md) | [Tech Stack →](../05-tech-stack/tools.md)

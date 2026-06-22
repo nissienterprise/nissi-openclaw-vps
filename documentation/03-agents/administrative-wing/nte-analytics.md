@@ -3,45 +3,45 @@
 # 📊 NTE-ANALYTICS
 ### Analytics & Reporting Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Haiku_4-5cb85c?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Haiku_4-5cb85c?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
-![Frecuencia](https://img.shields.io/badge/Frecuencia-Semanal_+_Alertas-4a90d9?style=flat-square)
+![Frequency](https://img.shields.io/badge/Frequency-Weekly_+_Alerts-4a90d9?style=flat-square)
 
-*Los ojos del sistema. Mide todo, reporta lo que importa, alerta lo que preocupa.*
+*The eyes of the system. Measures everything, reports what matters, alerts on what's concerning.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-Monitorea el rendimiento digital de NTE y genera reportes automáticos para que Michael siempre tenga visibilidad del estado del negocio sin tener que buscarlo.
+Monitors NTE's digital performance and generates automated reports so Michael always has visibility into the state of the business without having to look for it.
 
 ---
 
-## 📈 Reportes Automáticos
+## 📈 Automated Reports
 
-| Reporte | Frecuencia | Entrega | Contenido |
+| Report | Frequency | Delivery | Content |
 |---|---|---|---|
-| Tráfico Web Semanal | Cada lunes 8AM | Slack #nte-reports | Sesiones, conversiones, páginas top, fuentes |
-| SEO Mensual | Día 1 del mes | Slack + PDF | Keywords, backlinks, Core Web Vitals |
-| Dashboard Ejecutivo | Mensual | PDF enviado a Michael | KPIs vs. metas del Business Plan 2026 |
-| Alerta Anómala | Inmediato | Slack #nte-alerts | Si tráfico cae >20% o spike inusual |
+| Weekly Web Traffic | Every Monday 8AM | Slack #nte-reports | Sessions, conversions, top pages, sources |
+| Monthly SEO | Day 1 of month | Slack + PDF | Keywords, backlinks, Core Web Vitals |
+| Executive Dashboard | Monthly | PDF sent to Michael | KPIs vs. 2026 Business Plan goals |
+| Anomaly Alert | Immediate | Slack #nte-alerts | If traffic drops >20% or unusual spike |
 
 ---
 
-## 🛠️ Fuentes de Datos
+## 🛠️ Data Sources
 
-- **Google Analytics 4 API** — Tráfico y comportamiento web
-- **Google Search Console API** — SEO y keywords
+- **Google Analytics 4 API** — Web traffic and behavior
+- **Google Search Console API** — SEO and keywords
 - **Meta Business API** — Facebook + Instagram metrics
-- **Buffer Analytics** — Rendimiento de posts programados
-- **Metabase / Looker Studio** — Dashboards visuales
+- **Buffer Analytics** — Scheduled post performance
+- **Metabase / Looker Studio** — Visual dashboards
 
 ---
 
-> **¿Por qué Haiku 4?** NTE-ANALYTICS procesa datos numéricos y genera reportes con plantillas estructuradas. No requiere razonamiento creativo profundo — Haiku es más que suficiente y permite ejecutar alertas en tiempo real sin costo elevado.
+> **Why Haiku 4?** NTE-ANALYTICS processes numerical data and generates reports using structured templates. It does not require deep creative reasoning — Haiku is more than sufficient and enables real-time alerts at low cost.
 
 ---
 
-[← NTE-CONTENT](./nte-content.md) | [Agentes de Software →](../wing-software/nte-pm.md)
+[← NTE-CONTENT](./nte-content.md) | [Software Agents →](../software-wing/nte-pm.md)

@@ -1,23 +1,23 @@
 <div align="center">
 
-# ⚙️ Flujo: Desarrollo de Software Automatizado
-### Las 6 Fases — De Brief a Entrega
+# ⚙️ Flow: Automated Software Development
+### The 6 Phases — From Brief to Delivery
 
 </div>
 
 ```mermaid
 flowchart TD
-    F1["📥 FASE 1: INTAKE\nSamantha recibe brief → EVA califica → David crea proyecto\nPresupuesto automático (QuickBooks draft) → Aprobación cliente + Michael"]
-    F2["📋 FASE 2: PLANIFICACIÓN\nDavid: Épicas · Historias · Tareas en Jira (NTE-SW)\nTimeline · Repositorio GitHub · Asignación de agentes\nHitos en NTE-Calendar"]
-    F3["🏗️ FASE 3: ARQUITECTURA\nBishop + Sonny: Diseño técnico · CASE: Schema de BD\nT-800: Risk review inicial de seguridad"]
-    F4["💻 FASE 4: DESARROLLO ITERATIVO\nSprints semanales · Bishop + Sonny + BB-8 en paralelo\nCI/CD automático (Optimus) · QA en cada PR (AVA)\nReporte al cliente cada viernes via David"]
-    F5["🔍 FASE 5: REVISIÓN & QA\nAVA: Reporte completo post-sprint en Jira\nT-800: Scan de seguridad pre-release\nBugs asignados de vuelta al agente correspondiente"]
-    F6["🚀 FASE 6: DEPLOYMENT & ENTREGA\nOptimus: Deploy a producción (con aprobación Michael)\nMarvin: Documentación final en Confluence\nDavid: Cierre del proyecto en Jira + solicitud de testimonio"]
+    F1["📥 PHASE 1: INTAKE\nSamantha receives brief → EVA qualifies → David creates project\nAutomatic budget (QuickBooks draft) → Client + Michael approval"]
+    F2["📋 PHASE 2: PLANNING\nDavid: Epics · Stories · Tasks in Jira (NTE-SW)\nTimeline · GitHub repository · Agent assignment\nMilestones in NTE-Calendar"]
+    F3["🏗️ PHASE 3: ARCHITECTURE\nBishop + Sonny: Technical design · CASE: DB schema\nT-800: Initial security risk review"]
+    F4["💻 PHASE 4: ITERATIVE DEVELOPMENT\nWeekly sprints · Bishop + Sonny + BB-8 in parallel\nAutomatic CI/CD (Optimus) · QA on every PR (AVA)\nClient report every Friday via David"]
+    F5["🔍 PHASE 5: REVIEW & QA\nAVA: Complete post-sprint report in Jira\nT-800: Pre-release security scan\nBugs assigned back to the corresponding agent"]
+    F6["🚀 PHASE 6: DEPLOYMENT & DELIVERY\nOptimus: Production deploy (with Michael's approval)\nMarvin: Final documentation in Confluence\nDavid: Project closeout in Jira + testimonial request"]
 
     F1 --> F2 --> F3 --> F4 --> F5
-    F5 -->|"Bugs críticos"| F4
+    F5 -->|"Critical bugs"| F4
     F5 -->|"QA ✅"| F6
-    F6 -->|"Nuevo proyecto"| F1
+    F6 -->|"New project"| F1
 
     style F1 fill:#1a1a2e,color:#fff
     style F2 fill:#1a2c1a,color:#fff
@@ -27,33 +27,33 @@ flowchart TD
     style F6 fill:#1a3a1a,color:#fff
 ```
 
-## Roles por Fase
+## Roles by Phase
 
-| Fase | Agentes Activos | Output |
+| Phase | Active Agents | Output |
 |---|---|---|
-| 1. Intake | Samantha (NTE-CX) · EVA (NTE-LEAD-INTAKE) · David (NTE-PM) | Brief estructurado + QuickBooks estimado aprobado |
-| 2. Planificación | David (NTE-PM) | Jira board (NTE-SW) + repo GitHub + NTE-Calendar |
-| 3. Arquitectura | David · Bishop · Sonny · T-800 | Documento de arquitectura técnica |
-| 4. Desarrollo | Bishop · Sonny · BB-8 · CASE · AVA · Optimus | Código + CI/CD pipeline funcionando |
-| 5. QA & Revisión | AVA (NTE-QA) · T-800 (NTE-SECURITY) | Reporte de bugs en Jira + security clearance |
-| 6. Entrega | Optimus · Marvin · David | App en producción + documentación en Confluence |
+| 1. Intake | Samantha (NTE-CX) · EVA (NTE-LEAD-INTAKE) · David (NTE-PM) | Structured brief + approved QuickBooks estimate |
+| 2. Planning | David (NTE-PM) | Jira board (NTE-SW) + GitHub repo + NTE-Calendar |
+| 3. Architecture | David · Bishop · Sonny · T-800 | Technical architecture document |
+| 4. Development | Bishop · Sonny · BB-8 · CASE · AVA · Optimus | Code + working CI/CD pipeline |
+| 5. QA & Review | AVA (NTE-QA) · T-800 (NTE-SECURITY) | Bug report in Jira + security clearance |
+| 6. Delivery | Optimus · Marvin · David | App in production + documentation in Confluence |
 
 ---
 
-## SCRUM: Detalle del Proceso
+## SCRUM: Process Detail
 
-La Fase 4 (Desarrollo Iterativo) opera bajo **sprints semanales** con Jira (proyecto `NTE-SW`).
+Phase 4 (Iterative Development) operates under **weekly sprints** with Jira (project `NTE-SW`).
 
-Consulta el documento completo del proceso SCRUM:
+See the complete SCRUM process document:
 
-**[→ Workflow SCRUM Detallado: Ceremonias · Jira · Branches · Definition of Done](./flujo-scrum-detallado.md)**
+**[→ Detailed SCRUM Workflow: Ceremonies · Jira · Branches · Definition of Done](./detailed-scrum-flow.md)**
 
-Incluye:
-- Sprint Planning, Daily Standup, Sprint Review, Retrospectiva
-- Columnas del board Jira y lifecycle de tickets
-- Convención de branches y commits (Conventional Commits)
-- Definition of Done completo
-- Gestión de hotfixes en producción
-- KPIs del proceso ágil
+Includes:
+- Sprint Planning, Daily Standup, Sprint Review, Retrospective
+- Jira board columns and ticket lifecycle
+- Branch and commit conventions (Conventional Commits)
+- Complete Definition of Done
+- Production hotfix management
+- Agile process KPIs
 
-[← Todos los flujos](./README.md)
+[← All flows](./README.md)

@@ -3,23 +3,23 @@
 # 🎧 NTE-CX
 ### Customer Experience Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-cc7700?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-cc7700?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
-![Frecuencia](https://img.shields.io/badge/Frecuencia-24/7_Continuo-4a90d9?style=flat-square)
+![Frequency](https://img.shields.io/badge/Frequency-24/7_Continuous-4a90d9?style=flat-square)
 
-*El primer punto de contacto de NTE con el mundo. Nunca duerme.*
+*NTE's first point of contact with the world. Never sleeps.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-CX es el guardián de la experiencia del cliente. Responde en menos de **5 minutos** en todos los canales, mantiene la voz de NTE (Fe, Integridad, Excelencia) y sabe exactamente cuándo escalar.
+NTE-CX is the guardian of the customer experience. Responds in under **5 minutes** across all channels, upholds NTE's voice (Faith, Integrity, Excellence), and knows exactly when to escalate.
 
 ---
 
-## 📡 Canales Monitoreados
+## 📡 Monitored Channels
 
 ```mermaid
 flowchart LR
@@ -27,38 +27,38 @@ flowchart LR
     EM["📧 Email\n(Gmail API)"] --> CX
     FB["📘 Facebook Messenger\n(Meta API)"] --> CX
     IG["📸 Instagram DMs\n(Meta API)"] --> CX
-    CH["💬 Chat Web\n(Crisp API)"] --> CX
-    FM["📝 Formularios Web\n(Webhook)"] --> CX
+    CH["💬 Web Chat\n(Crisp API)"] --> CX
+    FM["📝 Web Forms\n(Webhook)"] --> CX
     SMS["📟 SMS\n(Twilio)"] --> CX
 
-    CX["🎧 NTE-CX\nClasifica & Responde"]
+    CX["🎧 NTE-CX\nClassifies & Responds"]
 
-    CX -->|"Proyecto detectado"| LI["📥 NTE-LEAD-INTAKE"]
-    CX -->|"Soporte técnico complejo"| PM["🗂️ NTE-PM"]
-    CX -->|"Escalada urgente"| SLACK["💬 #nte-cx"]
+    CX -->|"Project detected"| LI["📥 NTE-LEAD-INTAKE"]
+    CX -->|"Complex technical support"| PM["🗂️ NTE-PM"]
+    CX -->|"Urgent escalation"| SLACK["💬 #nte-cx"]
 ```
 
 ---
 
-## 🔀 Flujo de Clasificación
+## 🔀 Classification Flow
 
-| Intención detectada | Acción | Tiempo |
+| Detected intent | Action | Time |
 |---|---|---|
-| Cotización de servicio | Genera propuesta preliminar + pasa a NTE-LEAD-INTAKE | < 5 min |
-| Soporte técnico | Responde con pasos básicos; escala a NTE-PM si es complejo | < 5 min |
-| Información general | Responde usando base de conocimiento de servicios NTE | < 2 min |
-| Queja de cliente activo | Registra + alerta inmediata a Michael vía #nte-cx | Inmediato |
-| Spam / irrelevante | Archiva y no responde | Automático |
+| Service quote | Generates preliminary proposal + passes to NTE-LEAD-INTAKE | < 5 min |
+| Technical support | Responds with basic steps; escalates to NTE-PM if complex | < 5 min |
+| General information | Responds using NTE services knowledge base | < 2 min |
+| Active customer complaint | Logs + immediate alert to Michael via #nte-cx | Immediate |
+| Spam / irrelevant | Archives and does not respond | Automatic |
 
 ---
 
-## 🛠️ Herramientas & APIs
+## 🛠️ Tools & APIs
 
 - **Twilio** — WhatsApp Business + SMS
-- **Gmail API** — Email corporativo
+- **Gmail API** — Corporate email
 - **Meta API** — Facebook + Instagram
-- **Crisp** — Chat en vivo del website
-- **CRM (HubSpot)** — Registro de todas las interacciones
+- **Crisp** — Website live chat
+- **CRM (HubSpot)** — Logs all interactions
 
 ---
 

@@ -1,11 +1,11 @@
 <div align="center">
 
-# 🔄 Flujo: Blog Semanal Automatizado
-### Del Trend al Tweet en 48 horas
+# 🔄 Flow: Automated Weekly Blog
+### From Trend to Tweet in 48 hours
 
 </div>
 
-## Diagrama Secuencial Completo
+## Complete Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -16,67 +16,67 @@ sequenceDiagram
     participant PUB as 🚀 R2-D2 (PUBLISHER)
     participant PROP as 📡 Baymax (PROPAGATOR)
     participant WP as 🌐 WordPress
-    participant BUF as 📱 Buffer/RRSS
+    participant BUF as 📱 Buffer/Social
 
-    Note over MAIN,TS: ⏰ LUNES 2:00 AM EST — INICIO AUTOMÁTICO
+    Note over MAIN,TS: ⏰ MONDAY 2:00 AM EST — AUTOMATIC START
 
-    MAIN->>TS: Activar análisis semanal
-    TS->>TS: Analiza Google Trends, Semrush, Reddit
-    TS->>TS: Filtra por servicios NTE
-    TS->>TS: Selecciona Top 2 temas con scoring
-    TS->>CW: Briefing: tema, keywords, audiencia, CTA
+    MAIN->>TS: Activate weekly analysis
+    TS->>TS: Analyzes Google Trends, Semrush, Reddit
+    TS->>TS: Filters by NTE services
+    TS->>TS: Selects Top 2 topics with scoring
+    TS->>CW: Briefing: topic, keywords, audience, CTA
 
-    Note over CW: Redacción de 2 artículos completos
-    CW->>CW: Artículo 1: SEO full, 1200-1800 palabras
-    CW->>CW: Artículo 2: SEO full, 1200-1800 palabras
+    Note over CW: Drafting of 2 complete articles
+    CW->>CW: Article 1: full SEO, 1200-1800 words
+    CW->>CW: Article 2: full SEO, 1200-1800 words
     CW->>WP: POST /wp-json/wp/v2/posts (status: draft)
-    CW->>M: 📨 Slack #nte-content con preview links
+    CW->>M: 📨 Slack #nte-content with preview links
 
-    Note over M: ⏳ Ventana de aprobación 24-48 horas
+    Note over M: ⏳ 24-48 hour approval window
 
-    alt ✅ Michael aprueba
-        M->>PUB: Reacción ✅ o respuesta "publicar"
-        PUB->>PUB: DALL-E genera imagen destacada
-        PUB->>WP: PATCH post → status: published + imagen
-        WP-->>PUB: URL del artículo publicado
-        PUB->>M: ✅ "Artículo publicado: [URL]"
-        PUB->>PROP: Trigger con URL + contenido
+    alt ✅ Michael approves
+        M->>PUB: ✅ Reaction or "publish" reply
+        PUB->>PUB: DALL-E generates featured image
+        PUB->>WP: PATCH post → status: published + image
+        WP-->>PUB: Published article URL
+        PUB->>M: ✅ "Article published: [URL]"
+        PUB->>PROP: Trigger with URL + content
 
-        Note over PROP: Adaptación para 5 plataformas
-        PROP->>PROP: LinkedIn: 300 palabras profesional
+        Note over PROP: Adaptation for 5 platforms
+        PROP->>PROP: LinkedIn: 300 words professional
         PROP->>PROP: Instagram: caption + 10 hashtags
-        PROP->>PROP: Facebook: post comunidad + pregunta
-        PROP->>PROP: Twitter/X: hilo 4-5 tweets
-        PROP->>PROP: YouTube: guión 60 segundos
-        PROP->>BUF: Programa posts escalonados (3-5 días)
-        PROP->>M: 📊 Reporte con fechas de publicación
+        PROP->>PROP: Facebook: community post + question
+        PROP->>PROP: Twitter/X: 4-5 tweet thread
+        PROP->>PROP: YouTube: 60-second script
+        PROP->>BUF: Schedules staggered posts (3-5 days)
+        PROP->>M: 📊 Report with publication dates
 
-    else 🔄 Michael pide cambios
-        M->>CW: "Cambios: [instrucciones]"
-        CW->>WP: Actualiza draft con cambios
-        CW->>M: 📨 "Draft actualizado — [preview link]"
+    else 🔄 Michael requests changes
+        M->>CW: "Changes: [instructions]"
+        CW->>WP: Updates draft with changes
+        CW->>M: 📨 "Draft updated — [preview link]"
 
-    else ❌ Michael rechaza
-        M->>PUB: "Rechazar artículo X"
+    else ❌ Michael rejects
+        M->>PUB: "Reject article X"
         PUB->>WP: DELETE draft
-        PUB->>M: "✓ Artículo descartado"
+        PUB->>M: "✓ Article discarded"
 
-    else ⏰ Sin respuesta 72h
-        MAIN->>M: 🔔 Recordatorio en #nte-alerts
-        Note over M: Si sigue sin respuesta → archivado
+    else ⏰ No response after 72h
+        MAIN->>M: 🔔 Reminder in #nte-alerts
+        Note over M: If still no response → archived
     end
 ```
 
-## Timeline Típico
+## Typical Timeline
 
-| Hora | Evento |
+| Time | Event |
 |---|---|
-| Lunes 2:00 AM | Johnny 5 (NTE-TREND-SCOUT) inicia análisis |
-| Lunes 2:30 AM | Briefing enviado a C-3PO (NTE-COPYWRITER) |
-| Lunes 5:00 AM | 2 artículos redactados y subidos como drafts |
-| Lunes 7:00 AM | Michael recibe notificación en Slack |
-| Lunes/Martes | Michael revisa y aprueba |
-| +30 min | Artículo publicado + imagen generada |
-| Semana | Posts en RRSS distribuidos escalonadamente |
+| Monday 2:00 AM | Johnny 5 (NTE-TREND-SCOUT) starts analysis |
+| Monday 2:30 AM | Briefing sent to C-3PO (NTE-COPYWRITER) |
+| Monday 5:00 AM | 2 articles drafted and uploaded as drafts |
+| Monday 7:00 AM | Michael receives notification on Slack |
+| Monday/Tuesday | Michael reviews and approves |
+| +30 min | Article published + image generated |
+| Week | Social media posts distributed on a staggered schedule |
 
-[← Todos los flujos](./README.md)
+[← All flows](./README.md)

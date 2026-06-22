@@ -3,69 +3,69 @@
 # 🌱 NTE-LEAD-NURTURE
 ### Lead Nurturing Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-cc7700?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-cc7700?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
-![Frecuencia](https://img.shields.io/badge/Frecuencia-24/7_Continuo-4a90d9?style=flat-square)
+![Frequency](https://img.shields.io/badge/Frequency-24/7_Continuous-4a90d9?style=flat-square)
 
-*Convierte el interés en conversación y la conversación en clientes.*
+*Turns interest into conversation and conversation into clients.*
 
 </div>
 
-## 🎯 Qué hace
+## 🎯 What it does
 
-Recibe los leads clasificados de NTE-LEAD-INTAKE y los trabaja con secuencias de seguimiento personalizadas según su temperatura. Monitorea el engagement y re-clasifica automáticamente.
+Receives classified leads from NTE-LEAD-INTAKE and works them with personalized follow-up sequences based on their temperature. Monitors engagement and re-classifies automatically.
 
-## 📧 Secuencias de Nurturing
+## 📧 Nurturing Sequences
 
-### 🔴 HOT Lead — Alerta Inmediata
+### 🔴 HOT Lead — Immediate Alert
 
 ```
 Slack → #nte-leads:
 
-🔴 *HOT LEAD DETECTADO*
+🔴 *HOT LEAD DETECTED*
 
-👤 *Nombre:* Ana García — García Dental Group
-📱 *Canal:* WhatsApp
-💬 *Mensaje:* "Necesito una página web profesional para mi clínica dental, tengo presupuesto de $3,000-$5,000 y lo necesito en 6 semanas"
-🎯 *Servicio:* Web Development — Sitio Corporativo
-💰 *Budget estimado:* $3,000-$5,000
-⏰ *Timeline:* 6 semanas
+👤 *Name:* Ana García — García Dental Group
+📱 *Channel:* WhatsApp
+💬 *Message:* "I need a professional website for my dental clinic, I have a budget of $3,000-$5,000 and need it in 6 weeks"
+🎯 *Service:* Web Development — Corporate Site
+💰 *Estimated Budget:* $3,000-$5,000
+⏰ *Timeline:* 6 weeks
 
-*Próximo paso sugerido:* Llamada de discovery (30 min)
-[Ver perfil completo en CRM →]
+*Suggested next step:* Discovery call (30 min)
+[View full profile in CRM →]
 ```
 
-### 🟡 WARM Lead — Secuencia 5 Toques (14 días)
+### 🟡 WARM Lead — 5-Touch Sequence (14 days)
 
-| Toque | Día | Canal | Contenido |
+| Touch | Day | Channel | Content |
 |---|---|---|---|
-| 1 | Día 1 | Email | Bienvenida + caso de estudio relevante |
-| 2 | Día 3 | WhatsApp | "¿Pudiste revisar la información?" + pregunta de calificación |
-| 3 | Día 7 | Email | Artículo de blog relevante al servicio de interés |
-| 4 | Día 10 | WhatsApp | Invitación a llamada de consulta gratuita (15 min) |
-| 5 | Día 14 | Email | "Última oportunidad" + oferta especial o testimonio |
+| 1 | Day 1 | Email | Welcome + relevant case study |
+| 2 | Day 3 | WhatsApp | "Were you able to review the information?" + qualification question |
+| 3 | Day 7 | Email | Blog article relevant to the service of interest |
+| 4 | Day 10 | WhatsApp | Invitation to a free consultation call (15 min) |
+| 5 | Day 14 | Email | "Last chance" + special offer or testimonial |
 
-### 🔵 COLD Lead — Secuencia Educativa (30 días)
+### 🔵 COLD Lead — Educational Sequence (30 days)
 
-| Email | Día | Tema |
+| Email | Day | Topic |
 |---|---|---|
-| 1 | Día 2 | "Bienvenido a NTE — La guía que necesitas para [tema]" |
-| 2 | Día 10 | "5 errores que cometen las empresas en [área de interés]" |
-| 3 | Día 25 | "¿Listo para el siguiente paso? Casos de éxito NTE" |
+| 1 | Day 2 | "Welcome to NTE — The guide you need for [topic]" |
+| 2 | Day 10 | "5 mistakes companies make in [area of interest]" |
+| 3 | Day 25 | "Ready for the next step? NTE success stories" |
 
-## ♻️ Re-clasificación Automática
+## ♻️ Automatic Re-classification
 
-NTE-LEAD-NURTURE monitorea:
-- **Apertura de emails** → Si abre 3+ emails consecutivos: COLD → WARM
-- **Respuesta a WhatsApp** → Si responde con preguntas específicas: WARM → HOT
-- **Clic en "Agendar llamada"** → Inmediatamente HOT + alerta a Michael
-- **Sin actividad 30 días** → Archivo con nota de reactivación futura
+NTE-LEAD-NURTURE monitors:
+- **Email opens** → If they open 3+ consecutive emails: COLD → WARM
+- **WhatsApp reply** → If they reply with specific questions: WARM → HOT
+- **Click on "Schedule a call"** → Immediately HOT + alert to Michael
+- **No activity for 30 days** → Archived with a note for future reactivation
 
-## 🛠️ Herramientas
+## 🛠️ Tools
 
-- **SendGrid API** — Secuencias de email automatizadas
-- **Twilio API** — Follow-up por WhatsApp
-- **HubSpot CRM** — Tracking de todo el ciclo del lead
-- **Google Calendar API** — Agendamiento automático de llamadas
+- **SendGrid API** — Automated email sequences
+- **Twilio API** — WhatsApp follow-up
+- **HubSpot CRM** — Tracking the entire lead cycle
+- **Google Calendar API** — Automatic call scheduling
 
-[← NTE-LEAD-INTAKE](./nte-lead-intake.md) | [Volver al inicio](../../../../README.md)
+[← NTE-LEAD-INTAKE](./nte-lead-intake.md) | [Back to home](../../../../README.md)

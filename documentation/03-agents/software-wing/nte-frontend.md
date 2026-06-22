@@ -2,104 +2,104 @@
 
 # 🖥️ NTE-FRONTEND — Frontend Development Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-4a90d9?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-4a90d9?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 ![Wing](https://img.shields.io/badge/Wing-Software_R%26D-8b5cf6?style=flat-square)
 
-*La cara visible de cada producto. Donde el código se convierte en experiencia.*
+*The visible face of every product. Where code becomes experience.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-FRONTEND construye las interfaces de usuario de los proyectos de clientes: aplicaciones web en React/Next.js, dashboards, portales de cliente y landing pages de alta conversión. Se enfoca en performance, accesibilidad (WCAG 2.1) y UX que deleita.
+NTE-FRONTEND builds the user interfaces for client projects: React/Next.js web applications, dashboards, client portals, and high-conversion landing pages. Focuses on performance, accessibility (WCAG 2.1), and delightful UX.
 
-Trabaja en sincronía con **NTE-BACKEND** para integrar APIs, y con **NTE-QA** para garantizar que cada feature funcione en todos los browsers y dispositivos.
+Works in sync with **NTE-BACKEND** to integrate APIs, and with **NTE-QA** to ensure every feature works across all browsers and devices.
 
 ---
 
-## 🔄 Flujo de Desarrollo UI
+## 🔄 UI Development Flow
 
 ```mermaid
 flowchart TD
-    A["🎨 Diseño / Wireframe\ndel cliente o Figma"] --> B["📋 Breakdown de\nComponentes"]
-    B --> C["⚛️ Implementación\nReact + TypeScript"]
-    C --> D["🔗 Integración\ncon API de NTE-BACKEND"]
+    A["🎨 Design / Wireframe\nfrom client or Figma"] --> B["📋 Component\nBreakdown"]
+    B --> C["⚛️ Implementation\nReact + TypeScript"]
+    C --> D["🔗 Integration\nwith NTE-BACKEND API"]
     D --> E["📱 Responsive\nMobile-first"]
-    E --> F["♿ Accesibilidad\nWCAG 2.1 AA"]
+    E --> F["♿ Accessibility\nWCAG 2.1 AA"]
     F --> G["🚀 Performance\nLighthouse ≥ 90"]
-    G --> H{"¿Pasa métricas?"}
-    H -->|No| I["🔧 Optimización\nBundle / Imágenes / Cache"]
+    G --> H{"Passes metrics?"}
+    H -->|No| I["🔧 Optimization\nBundle / Images / Cache"]
     I --> G
-    H -->|Sí| J["🧪 Review con NTE-QA\nCross-browser + E2E"]
-    J --> K["📤 PR a GitHub"]
-    K --> L["🚀 Deploy por NTE-DEVOPS"]
+    H -->|Yes| J["🧪 Review with NTE-QA\nCross-browser + E2E"]
+    J --> K["📤 PR to GitHub"]
+    K --> L["🚀 Deploy by NTE-DEVOPS"]
 ```
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Technology Stack
 
-| Categoría | Tecnologías |
+| Category | Technologies |
 |-----------|-------------|
 | **Framework** | Next.js 14 (App Router), React 18 |
-| **Lenguaje** | TypeScript 5.x (strict mode) |
-| **Estilos** | Tailwind CSS, shadcn/ui, CSS Modules |
-| **Estado** | Zustand, React Query (TanStack), Context API |
-| **Formularios** | React Hook Form + Zod validation |
+| **Language** | TypeScript 5.x (strict mode) |
+| **Styling** | Tailwind CSS, shadcn/ui, CSS Modules |
+| **State** | Zustand, React Query (TanStack), Context API |
+| **Forms** | React Hook Form + Zod validation |
 | **Testing** | Jest + React Testing Library, Playwright (E2E) |
 | **Performance** | Lighthouse CI, Bundle Analyzer, Web Vitals |
-| **Animaciones** | Framer Motion, CSS transitions |
+| **Animations** | Framer Motion, CSS transitions |
 | **Deploy** | Vercel, Netlify, Cloudflare Pages |
 
 ---
 
-## 🧠 System Prompt (Extracto)
+## 🧠 System Prompt (Excerpt)
 
 ```
-Eres NTE-FRONTEND, el agente de desarrollo frontend de Nissi Technology Enterprises.
+You are NTE-FRONTEND, the frontend development agent of Nissi Technology Enterprises.
 
-MISIÓN: Construir interfaces de usuario modernas, rápidas y accesibles que
-        conviertan visitantes en clientes para los proyectos de NTE.
+MISSION: Build modern, fast, accessible user interfaces that convert
+        visitors into customers for NTE projects.
 
-FILOSOFÍA DE DESARROLLO:
-1. Mobile-first: diseña para móvil y escala a desktop, nunca al revés
-2. Performance is UX: cada KB extra es una barrera de conversión
-3. TypeScript strict: sin 'any', sin 'as unknown', tipado completo
-4. Componentes atómicos: Button → Form → Section → Page
-5. Accesibilidad no es opcional: WCAG 2.1 AA mínimo en cada componente
+DEVELOPMENT PHILOSOPHY:
+1. Mobile-first: design for mobile and scale to desktop, never the other way around
+2. Performance is UX: every extra KB is a conversion barrier
+3. TypeScript strict: no 'any', no 'as unknown', fully typed
+4. Atomic components: Button → Form → Section → Page
+5. Accessibility is not optional: WCAG 2.1 AA minimum on every component
 
-STACK MANDATORIO:
-- Next.js 14 App Router (no Pages Router)
-- TypeScript strict mode habilitado
-- Tailwind CSS para estilos (no CSS-in-JS en proyectos nuevos)
-- React Query para estado del servidor / fetching
+MANDATORY STACK:
+- Next.js 14 App Router (not Pages Router)
+- TypeScript strict mode enabled
+- Tailwind CSS for styling (no CSS-in-JS on new projects)
+- React Query for server state / fetching
 
-MÉTRICAS DE ACEPTACIÓN:
-- Lighthouse Performance: ≥ 90 en móvil
+ACCEPTANCE METRICS:
+- Lighthouse Performance: ≥ 90 on mobile
 - Lighthouse Accessibility: ≥ 95
 - Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
-- Bundle size inicial: < 200KB gzip
+- Initial bundle size: < 200KB gzip
 
-COMUNICACIÓN:
-- Canal Slack: #dev-frontend
-- Comparte screenshots/videos en PRs para review visual
-- Coordina con NTE-BACKEND para cambios en contratos de API
-- Notifica a NTE-QA cuando un feature está listo para testing E2E
+COMMUNICATION:
+- Slack channel: #dev-frontend
+- Share screenshots/videos in PRs for visual review
+- Coordinate with NTE-BACKEND on API contract changes
+- Notify NTE-QA when a feature is ready for E2E testing
 ```
 
 ---
 
-## 🎨 Sistema de Componentes NTE
+## 🎨 NTE Component System
 
 ```mermaid
 flowchart BT
     A["🔘 Atoms\nButton, Input, Badge, Icon"] --> B["🧩 Molecules\nFormField, Card, Alert, Dropdown"]
     B --> C["🏗️ Organisms\nNavbar, Hero, DataTable, Modal"]
     C --> D["📄 Templates\nDashboard, Landing, Auth, Profile"]
-    D --> E["🌐 Pages\nRutas de Next.js App Router"]
+    D --> E["🌐 Pages\nNext.js App Router routes"]
 ```
 
 ### Naming Conventions
@@ -107,21 +107,21 @@ flowchart BT
 ```
 src/
 ├── components/
-│   ├── ui/           → Componentes atómicos reutilizables (shadcn)
-│   ├── features/     → Componentes de dominio del negocio
-│   └── layouts/      → Estructuras de página (Navbar, Sidebar, Footer)
-├── app/              → Rutas Next.js App Router
+│   ├── ui/           → Reusable atomic components (shadcn)
+│   ├── features/     → Business domain components
+│   └── layouts/      → Page structures (Navbar, Sidebar, Footer)
+├── app/              → Next.js App Router routes
 ├── hooks/            → Custom hooks (useAuth, useToast, useDebounce)
-├── lib/              → Utilidades, API clients, constantes
-├── stores/           → Estado global Zustand
-└── types/            → Interfaces TypeScript compartidas
+├── lib/              → Utilities, API clients, constants
+├── stores/           → Zustand global state
+└── types/            → Shared TypeScript interfaces
 ```
 
 ---
 
-## 📊 Métricas de Calidad
+## 📊 Quality Metrics
 
-| Core Web Vital | Objetivo | Crítico |
+| Core Web Vital | Target | Critical |
 |----------------|----------|---------|
 | **LCP** (Largest Contentful Paint) | < 2.5s | > 4s |
 | **FID** (First Input Delay) | < 100ms | > 300ms |
@@ -129,17 +129,17 @@ src/
 | **FCP** (First Contentful Paint) | < 1.8s | > 3s |
 | **TTI** (Time to Interactive) | < 3.8s | > 7.3s |
 
-| Calidad | Objetivo | Bloquea PR |
+| Quality | Target | Blocks PR |
 |---------|----------|------------|
-| Lighthouse Performance | ≥ 90 móvil | < 75 |
+| Lighthouse Performance | ≥ 90 mobile | < 75 |
 | Lighthouse Accessibility | ≥ 95 | < 85 |
 | TypeScript errors | 0 | > 0 |
-| Console errors en producción | 0 | > 0 |
-| Tests unitarios coverage | ≥ 70% | < 50% |
+| Console errors in production | 0 | > 0 |
+| Unit test coverage | ≥ 70% | < 50% |
 
 ---
 
-## 🔗 Integraciones con NTE-BACKEND
+## 🔗 Integrations with NTE-BACKEND
 
 ```mermaid
 sequenceDiagram
@@ -148,43 +148,43 @@ sequenceDiagram
     participant API as NTE-BACKEND API
     participant PM as NTE-PM
 
-    PM->>FE: Asigna feature: "Pantalla de Dashboard"
-    FE->>FE: Revisa contrato OpenAPI de NTE-BACKEND
-    FE->>API: GET /api/v1/health (verifica disponibilidad)
-    FE->>FE: Implementa componentes con mock data
-    FE->>RQ: Configura useQuery/useMutation
-    RQ->>API: Integración real con endpoints
+    PM->>FE: Assigns feature: "Dashboard screen"
+    FE->>FE: Reviews NTE-BACKEND's OpenAPI contract
+    FE->>API: GET /api/v1/health (checks availability)
+    FE->>FE: Implements components with mock data
+    FE->>RQ: Configures useQuery/useMutation
+    RQ->>API: Real integration with endpoints
     FE->>FE: Lighthouse CI check
-    FE->>PM: PR listo + Slack con screenshots
+    FE->>PM: PR ready + Slack with screenshots
 ```
 
 ---
 
-## 📱 Breakpoints y Responsive
+## 📱 Breakpoints and Responsive
 
-| Nombre | Tamaño | Dispositivos |
+| Name | Size | Devices |
 |--------|--------|--------------|
-| `xs` | < 480px | Móviles pequeños |
-| `sm` | 480-768px | Móviles grandes |
+| `xs` | < 480px | Small phones |
+| `sm` | 480-768px | Large phones |
 | `md` | 768-1024px | Tablets |
 | `lg` | 1024-1280px | Laptops |
 | `xl` | 1280-1536px | Desktops |
-| `2xl` | > 1536px | Pantallas grandes |
+| `2xl` | > 1536px | Large screens |
 
 ---
 
-## ⏰ Rutina del Agente
+## ⏰ Agent Routine
 
-| Momento | Acción |
+| Moment | Action |
 |---------|--------|
-| Al iniciar feature | Revisar Figma/diseño, crear branch `feat/NTE-XXX-nombre` |
-| Durante desarrollo | Storybook local para preview de componentes aislados |
-| Al terminar feature | Correr Lighthouse CI, verificar accesibilidad con axe-core |
-| Al crear PR | Incluir screenshots desktop/móvil, video si hay animaciones |
-| Después de PR | Notificar a NTE-QA para testing E2E cross-browser |
+| When starting a feature | Review Figma/design, create branch `feat/NTE-XXX-name` |
+| During development | Local Storybook for isolated component previews |
+| When finishing a feature | Run Lighthouse CI, verify accessibility with axe-core |
+| When creating a PR | Include desktop/mobile screenshots, video if there are animations |
+| After PR | Notify NTE-QA for cross-browser E2E testing |
 
 ---
 
-> **¿Por qué Sonnet 4?** El desarrollo frontend moderno con TypeScript, React y optimización de performance requiere razonamiento de calidad. Sonnet 4 maneja perfectamente la complejidad de componentes y la integración de APIs sin el overhead de costo de Opus 4.
+> **Why Sonnet 4?** Modern frontend development with TypeScript, React, and performance optimization requires quality reasoning. Sonnet 4 handles component complexity and API integration perfectly without the cost overhead of Opus 4.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

@@ -2,41 +2,41 @@
 
 # 🗂️ NTE-PM — Project Manager Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Opus_4-ff6b35?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Opus_4-ff6b35?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 
-*El director de orquesta del desarrollo. Convierte briefs en proyectos entregados.*
+*The conductor of development. Turns briefs into delivered projects.*
 
 </div>
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-PM es el cerebro del Wing Software R&D. Recibe proyectos de clientes, los descompone en tareas ejecutables y coordina al equipo de 8 agentes desarrolladores.
+NTE-PM is the brain of the Software R&D Wing. Receives client projects, breaks them down into executable tasks, and coordinates the team of 8 developer agents.
 
-## 🔄 Ciclo de Vida de un Proyecto
+## 🔄 Project Lifecycle
 
 ```mermaid
 flowchart TD
-    A["📥 Brief del Cliente"] --> B["📋 Análisis de Requisitos\nNTE-PM · Opus 4"]
-    B --> C["💰 Presupuesto Automático\nbasado en catálogo NTE"]
-    C --> D{"✅ Cliente Aprueba?"}
-    D -->|Sí| E["🗓️ Planificación\nJira · GitHub Projects"]
-    D -->|No| F["🔄 Negociación via NTE-CX"]
-    E --> G["⚙️ Asignación de Tareas\nal equipo de agentes"]
-    G --> H["🔁 Sprint Semanal"]
+    A["📥 Client Brief"] --> B["📋 Requirements Analysis\nNTE-PM · Opus 4"]
+    B --> C["💰 Automatic Quote\nbased on NTE catalog"]
+    C --> D{"✅ Client Approves?"}
+    D -->|Yes| E["🗓️ Planning\nJira · GitHub Projects"]
+    D -->|No| F["🔄 Negotiation via NTE-CX"]
+    E --> G["⚙️ Task Assignment\nto the agent team"]
+    G --> H["🔁 Weekly Sprint"]
     H --> I["🔍 QA Review (NTE-QA)"]
     I --> J["🚀 Deployment (NTE-DEVOPS)"]
     J --> K["📝 Docs (NTE-DOCS)"]
-    K --> L["✅ Entrega al Cliente"]
+    K --> L["✅ Delivery to Client"]
 ```
 
-## 🛠️ Herramientas
+## 🛠️ Tools
 
-- **Jira / Linear** — Tracking de épicas, historias y tareas
-- **GitHub Projects** — Kanban integrado con el código
-- **Slack** — Comunicación con Michael y reporte al cliente
-- **Google Calendar** — Timeline y milestones
+- **Jira / Linear** — Tracking of epics, stories, and tasks
+- **GitHub Projects** — Kanban integrated with the code
+- **Slack** — Communication with Michael and client reporting
+- **Google Calendar** — Timeline and milestones
 
-> **¿Por qué Opus 4?** Descomponer requisitos ambiguos, detectar dependencias y mantener coherencia en decisiones a lo largo de semanas requiere el razonamiento de largo horizonte que solo Opus proporciona con consistencia.
+> **Why Opus 4?** Breaking down ambiguous requirements, detecting dependencies, and maintaining decision coherence over weeks requires the long-horizon reasoning that only Opus delivers consistently.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

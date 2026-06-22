@@ -1,36 +1,36 @@
 <div align="center">
 
-# 🎧 Flujo: Atención al Cliente Omnicanal
-### Respuesta < 5 Minutos · 24/7 · En Todos los Canales
+# 🎧 Flow: Omnichannel Customer Service
+### Response < 5 Minutes · 24/7 · Across All Channels
 
 </div>
 
 ```mermaid
 flowchart TD
-    subgraph CANALES["📡 Canales Entrantes"]
-        WA["📱 WhatsApp"] & EM["📧 Email"] & FB["📘 Facebook"] & IG["📸 Instagram"] & CH["💬 Chat Web"] & SMS["📟 SMS"]
+    subgraph CANALES["📡 Incoming Channels"]
+        WA["📱 WhatsApp"] & EM["📧 Email"] & FB["📘 Facebook"] & IG["📸 Instagram"] & CH["💬 Web Chat"] & SMS["📟 SMS"]
     end
 
-    CX["🎧 Samantha (NTE-CX) · Sonnet 4\n< 5 minutos · samantha@nissienterprise.com"]
+    CX["🎧 Samantha (NTE-CX) · Sonnet 4\n< 5 minutes · samantha@nissienterprise.com"]
 
-    subgraph CLASIFICACION["🎯 Clasificación de Intención"]
-        Q["💰 Cotización"]
-        S["🔧 Soporte Técnico"]
-        I["ℹ️ Info General"]
-        C["😠 Queja"]
+    subgraph CLASIFICACION["🎯 Intent Classification"]
+        Q["💰 Quote"]
+        S["🔧 Technical Support"]
+        I["ℹ️ General Info"]
+        C["😠 Complaint"]
         SP["🗑️ Spam"]
     end
 
-    subgraph ACCION["⚡ Acción Automática"]
-        A1["Genera propuesta preliminar (QuickBooks estimado)\n→ pasa a EVA (NTE-LEAD-INTAKE)"]
-        A2["Resuelve con base de conocimiento\n→ escala si es complejo"]
-        A3["Responde con info de servicios NTE"]
-        A4["Registra + alerta INMEDIATA a Michael\nvía #nte-cx"]
-        A5["Archiva sin responder"]
+    subgraph ACCION["⚡ Automatic Action"]
+        A1["Generates preliminary proposal (QuickBooks estimate)\n→ passes to EVA (NTE-LEAD-INTAKE)"]
+        A2["Resolves using knowledge base\n→ escalates if complex"]
+        A3["Responds with NTE service info"]
+        A4["Logs + IMMEDIATE alert to Michael\nvia #nte-cx"]
+        A5["Archives without responding"]
     end
 
-    CRM["📋 Registra ticket en Jira (NTE-OPS)\ny lead en CRM"]
-    SLACK["💬 #nte-cx\nEscalada si necesaria"]
+    CRM["📋 Logs ticket in Jira (NTE-OPS)\nand lead in CRM"]
+    SLACK["💬 #nte-cx\nEscalation if needed"]
 
     CANALES --> CX
     CX --> CLASIFICACION
@@ -43,13 +43,13 @@ flowchart TD
     A4 --> SLACK
 ```
 
-## Respuestas Tipo por Canal
+## Sample Responses by Channel
 
 **WhatsApp Business:**
-> "¡Hola [Nombre]! 👋 Soy el asistente de Nissi Technology Enterprises. Recibí tu mensaje sobre [tema detectado]. Para darte la mejor atención, ¿puedes contarme un poco más sobre [pregunta de calificación]? Mientras tanto, aquí tienes información sobre nuestros servicios relacionados: [link]. ¡Un experto de nuestro equipo te contactará muy pronto!"
+> "Hi [Name]! 👋 I'm the assistant for Nissi Technology Enterprises. I received your message about [detected topic]. To give you the best assistance, can you tell me a bit more about [qualifying question]? In the meantime, here's information about our related services: [link]. An expert from our team will contact you very soon!"
 
-**Email (desde samantha@nissienterprise.com):**
-> Asunto: Re: Tu consulta a Nissi Technology Enterprises
-> "Hola [Nombre], gracias por contactarnos. He recibido tu mensaje y lo estoy procesando..."
+**Email (from samantha@nissienterprise.com):**
+> Subject: Re: Your inquiry to Nissi Technology Enterprises
+> "Hi [Name], thank you for reaching out. I've received your message and am processing it..."
 
-[← Flujos](./README.md)
+[← Flows](./README.md)

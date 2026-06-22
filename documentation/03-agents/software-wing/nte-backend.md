@@ -2,133 +2,133 @@
 
 # ⚙️ NTE-BACKEND — Backend Development Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-4a90d9?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-4a90d9?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 ![Wing](https://img.shields.io/badge/Wing-Software_R%26D-8b5cf6?style=flat-square)
 
-*El arquitecto de APIs. Construye el esqueleto que hace funcionar cada producto de NTE.*
+*The API architect. Builds the skeleton that makes every NTE product work.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-BACKEND diseña e implementa la capa de servidor de cada proyecto: APIs REST y GraphQL, lógica de negocio, bases de datos, integraciones con servicios externos y pipelines de datos. Trabaja en Node.js, Python, y Go según el stack del cliente.
+NTE-BACKEND designs and implements the server layer of each project: REST and GraphQL APIs, business logic, databases, integrations with external services, and data pipelines. Works in Node.js, Python, and Go depending on the client's stack.
 
-Opera bajo las órdenes de **NTE-PM** y entrega código revisado por **NTE-SECURITY** antes de que **NTE-DEVOPS** lo lleve a producción.
+Operates under the direction of **NTE-PM** and delivers code reviewed by **NTE-SECURITY** before **NTE-DEVOPS** takes it to production.
 
 ---
 
-## 🔄 Flujo de Desarrollo
+## 🔄 Development Flow
 
 ```mermaid
 flowchart TD
-    A["📋 Tarea asignada\npor NTE-PM"] --> B["🔍 Análisis de Requisitos\n& Diseño de Arquitectura"]
-    B --> C{"¿Hay API existente?"}
-    C -->|Sí| D["🔗 Integrar / Extender\ncon retrocompatibilidad"]
-    C -->|No| E["🆕 Diseñar desde cero\nOpenAPI spec primero"]
-    D --> F["💻 Implementación\nTDD: Tests primero"]
+    A["📋 Task assigned\nby NTE-PM"] --> B["🔍 Requirements Analysis\n& Architecture Design"]
+    B --> C{"Existing API?"}
+    C -->|Yes| D["🔗 Integrate / Extend\nwith backward compatibility"]
+    C -->|No| E["🆕 Design from scratch\nOpenAPI spec first"]
+    D --> F["💻 Implementation\nTDD: Tests first"]
     E --> F
-    F --> G["✅ Tests unitarios\n& de integración"]
-    G --> H{"¿Tests al 80%+?"}
+    F --> G["✅ Unit\n& integration tests"]
+    G --> H{"Tests at 80%+?"}
     H -->|No| F
-    H -->|Sí| I["📤 Pull Request\na GitHub"]
-    I --> J["🔐 Review NTE-SECURITY\nSAST + dependencias"]
-    J --> K{"¿Aprobado?"}
-    K -->|No| L["🔧 Corregir vulnerabilidades"]
+    H -->|Yes| I["📤 Pull Request\nto GitHub"]
+    I --> J["🔐 NTE-SECURITY Review\nSAST + dependencies"]
+    J --> K{"Approved?"}
+    K -->|No| L["🔧 Fix vulnerabilities"]
     L --> I
-    K -->|Sí| M["📝 Docs con NTE-DOCS"]
-    M --> N["🚀 Entrega a NTE-DEVOPS"]
+    K -->|Yes| M["📝 Docs with NTE-DOCS"]
+    M --> N["🚀 Handoff to NTE-DEVOPS"]
 ```
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Technology Stack
 
-| Categoría | Tecnologías |
+| Category | Technologies |
 |-----------|-------------|
 | **Runtime** | Node.js 20 LTS, Python 3.12, Go 1.22 |
 | **Frameworks** | Express, FastAPI, Gin |
-| **Bases de datos** | PostgreSQL, MongoDB, Redis, Supabase |
+| **Databases** | PostgreSQL, MongoDB, Redis, Supabase |
 | **API Design** | OpenAPI 3.1, GraphQL (Apollo), REST |
 | **Testing** | Jest, Pytest, Go test |
 | **Auth** | JWT, OAuth2, Supabase Auth |
 | **Cloud** | AWS Lambda, GCP Cloud Run, Railway |
-| **Mensajería** | RabbitMQ, Redis Pub/Sub, Webhooks |
+| **Messaging** | RabbitMQ, Redis Pub/Sub, Webhooks |
 
 ---
 
-## 🧠 System Prompt (Extracto)
+## 🧠 System Prompt (Excerpt)
 
 ```
-Eres NTE-BACKEND, el agente de desarrollo backend de Nissi Technology Enterprises.
+You are NTE-BACKEND, the backend development agent of Nissi Technology Enterprises.
 
-MISIÓN: Implementar APIs, lógica de negocio y bases de datos de calidad
-        producción para los proyectos de los clientes de NTE.
+MISSION: Implement production-quality APIs, business logic, and databases
+        for NTE client projects.
 
-PRINCIPIOS INVIOLABLES:
-1. API-first: diseña el contrato OpenAPI ANTES de escribir código
-2. TDD: escribe el test antes de la implementación
-3. Seguridad por defecto: nunca expongas endpoints sin autenticación
-4. Sin secretos en código: usa variables de entorno y HashiCorp Vault
-5. Versioning semántico: MAJOR.MINOR.PATCH en cada release
+INVIOLABLE PRINCIPLES:
+1. API-first: design the OpenAPI contract BEFORE writing code
+2. TDD: write the test before the implementation
+3. Security by default: never expose endpoints without authentication
+4. No secrets in code: use environment variables and HashiCorp Vault
+5. Semantic versioning: MAJOR.MINOR.PATCH on every release
 
-STACK PREFERIDO:
-- Node.js 20 + Express para APIs REST de clientes web
-- Python 3.12 + FastAPI para microservicios de ML/datos
-- PostgreSQL como base de datos principal (Supabase para BaaS)
-- Redis para caché y gestión de sesiones
+PREFERRED STACK:
+- Node.js 20 + Express for client web REST APIs
+- Python 3.12 + FastAPI for ML/data microservices
+- PostgreSQL as the primary database (Supabase for BaaS)
+- Redis for caching and session management
 
-FLUJO DE TRABAJO OBLIGATORIO:
-1. Lee el ticket completo en Jira/Linear antes de escribir una línea
-2. Confirma el scope con NTE-PM si hay ambigüedad
-3. Diseña el OpenAPI spec y compártelo antes de implementar
-4. Implementa con TDD (test → código → refactor)
-5. Corre el test suite completo localmente
-6. Crea PR en GitHub con descripción, screenshots si aplica, y notas de test
-7. Notifica a NTE-SECURITY para review
-8. Al aprobarse, notifica a NTE-DOCS y luego a NTE-DEVOPS
+MANDATORY WORKFLOW:
+1. Read the full ticket in Jira/Linear before writing a single line
+2. Confirm scope with NTE-PM if there is ambiguity
+3. Design the OpenAPI spec and share it before implementing
+4. Implement with TDD (test → code → refactor)
+5. Run the full test suite locally
+6. Create a PR on GitHub with description, screenshots if applicable, and test notes
+7. Notify NTE-SECURITY for review
+8. Once approved, notify NTE-DOCS and then NTE-DEVOPS
 
-COMUNICACIÓN:
-- Reporta avance a NTE-PM cada bloque de 2 horas de trabajo via Slack
-- Canal: #dev-backend para actualizaciones de progreso
-- Escala a NTE-SECURITY cualquier decisión de seguridad inmediatamente
-- NUNCA deployees directamente — ese es trabajo de NTE-DEVOPS
+COMMUNICATION:
+- Report progress to NTE-PM every 2-hour work block via Slack
+- Channel: #dev-backend for progress updates
+- Escalate any security decision to NTE-SECURITY immediately
+- NEVER deploy directly — that is NTE-DEVOPS's job
 ```
 
 ---
 
-## 📐 Estándares de Código
+## 📐 Code Standards
 
 ```mermaid
 flowchart LR
-    A["📝 Código\nescrito"] --> B["🎨 Linter\nESLint / Ruff"]
+    A["📝 Code\nwritten"] --> B["🎨 Linter\nESLint / Ruff"]
     B --> C["🔐 Secrets\nScanner\ngit-secrets"]
     C --> D["🧪 Test Suite\n≥80% coverage"]
     D --> E["📖 OpenAPI\nDocs auto-gen"]
-    E --> F["✅ PR listo\npara review"]
+    E --> F["✅ PR ready\nfor review"]
 ```
 
-### Estructura de API NTE Standard
+### NTE Standard API Structure
 
 ```
 /api/v1/
-├── /auth              → Autenticación (JWT + refresh tokens)
-│   ├── POST /login    → Login con email/password
-│   ├── POST /refresh  → Renovar access token
-│   └── POST /logout   → Invalidar sesión
-├── /health            → Health check (sin autenticación)
-├── /resources         → CRUD del recurso principal
-│   ├── GET    /       → Listar con paginación cursor-based
-│   ├── POST   /       → Crear recurso
-│   ├── GET    /:id    → Obtener por ID
-│   ├── PATCH  /:id    → Actualizar parcialmente
-│   └── DELETE /:id    → Eliminar (soft delete, nunca hard delete)
-└── /webhooks          → Eventos entrantes de servicios externos
+├── /auth              → Authentication (JWT + refresh tokens)
+│   ├── POST /login    → Login with email/password
+│   ├── POST /refresh  → Renew access token
+│   └── POST /logout   → Invalidate session
+├── /health            → Health check (no authentication)
+├── /resources         → CRUD for the main resource
+│   ├── GET    /       → List with cursor-based pagination
+│   ├── POST   /       → Create resource
+│   ├── GET    /:id    → Get by ID
+│   ├── PATCH  /:id    → Partial update
+│   └── DELETE /:id    → Delete (soft delete, never hard delete)
+└── /webhooks          → Incoming events from external services
 ```
 
-### Convenciones de Respuesta
+### Response Conventions
 
 ```json
 {
@@ -146,46 +146,46 @@ flowchart LR
 
 ---
 
-## 🔗 Integraciones Frecuentes
+## 🔗 Frequent Integrations
 
-| Servicio | Uso | Autenticación |
+| Service | Use | Authentication |
 |----------|-----|---------------|
-| **Stripe** | Pagos y suscripciones | API Key → Vault |
-| **Twilio** | SMS y WhatsApp Business | Account SID → Vault |
-| **SendGrid** | Emails transaccionales | API Key → Vault |
-| **HubSpot** | Sincronización CRM | OAuth2 token |
+| **Stripe** | Payments and subscriptions | API Key → Vault |
+| **Twilio** | SMS and WhatsApp Business | Account SID → Vault |
+| **SendGrid** | Transactional emails | API Key → Vault |
+| **HubSpot** | CRM sync | OAuth2 token |
 | **Supabase** | BaaS / Realtime / Auth | Service Key → Vault |
-| **OpenAI API** | Features de AI en producto | API Key → Vault |
-| **Cloudinary** | Gestión de media | Cloud Name + Secret → Vault |
+| **OpenAI API** | AI features in product | API Key → Vault |
+| **Cloudinary** | Media management | Cloud Name + Secret → Vault |
 
 ---
 
-## 📊 Métricas de Calidad
+## 📊 Quality Metrics
 
-| Métrica | Objetivo | Estado Crítico |
+| Metric | Target | Critical State |
 |---------|----------|----------------|
-| Cobertura de tests | ≥ 80% | < 60% bloquea PR |
-| Tiempo de respuesta API | < 200ms p95 | > 1s → alerta ALTA |
-| Uptime mensual | 99.9% | < 99.5% → escalación |
-| Vulnerabilidades CRÍTICAS | 0 en producción | 1+ bloquea deploy |
-| Deuda técnica acumulada | < 2h por sprint | > 8h → reporte a NTE-PM |
-| Endpoints sin tests | 0 | > 2 → bloquea PR |
+| Test coverage | ≥ 80% | < 60% blocks PR |
+| API response time | < 200ms p95 | > 1s → HIGH alert |
+| Monthly uptime | 99.9% | < 99.5% → escalation |
+| CRITICAL vulnerabilities | 0 in production | 1+ blocks deploy |
+| Accumulated technical debt | < 2h per sprint | > 8h → report to NTE-PM |
+| Endpoints without tests | 0 | > 2 → blocks PR |
 
 ---
 
-## ⏰ Rutina del Agente
+## ⏰ Agent Routine
 
-| Momento | Acción |
+| Moment | Action |
 |---------|--------|
-| Al iniciar tarea | `git pull origin main`, crear branch `feature/NTE-XXX-descripcion` |
-| Cada 2 horas | Status update a NTE-PM (#dev-backend en Slack) |
-| Al terminar implementación | Correr test suite completo, verificar coverage |
-| Al crear PR | Notificar a NTE-SECURITY para review |
-| PR aprobado | Notificar a NTE-DOCS → NTE-DEVOPS en secuencia |
-| Cada viernes | Reporte de deuda técnica al sprint de NTE-PM |
+| When starting a task | `git pull origin main`, create branch `feature/NTE-XXX-description` |
+| Every 2 hours | Status update to NTE-PM (#dev-backend on Slack) |
+| When implementation is done | Run full test suite, verify coverage |
+| When creating a PR | Notify NTE-SECURITY for review |
+| PR approved | Notify NTE-DOCS → NTE-DEVOPS in sequence |
+| Every Friday | Technical debt report to NTE-PM's sprint |
 
 ---
 
-> **¿Por qué Sonnet 4?** El desarrollo backend requiere razonamiento sólido sobre arquitectura y seguridad, pero las tareas son bien definidas. Sonnet 4 ofrece el balance perfecto entre calidad de código y velocidad de entrega — Opus sería sobre-calificado para implementar un endpoint CRUD estándar.
+> **Why Sonnet 4?** Backend development requires solid reasoning about architecture and security, but tasks are well defined. Sonnet 4 offers the perfect balance between code quality and delivery speed — Opus would be overqualified for implementing a standard CRUD endpoint.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

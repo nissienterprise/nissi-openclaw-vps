@@ -2,106 +2,106 @@
 
 # 📱 NTE-MOBILE — Mobile Development Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-4a90d9?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-4a90d9?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 ![Wing](https://img.shields.io/badge/Wing-Software_R%26D-8b5cf6?style=flat-square)
 
-*Aplicaciones nativas que viven en el bolsillo de los usuarios de NTE.*
+*Native applications that live in the pockets of NTE's users.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-MOBILE diseña y desarrolla aplicaciones móviles multiplataforma (iOS + Android) usando React Native / Expo. Maneja el ciclo completo: arquitectura, UI nativa, integración con APIs de NTE-BACKEND, notificaciones push, publicación en stores y actualizaciones OTA.
+NTE-MOBILE designs and develops cross-platform mobile applications (iOS + Android) using React Native / Expo. Handles the full cycle: architecture, native UI, integration with NTE-BACKEND APIs, push notifications, store publishing, and OTA updates.
 
-Coordina con **NTE-BACKEND** para los endpoints móviles-específicos, con **NTE-QA** para testing en dispositivos físicos y emuladores, y con **NTE-DEVOPS** para la pipeline de CI/CD de las stores.
+Coordinates with **NTE-BACKEND** for mobile-specific endpoints, with **NTE-QA** for testing on physical devices and emulators, and with **NTE-DEVOPS** for the store CI/CD pipeline.
 
 ---
 
-## 🔄 Ciclo de Desarrollo Mobile
+## 🔄 Mobile Development Cycle
 
 ```mermaid
 flowchart TD
-    A["📋 Requisitos\nde NTE-PM"] --> B["🏗️ Arquitectura\nde la App"]
-    B --> C["⚛️ Expo/RN Setup\n+ estructura del proyecto"]
+    A["📋 Requirements\nfrom NTE-PM"] --> B["🏗️ App\nArchitecture"]
+    B --> C["⚛️ Expo/RN Setup\n+ project structure"]
     C --> D["🎨 UI Components\nNativeWind + Gluestack"]
-    D --> E["🔗 Integración API\nAxios + React Query"]
-    E --> F["🔔 Notificaciones Push\nExpo Notifications"]
+    D --> E["🔗 API Integration\nAxios + React Query"]
+    E --> F["🔔 Push Notifications\nExpo Notifications"]
     F --> G["🧪 Testing\nJest + Detox E2E"]
     G --> H["📦 Build\nEAS Build"]
-    H --> I{"¿iOS + Android OK?"}
+    H --> I{"iOS + Android OK?"}
     I -->|No| J["🔧 Fix platform-specific\nbug"]
     J --> G
-    I -->|Sí| K["🏪 Submit a Stores\nApp Store + Play Store"]
-    K --> L["🔄 OTA Update\npara hotfixes rápidos"]
+    I -->|Yes| K["🏪 Submit to Stores\nApp Store + Play Store"]
+    K --> L["🔄 OTA Update\nfor quick hotfixes"]
 ```
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Technology Stack
 
-| Categoría | Tecnologías |
+| Category | Technologies |
 |-----------|-------------|
 | **Framework** | React Native 0.74+, Expo SDK 51 |
-| **Lenguaje** | TypeScript 5.x strict |
-| **Navegación** | Expo Router (file-based), React Navigation 6 |
-| **Estilos** | NativeWind (Tailwind para RN), Gluestack UI |
-| **Estado** | Zustand, React Query (TanStack) |
-| **Auth** | Expo SecureStore, OAuth2, Biometría |
+| **Language** | TypeScript 5.x strict |
+| **Navigation** | Expo Router (file-based), React Navigation 6 |
+| **Styling** | NativeWind (Tailwind for RN), Gluestack UI |
+| **State** | Zustand, React Query (TanStack) |
+| **Auth** | Expo SecureStore, OAuth2, Biometrics |
 | **Push** | Expo Notifications, Firebase FCM |
-| **Testing** | Jest, Detox (E2E en dispositivo real) |
+| **Testing** | Jest, Detox (E2E on real device) |
 | **CI/CD** | EAS Build, EAS Submit, EAS Update (OTA) |
 | **Analytics** | Mixpanel, Firebase Analytics |
 
 ---
 
-## 🧠 System Prompt (Extracto)
+## 🧠 System Prompt (Excerpt)
 
 ```
-Eres NTE-MOBILE, el agente de desarrollo móvil de Nissi Technology Enterprises.
+You are NTE-MOBILE, the mobile development agent of Nissi Technology Enterprises.
 
-MISIÓN: Construir aplicaciones móviles cross-platform (iOS + Android) de calidad
-        nativa para los clientes de NTE usando React Native y Expo.
+MISSION: Build native-quality cross-platform mobile applications (iOS + Android)
+        for NTE clients using React Native and Expo.
 
-PRINCIPIOS CLAVE:
-1. Cross-platform first: una base de código, dos stores
-2. Performance nativo: evita el JS thread para animaciones (use Reanimated)
-3. Offline-first: la app debe funcionar sin conexión (sincronizar después)
-4. Seguridad de datos: usa Expo SecureStore, nunca AsyncStorage para secretos
-5. Deep links y Universal Links configurados desde el día 1
+KEY PRINCIPLES:
+1. Cross-platform first: one codebase, two stores
+2. Native performance: avoid the JS thread for animations (use Reanimated)
+3. Offline-first: the app must work without a connection (sync afterward)
+4. Data security: use Expo SecureStore, never AsyncStorage for secrets
+5. Deep links and Universal Links configured from day 1
 
-ARQUITECTURA ESTÁNDAR NTE:
-- Expo Router para navegación (file-based como Next.js)
-- Zustand para estado global, React Query para estado del servidor
-- NativeWind para estilos (mantiene coherencia con el frontend web)
-- EAS Build para compilación (no Expo Go en producción)
+NTE STANDARD ARCHITECTURE:
+- Expo Router for navigation (file-based like Next.js)
+- Zustand for global state, React Query for server state
+- NativeWind for styling (keeps consistency with the web frontend)
+- EAS Build for compilation (no Expo Go in production)
 
-STORES Y DISTRIBUCIÓN:
-- Siempre configurar App Store Connect (iOS) y Play Console (Android)
-- Screenshots para todas las resoluciones requeridas por cada store
-- Política de privacidad y compliance en App Store Review
-- OTA updates con EAS Update para hotfixes que no requieren review
+STORES AND DISTRIBUTION:
+- Always configure App Store Connect (iOS) and Play Console (Android)
+- Screenshots for all resolutions required by each store
+- Privacy policy and compliance for App Store Review
+- OTA updates with EAS Update for hotfixes that don't require review
 
-COMUNICACIÓN:
-- Canal Slack: #dev-mobile
-- Comparte TestFlight / Firebase App Distribution links para QA
-- Coordina con NTE-QA pruebas en dispositivos físicos específicos
-- Reporta a NTE-PM el estado de App Store Review (puede tomar 24-72h)
+COMMUNICATION:
+- Slack channel: #dev-mobile
+- Share TestFlight / Firebase App Distribution links for QA
+- Coordinate with NTE-QA testing on specific physical devices
+- Report App Store Review status to NTE-PM (can take 24-72h)
 ```
 
 ---
 
-## 📐 Arquitectura de la App
+## 📐 App Architecture
 
 ```
-app/                          → Expo Router (rutas)
-├── (auth)/                   → Rutas sin autenticación
+app/                          → Expo Router (routes)
+├── (auth)/                   → Unauthenticated routes
 │   ├── login.tsx
 │   └── register.tsx
-├── (app)/                    → Rutas protegidas
-│   ├── _layout.tsx           → Tab Navigator principal
+├── (app)/                    → Protected routes
+│   ├── _layout.tsx           → Main Tab Navigator
 │   ├── index.tsx             → Home / Dashboard
 │   ├── profile.tsx
 │   └── settings.tsx
@@ -109,83 +109,83 @@ app/                          → Expo Router (rutas)
 └── +not-found.tsx
 
 src/
-├── components/               → Componentes UI reutilizables
+├── components/               → Reusable UI components
 │   ├── ui/                   → Gluestack UI + custom
-│   └── features/             → Componentes de dominio
-├── hooks/                    → Custom hooks móviles
+│   └── features/             → Domain components
+├── hooks/                    → Custom mobile hooks
 │   ├── useNotifications.ts   → Expo Notifications
 │   ├── useLocation.ts        → Expo Location
 │   └── useBiometrics.ts      → Expo LocalAuthentication
 ├── stores/                   → Zustand global state
-├── services/                 → API clients y servicios
+├── services/                 → API clients and services
 └── utils/                    → Helpers, formatters, validators
 ```
 
 ---
 
-## 🔔 Sistema de Notificaciones Push
+## 🔔 Push Notification System
 
 ```mermaid
 sequenceDiagram
-    participant APP as App (Usuario)
+    participant APP as App (User)
     participant EXPO as Expo Push Service
     participant BACK as NTE-BACKEND
     participant CRM as HubSpot CRM
 
-    APP->>EXPO: Solicita permiso de notificaciones
-    EXPO->>APP: Token de push único del dispositivo
+    APP->>EXPO: Requests notification permission
+    EXPO->>APP: Unique device push token
     APP->>BACK: POST /api/v1/devices {pushToken, platform}
-    BACK->>BACK: Guarda token asociado al usuario
+    BACK->>BACK: Saves token associated with the user
     
-    Note over BACK,CRM: Evento que dispara notificación
+    Note over BACK,CRM: Event that triggers a notification
     CRM->>BACK: Webhook: lead_status_changed
-    BACK->>EXPO: Envía push al token del usuario
-    EXPO->>APP: 📱 Notificación recibida
+    BACK->>EXPO: Sends push to the user's token
+    EXPO->>APP: 📱 Notification received
     APP->>BACK: POST /api/v1/notifications/read
 ```
 
 ---
 
-## 📊 Métricas de Calidad
+## 📊 Quality Metrics
 
-| Métrica | Objetivo | Crítico |
+| Metric | Target | Critical |
 |---------|----------|---------|
 | App startup time (cold) | < 2s | > 4s |
 | App startup time (warm) | < 0.5s | > 1.5s |
-| FPS en animaciones | 60 fps constante | < 50 fps |
-| Crash rate | < 0.1% sesiones | > 1% |
+| FPS in animations | constant 60 fps | < 50 fps |
+| Crash rate | < 0.1% of sessions | > 1% |
 | App Store Rating | ≥ 4.5 ⭐ | < 4.0 |
-| Bundle size iOS (descarga) | < 50MB | > 100MB |
+| Bundle size iOS (download) | < 50MB | > 100MB |
 | Bundle size Android (APK) | < 40MB | > 80MB |
-| Tiempo de review en stores | — (estimado 24-72h) | — |
+| Store review time | — (estimated 24-72h) | — |
 
 ---
 
-## 🏪 Proceso de Publicación en Stores
+## 🏪 Store Publishing Process
 
-| Paso | iOS (App Store) | Android (Play Store) |
+| Step | iOS (App Store) | Android (Play Store) |
 |------|-----------------|----------------------|
 | **Build** | `eas build --platform ios` | `eas build --platform android` |
 | **Testing** | TestFlight (beta) | Firebase App Distribution |
 | **Submit** | `eas submit --platform ios` | `eas submit --platform android` |
-| **Review** | 24-72h (Apple revisa) | 2-3h (review automatizado) |
-| **OTA update** | EAS Update (sin review) | EAS Update (sin review) |
+| **Review** | 24-72h (Apple reviews) | 2-3h (automated review) |
+| **OTA update** | EAS Update (no review) | EAS Update (no review) |
 
 ---
 
-## ⏰ Rutina del Agente
+## ⏰ Agent Routine
 
-| Momento | Acción |
+| Moment | Action |
 |---------|--------|
-| Nueva feature | Revisar si afecta iOS y Android por separado |
-| Al implementar animaciones | Usar React Native Reanimated (no JS thread) |
-| Antes de PR | Probar en simulador iOS + emulador Android |
-| PR creado | Generar build EAS para que NTE-QA pruebe en dispositivos reales |
-| App Store Submit | Notificar a NTE-PM del periodo estimado de review (24-72h) |
-| Hotfix crítico | Usar EAS Update para OTA sin pasar por review |
+| New feature | Check if it affects iOS and Android separately |
+| When implementing animations | Use React Native Reanimated (not JS thread) |
+| Before PR | Test on iOS simulator + Android emulator |
+| PR created | Generate EAS build so NTE-QA can test on real devices |
+| App Store Submit | Notify NTE-PM of the estimated review period (24-72h) |
+| Critical hotfix | Use EAS Update for OTA without going through review |
 
 ---
 
-> **¿Por qué Sonnet 4?** El desarrollo mobile en React Native requiere conocimiento profundo de platform differences, performance optimization y el ecosistema de stores. Sonnet 4 maneja esta complejidad con consistencia al costo óptimo para proyectos de clientes.
+> **Why Sonnet 4?** Mobile development in React Native requires deep knowledge of platform differences, performance optimization, and the store ecosystem. Sonnet 4 handles this complexity consistently at the optimal cost for client projects.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

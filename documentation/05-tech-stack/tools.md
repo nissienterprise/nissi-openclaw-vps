@@ -1,50 +1,50 @@
 <div align="center">
 
-# 🛠️ Stack Tecnológico Completo
-### Todas las herramientas del ecosistema NTE-OpenClaw
+# 🛠️ Complete Tech Stack
+### All tools in the NTE-OpenClaw ecosystem
 
 </div>
 
 ---
 
-## Motor Principal de IA
+## Main AI Engine
 
-| Herramienta | Función | Agentes que la usan |
+| Tool | Function | Agents that use it |
 |---|---|---|
-| OpenClaw (Claude Code SDK) | Motor de agentes en VPS | Todos |
-| Claude Opus 4 | LLM para decisiones complejas | Jarvis · David · T-800 |
-| Claude Sonnet 4 | LLM para operaciones estándar | 12 agentes |
-| Claude Haiku 4 | LLM para tareas de alta frecuencia | HAL · R2-D2 · Marvin |
+| OpenClaw (Claude Code SDK) | Agent engine on VPS | All |
+| Claude Opus 4 | LLM for complex decisions | Jarvis · David · T-800 |
+| Claude Sonnet 4 | LLM for standard operations | 12 agents |
+| Claude Haiku 4 | LLM for high-frequency tasks | HAL · R2-D2 · Marvin |
 
 ---
 
-## Comunicación Hub
+## Communication Hub
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **Slack** | Hub central de comunicación humano-agente | $0 (plan free inicial) |
-| **Twilio** | WhatsApp Business + SMS | ~$50/mes (pay-per-use) |
+| **Slack** | Central human-agent communication hub | $0 (initial free plan) |
+| **Twilio** | WhatsApp Business + SMS | ~$50/month (pay-per-use) |
 | **Meta API** | Facebook + Instagram Messenger | $0 |
-| **Crisp** | Live chat en el website | $0-$25/mes |
+| **Crisp** | Live chat on the website | $0-$25/month |
 
 ---
 
-## 📧 Email Corporativo — @nissienterprise.com
+## 📧 Corporate Email — @nissienterprise.com
 
-> ⚠️ **NO se usa Gmail** para ningún agente. Todos los emails corporativos usan el servidor propio de NTE.
+> ⚠️ **Gmail is NOT used** for any agent. All corporate emails use NTE's own server.
 
-| Componente | Detalle |
+| Component | Detail |
 |---|---|
-| **Servidor** | mail.nissienterprise.com |
-| **Dominio** | @nissienterprise.com |
-| **Protocolo envío** | SMTP/TLS — Puerto 587 |
-| **Protocolo recepción** | IMAP/SSL — Puerto 993 |
-| **Credenciales** | Azure Key Vault → `secret/nte-email-smtp` |
-| **Proveedor hosting** | Servidor propio NTE (Plesk) |
+| **Server** | mail.nissienterprise.com |
+| **Domain** | @nissienterprise.com |
+| **Send protocol** | SMTP/TLS — Port 587 |
+| **Receive protocol** | IMAP/SSL — Port 993 |
+| **Credentials** | Azure Key Vault → `secret/nte-email-smtp` |
+| **Hosting provider** | NTE's own server (Plesk) |
 
-### Emails de Agentes
+### Agent Emails
 
-| Agente | Email |
+| Agent | Email |
 |---|---|
 | Jarvis (NTE-MAIN) | jarvis@nissienterprise.com |
 | Samantha (NTE-CX) | samantha@nissienterprise.com |
@@ -68,109 +68,109 @@
 
 ---
 
-## Gestión de Proyectos & Tareas
+## Project & Task Management
 
-> ✅ **Stack oficial: Jira** — Es la única herramienta de tracking de proyectos y sprints de NTE.
+> ✅ **Official stack: Jira** — It is NTE's sole tool for tracking projects and sprints.
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **Jira** | Tracking de tareas, sprints, epics y proyectos | $10/usuario/mes |
-| **Jira Automation** | Reglas automáticas de flujo de trabajo | Incluido |
-| **Confluence** | Wiki del equipo y documentación técnica | $5/usuario/mes |
+| **Jira** | Task, sprint, epic, and project tracking | $10/user/month |
+| **Jira Automation** | Automatic workflow rules | Included |
+| **Confluence** | Team wiki and technical documentation | $5/user/month |
 
-### Integración Jarvis ↔ Jira
+### Jarvis ↔ Jira Integration
 
-- **David (NTE-PM)** crea y gestiona todos los tickets de Jira automáticamente.
-- **Jarvis** consulta el estado de Jira para reportes semanales a Michael.
-- **AVA (NTE-QA)** actualiza tickets con resultados de testing.
-- **Optimus (NTE-DEVOPS)** cierra tickets automáticamente al completar deployments.
-- **T-800 (NTE-SECURITY)** crea tickets de seguridad con clasificación `CRITICAL` o `HIGH`.
+- **David (NTE-PM)** creates and manages all Jira tickets automatically.
+- **Jarvis** checks Jira status for weekly reports to Michael.
+- **AVA (NTE-QA)** updates tickets with testing results.
+- **Optimus (NTE-DEVOPS)** automatically closes tickets upon completing deployments.
+- **T-800 (NTE-SECURITY)** creates security tickets classified `CRITICAL` or `HIGH`.
 
 ```
-Workspace Jira:   https://[nte-workspace].atlassian.net
+Jira Workspace:   https://[nte-workspace].atlassian.net
 API Token:        Azure Key Vault → secret/jira-api-token
-Proyectos:
-  NTE-SW  → Wing Software R&D (sprints)
+Projects:
+  NTE-SW  → Software R&D Wing (sprints)
   NTE-MKT → Blog & Marketing
-  NTE-OPS → Operaciones & Infraestructura
-  NTE-SEC → Seguridad
+  NTE-OPS → Operations & Infrastructure
+  NTE-SEC → Security
 ```
 
 ---
 
-## 💼 Finanzas — QuickBooks
+## 💼 Finance — QuickBooks
 
-Integración de QuickBooks Online para la gestión financiera automatizada de NTE.
+QuickBooks Online integration for NTE's automated financial management.
 
-| Función | Agente Responsable | Requiere Aprobación Michael |
+| Function | Responsible Agent | Requires Michael's Approval |
 |---|---|---|
-| Generar invoice a cliente | TARS (draft) → Jarvis (envío) | ✅ Sí |
-| Generar estimado/quote | Jarvis | ✅ Sí |
-| Ver estado de cuentas por cobrar | Jarvis | ❌ No |
-| Reportar ingresos mensuales | HAL (NTE-ANALYTICS) | ❌ No |
-| Recordatorio de pago vencido | TARS | ✅ Sí (primer envío) |
+| Generate client invoice | TARS (draft) → Jarvis (send) | ✅ Yes |
+| Generate estimate/quote | Jarvis | ✅ Yes |
+| View accounts receivable status | Jarvis | ❌ No |
+| Report monthly revenue | HAL (NTE-ANALYTICS) | ❌ No |
+| Overdue payment reminder | TARS | ✅ Yes (first send) |
 
 ```
 QuickBooks:    Online (cloud)
 API:           QuickBooks Online REST API v3
 OAuth Token:   Azure Key Vault → secret/quickbooks-oauth-token
-Ambiente:      Sandbox (Dev/Staging) · Production (Prod)
+Environment:   Sandbox (Dev/Staging) · Production (Prod)
 ```
 
-> ⚠️ **Regla de oro:** Ningún agente puede enviar una factura o cobrar sin aprobación explícita de Michael. Jarvis siempre escala via `#nte-alerts` antes de ejecutar cualquier transacción financiera.
+> ⚠️ **Golden rule:** No agent can send an invoice or collect payment without Michael's explicit approval. Jarvis always escalates via `#nte-alerts` before executing any financial transaction.
 
 ---
 
-## 📅 Calendario — Google Calendar + NTE-Calendar
+## 📅 Calendar — Google Calendar + NTE-Calendar
 
-| Componente | Detalle |
+| Component | Detail |
 |---|---|
-| **Plataforma** | Google Calendar |
-| **Calendario principal** | NTE-Calendar (compartido con Michael) |
+| **Platform** | Google Calendar |
+| **Main calendar** | NTE-Calendar (shared with Michael) |
 | **API Token** | Azure Key Vault → `secret/google-calendar-token` |
-| **Agentes con acceso** | Jarvis, David, Samantha |
+| **Agents with access** | Jarvis, David, Samantha |
 
-### Usos por Agente
+### Uses by Agent
 
-- **Jarvis** → Programa hitos del roadmap, reuniones de sprint review
-- **David** → Planifica sprints, deadlines de proyectos en NTE-Calendar
-- **Samantha** → Agenda citas con clientes y prospects directamente en NTE-Calendar
+- **Jarvis** → Schedules roadmap milestones, sprint review meetings
+- **David** → Plans sprints, project deadlines in NTE-Calendar
+- **Samantha** → Schedules appointments with clients and prospects directly in NTE-Calendar
 
 ---
 
-## Desarrollo & DevOps
+## Development & DevOps
 
-> ✅ **Todos los repositorios van en GitHub.**
+> ✅ **All repositories live on GitHub.**
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **GitHub** | Control de versiones + Code Review (todos los repos) | $4/usuario |
-| **GitHub Actions** | CI/CD pipelines automáticos | Incluido |
-| **Docker + Compose** | Containerización de cada agente | $0 |
+| **GitHub** | Version control + Code Review (all repos) | $4/user |
+| **GitHub Actions** | Automatic CI/CD pipelines | Included |
+| **Docker + Compose** | Containerization for each agent | $0 |
 
-### Estructura de Repositorios en GitHub
+### GitHub Repository Structure
 
 ```
 GitHub Org: github.com/[NTE-org]
-├── openclaw-nte          ← Este repo (config & documentación)
-├── nte-[cliente]-[app]   ← Proyectos de clientes
-├── nte-infra             ← Scripts de infraestructura
-└── nte-agents-docker     ← Dockerfiles de cada agente
+├── openclaw-nte          ← This repo (config & documentation)
+├── nte-[client]-[app]    ← Client projects
+├── nte-infra             ← Infrastructure scripts
+└── nte-agents-docker     ← Dockerfiles for each agent
 ```
 
-### Branches por Ambiente
+### Branches by Environment
 
-| Branch | Ambiente | Protegido |
+| Branch | Environment | Protected |
 |---|---|---|
-| `develop` | Development | ❌ Push libre |
-| `staging` | Staging | ✅ PR requerido |
-| `main` | Production | ✅ PR + AVA aprovado + T-800 clear |
+| `develop` | Development | ❌ Free push |
+| `staging` | Staging | ✅ PR required |
+| `main` | Production | ✅ PR + AVA approved + T-800 clear |
 
 ---
 
-## 🐳 Docker — Un Contenedor por Agente
+## 🐳 Docker — One Container per Agent
 
-Cada sub-agente tiene su propio Dockerfile en `nte-agents-docker`:
+Each sub-agent has its own Dockerfile in `nte-agents-docker`:
 
 ```
 nte-agents-docker/
@@ -196,19 +196,19 @@ nte-agents-docker/
 
 ---
 
-## 🔐 Seguridad de Secretos — Azure Key Vault
+## 🔐 Secrets Security — Azure Key Vault
 
-> ✅ **Todos los secretos viven en Azure Key Vault.** Cero passwords en código o en este repositorio.
+> ✅ **All secrets live in Azure Key Vault.** Zero passwords in code or in this repository.
 
-| Componente | Detalle |
+| Component | Detail |
 |---|---|
-| **Servicio** | Azure Key Vault |
+| **Service** | Azure Key Vault |
 | **Vault Name** | `nte-keyvault` |
-| **Acceso** | Solo Jarvis tiene acceso directo (Managed Identity) |
-| **Rotación** | Automática cada 90 días (por T-800) |
+| **Access** | Only Jarvis has direct access (Managed Identity) |
+| **Rotation** | Automatic every 90 days (by T-800) |
 
 ```bash
-# Ejemplo: Obtener secreto desde Jarvis
+# Example: Retrieve secret from Jarvis
 az keyvault secret show \
   --name "anthropic-api-key" \
   --vault-name "nte-keyvault" \
@@ -217,44 +217,44 @@ az keyvault secret show \
 
 ---
 
-## Marketing & Contenido
+## Marketing & Content
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **WordPress REST API** | Publicación del blog | $0 |
-| **Buffer Pro** | Programación de RRSS | $18/mes |
-| **Semrush** | Investigación SEO + keywords | $140/mes |
-| **SendGrid** | Email marketing + newsletter | $20/mes |
-| **DALL-E API** | Imágenes generadas por IA | ~$0.04/imagen |
+| **WordPress REST API** | Blog publishing | $0 |
+| **Buffer Pro** | Social media scheduling | $18/month |
+| **Semrush** | SEO research + keywords | $140/month |
+| **SendGrid** | Email marketing + newsletter | $20/month |
+| **DALL-E API** | AI-generated images | ~$0.04/image |
 
 ---
 
-## Analíticas & BI
+## Analytics & BI
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **Google Analytics 4** | Métricas web | $0 |
-| **Search Console** | Rendimiento SEO | $0 |
-| **Metabase** | Dashboards de BI | $0 (self-hosted) |
-| **Looker Studio** | Reportes ejecutivos | $0 |
+| **Google Analytics 4** | Web metrics | $0 |
+| **Search Console** | SEO performance | $0 |
+| **Metabase** | BI dashboards | $0 (self-hosted) |
+| **Looker Studio** | Executive reports | $0 |
 
 ---
 
-## Infraestructura de Hosting
+## Hosting Infrastructure
 
-| Herramienta | Función | Costo |
+| Tool | Function | Cost |
 |---|---|---|
-| **DigitalOcean** | VPS principal (OpenClaw) | ~$48/mes |
-| **Cloudflare** | WAF + DDoS + SSL | $20/mes |
-| **Fail2Ban** | Protección del VPS | $0 |
-| **Plesk** | Hosting de apps de clientes + email @nissienterprise.com | Ya existente |
+| **DigitalOcean** | Main VPS (OpenClaw) | ~$48/month |
+| **Cloudflare** | WAF + DDoS + SSL | $20/month |
+| **Fail2Ban** | VPS protection | $0 |
+| **Plesk** | Client app hosting + @nissienterprise.com email | Already in place |
 
 ---
 
-## Resumen de Costos Mensuales Estimados
+## Estimated Monthly Cost Summary
 
 ```mermaid
-pie title Distribución de Costos Adicionales (~$580/mes)
+pie title Additional Cost Distribution (~$580/month)
     "Anthropic API (Claude)" : 225
     "Semrush" : 140
     "VPS DigitalOcean" : 48
@@ -265,9 +265,9 @@ pie title Distribución de Costos Adicionales (~$580/mes)
     "GitHub Team" : 12
     "Jira + Confluence" : 20
     "QuickBooks Online" : 15
-    "Otros" : 12
+    "Other" : 12
 ```
 
 ---
 
-[← Volver al inicio](../README.md) | [Roadmap →](../06-roadmap/implementacion-2026.md)
+[← Back to home](../README.md) | [Roadmap →](../06-roadmap/implementation-2026.md)

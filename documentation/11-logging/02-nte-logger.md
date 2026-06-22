@@ -1,69 +1,69 @@
 <div align="center">
 
-# 📝 NTE Logger — Referencia del Logger Central
-### `nte-logger.js` · Basado en Pino
+# 📝 NTE Logger — Central Logger Reference
+### `nte-logger.js` · Based on Pino
 
 </div>
 
-> **Nota:** Este documento es referencia de diseño. La implementación se realizará en la Fase 1 del roadmap.
+> **Note:** This document is a design reference. The implementation will take place in Phase 1 of the roadmap.
 
 ---
 
-## Instalación (cuando se implemente)
+## Installation (when implemented)
 
 ```bash
-# En el directorio de cada agente
+# In each agent's directory
 npm install pino pino-pretty uuid
 ```
 
 ---
 
-## API del Logger — Métodos Disponibles
+## Logger API — Available Methods
 
-Cada agente importa el logger central y crea su instancia con su identidad:
+Each agent imports the central logger and creates its instance with its identity:
 
 ```javascript
 const { createAgentLogger } = require('/workspace/logging/nte-logger');
 
-// Inicializar UNA VEZ al arrancar el agente
+// Initialize ONCE when the agent starts
 const log = createAgentLogger(
-  'Samantha',       // Nombre del personaje
-  'NTE-CX',         // ID técnico
-  'administrativa'  // Wing
+  'Samantha',       // Character name
+  'NTE-CX',         // Technical ID
+  'administrative'  // Wing
 );
 ```
 
-### Métodos por Tipo de Evento
+### Methods by Event Type
 
 ```javascript
-// ── Tarea programada del heartbeat ──────────────────────────────
+// ── Scheduled heartbeat task ──────────────────────────────
 log.heartbeat('Starting weekly blog pipeline');
 
-// ── Acción interna de negocio ────────────────────────────────────
+// ── Internal business action ────────────────────────────────────
 log.action('New WhatsApp message received', {
   client: 'Juan Perez',
   channel: 'whatsapp',
-  preview: '¿Cuánto cuesta un sitio web?'
+  preview: 'How much does a website cost?'
 });
 
-// ── Comando de sistema ejecutado ─────────────────────────────────
+// ── System command executed ─────────────────────────────────
 log.command('docker restart nte-samantha', {
   reason: 'memory_threshold_exceeded'
 });
 
-// ── Llamada a API externa ─────────────────────────────────────────
+// ── External API call ─────────────────────────────────────────
 log.apiCall('QuickBooks', '/v3/company/invoices', 'POST', {
   invoice_number: 'INV-2026-001',
   amount: 3500
 });
 
-// ── Comunicación con otro agente ──────────────────────────────────
+// ── Communication with another agent ──────────────────────────────────
 log.interAgent('NTE-TREND-SCOUT', 'Triggering weekly research', {
   trigger: 'monday_2am_heartbeat',
   target_articles: 2
 });
 
-// ── Decisión tomada por el agente ─────────────────────────────────
+// ── Decision made by the agent ─────────────────────────────────
 log.decision(
   'Classifying lead',
   'HOT',
@@ -71,33 +71,33 @@ log.decision(
   { lead_id: 'lead-2026-0329-001' }
 );
 
-// ── Escalación a Michael ──────────────────────────────────────────
+// ── Escalation to Michael ──────────────────────────────────────────
 log.escalation('Contract > $5,000 requires approval', {
-  client: 'Empresa ABC',
+  client: 'Company ABC',
   amount: 7500,
   slack_channel: '#nte-alerts'
 });
 
-// ── Acceso a Azure Key Vault ──────────────────────────────────────
+// ── Azure Key Vault access ──────────────────────────────────────
 log.secretAccess('quickbooks-oauth-token');
 
-// ── Operación en Jira ─────────────────────────────────────────────
+// ── Jira operation ─────────────────────────────────────────────────
 log.jiraEvent('CREATE', 'NTE-SW-142', {
   summary: 'Build authentication module',
   assignee: 'bishop'
 });
 
-// ── Operación en QuickBooks ───────────────────────────────────────
+// ── QuickBooks operation ───────────────────────────────────────
 log.qbEvent('CREATE_INVOICE_DRAFT', {
-  client: 'Empresa ABC',
+  client: 'Company ABC',
   amount: 7500,
   status: 'pending_michael_approval'
 });
 
-// ── Email enviado ─────────────────────────────────────────────────
+// ── Email sent ─────────────────────────────────────────────────────
 log.emailSent(
   'juan@empresa.com',
-  'Gracias por contactar a Nissi Technology',
+  'Thank you for contacting Nissi Technology',
   'smtp'
 );
 
@@ -113,57 +113,57 @@ log.securityScan('NTE-SW-142 PR', 'pass', {
   scan_duration_ms: 4200
 });
 
-// ── Error no fatal ────────────────────────────────────────────────
+// ── Non-fatal error ────────────────────────────────────────────────
 log.error('Failed to call Semrush API', error, {
   retry_count: 3,
   next_retry_in: '5min'
 });
 
-// ── Error crítico ─────────────────────────────────────────────────
+// ── Critical error ─────────────────────────────────────────────────
 log.critical('Security breach attempt detected', error, {
   ip: '192.168.1.100',
   pattern: 'prompt_injection'
 });
 
-// ── Debug (solo visible en Development) ──────────────────────────
+// ── Debug (only visible in Development) ──────────────────────────
 log.debug('Processing lead form data', { raw_form: formData });
 ```
 
 ---
 
-## Flujos Multi-Agente — trace_id
+## Multi-Agent Flows — trace_id
 
-La feature más importante: el `trace_id` conecta toda la cadena de trabajo entre agentes.
+The most important feature: the `trace_id` connects the entire chain of work across agents.
 
 ```javascript
-// ── PASO 1: Jarvis inicia el flujo y genera el trace_id ──────────
+// ── STEP 1: Jarvis starts the flow and generates the trace_id ──────────
 const jarvisLog = createAgentLogger('Jarvis', 'NTE-MAIN', 'orchestrator');
 jarvisLog.heartbeat('Starting weekly blog pipeline');
 
-const traceId = jarvisLog.getTraceId(); // ← extraer el trace
+const traceId = jarvisLog.getTraceId(); // ← extract the trace
 jarvisLog.interAgent('NTE-TREND-SCOUT', 'Triggering Johnny 5', {
   trigger: 'monday_2am', target_articles: 2
 });
 
-// ── PASO 2: Johnny 5 recibe el trace_id y lo continúa ────────────
-// (Jarvis se lo pasa al invocar el agente)
+// ── STEP 2: Johnny 5 receives the trace_id and continues it ────────────
+// (Jarvis passes it along when invoking the agent)
 const johnny5Log = createAgentLogger('Johnny 5', 'NTE-TREND-SCOUT', 'blog', traceId);
 johnny5Log.action('Analyzing Google Trends');
 
-// ── PASO 3: C-3PO también lleva el mismo trace_id ────────────────
+// ── STEP 3: C-3PO also carries the same trace_id ────────────────
 const c3poLog = createAgentLogger('C-3PO', 'NTE-COPYWRITER', 'blog', traceId);
 c3poLog.action('Writing article: "Top 5 AI Trends for SMBs"');
 
-// ── En Grafana: buscar el trace_id y ver TODO el flujo de un vistazo
+// ── In Grafana: search for the trace_id to see the ENTIRE flow at a glance
 // LogQL: {environment="production"} |= "a3f9-bc12-..."
 ```
 
 ---
 
-## Medición de Tiempo Automática
+## Automatic Timing Measurement
 
 ```javascript
-// timed() mide cuánto tarda una operación y lo registra automáticamente
+// timed() measures how long an operation takes and logs it automatically
 const result = await log.timed(
   'Calling Jira API to create sprint',
   async () => {
@@ -171,14 +171,14 @@ const result = await log.timed(
   },
   { event_type: 'JIRA_EVENT', details: { project: 'NTE-SW' } }
 );
-// Log generado: { message: "Calling Jira API...", duration_ms: 342, status: "success" }
+// Log generated: { message: "Calling Jira API...", duration_ms: 342, status: "success" }
 ```
 
 ---
 
-## Formato de Salida JSON (lo que Promtail captura)
+## JSON Output Format (what Promtail captures)
 
-Cada llamada al logger produce una línea JSON en `stdout`:
+Each call to the logger produces a JSON line on `stdout`:
 
 ```json
 {
@@ -207,4 +207,4 @@ Cada llamada al logger produce una línea JSON en `stdout`:
 
 ---
 
-[← README del Logging](./README.md) | [Configuración de Infraestructura →](./03-infraestructura.md)
+[← Logging README](./README.md) | [Infrastructure Configuration →](./03-infrastructure.md)

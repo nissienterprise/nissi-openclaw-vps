@@ -1,64 +1,64 @@
 <div align="center">
 
-# 💰 Presupuesto & ROI
-### Inversión en Automatización vs. Retorno Esperado
+# 💰 Budget & ROI
+### Automation Investment vs. Expected Return
 
 </div>
 
-## Costos Adicionales Mensuales
+## Additional Monthly Costs
 
-| Categoría | Herramienta | Costo/Mes | Notas |
+| Category | Tool | Cost/Month | Notes |
 |---|---|---|---|
-| ☁️ Infraestructura | VPS DigitalOcean 4vCPU/8GB | $48 | Suficiente para iniciar |
-| 🤖 IA | Anthropic API (Claude) | ~$150-300 | Depende del volumen de tokens |
-| 🔧 DevOps | GitHub Team | $12 | 3 usuarios × $4 |
-| 📱 Marketing | Buffer Pro | $18 | Hasta 100 canales sociales |
-| 🔍 SEO | Semrush Starter | $140 | Puede bajarse a plan básico |
-| 📧 Email | SendGrid Essentials | $20 | Hasta 100K emails/mes |
-| 🗂️ PM/CRM | Jira Standard | $30 | 3 usuarios × $10 |
-| 🔒 Seguridad | Cloudflare Pro | $20 | WAF + DDoS básico |
-| 🔐 Secretos | HashiCorp Vault Cloud | $0 | Plan gratuito disponible |
-| 💬 Comunicación | Twilio (WhatsApp + SMS) | ~$50 | Pay-as-you-go |
-| **TOTAL** | | **~$488-638/mes** | |
+| ☁️ Infrastructure | DigitalOcean VPS 4vCPU/8GB | $48 | Sufficient to start |
+| 🤖 AI | Anthropic API (Claude) | ~$150-300 | Depends on token volume |
+| 🔧 DevOps | GitHub Team | $12 | 3 users × $4 |
+| 📱 Marketing | Buffer Pro | $18 | Up to 100 social channels |
+| 🔍 SEO | Semrush Starter | $140 | Can be downgraded to basic plan |
+| 📧 Email | SendGrid Essentials | $20 | Up to 100K emails/month |
+| 🗂️ PM/CRM | Jira Standard | $30 | 3 users × $10 |
+| 🔒 Security | Cloudflare Pro | $20 | Basic WAF + DDoS |
+| 🔐 Secrets | HashiCorp Vault Cloud | $0 | Free plan available |
+| 💬 Communication | Twilio (WhatsApp + SMS) | ~$50 | Pay-as-you-go |
+| **TOTAL** | | **~$488-638/month** | |
 
-## ROI Esperado
+## Expected ROI
 
 ```mermaid
 flowchart LR
-    COSTO["💸 Costo Adicional\n~$550/mes\n$6,600/año"] --> VS{{"vs"}}
+    COSTO["💸 Additional Cost\n~$550/month\n$6,600/year"] --> VS{{"vs"}}
     
-    GANANCIA["💰 Valor Generado\n• 1 proyecto web adicional/mes\n  (+$2,500 mínimo)\n• 5x más proyectos simultáneos\n• 70% menos tiempo en admin\n• 24/7 atención al cliente\n• 8 artículos de blog/mes\n  (vs $3,200 freelancer)"] --> VS
+    GANANCIA["💰 Value Generated\n• 1 additional web project/month\n  (+$2,500 minimum)\n• 5x more simultaneous projects\n• 70% less time on admin\n• 24/7 customer service\n• 8 blog articles/month\n  (vs $3,200 freelancer)"] --> VS
     
-    VS --> ROI["🚀 ROI Proyectado\n400-700%\na 12 meses"]
+    VS --> ROI["🚀 Projected ROI\n400-700%\nat 12 months"]
 ```
 
-## Punto de Equilibrio
+## Break-Even Point
 
-> **Un solo proyecto web adicional al mes ($1,800-$3,500) cubre el costo completo de toda la infraestructura de automatización.**
+> **A single additional web project per month ($1,800-$3,500) covers the full cost of the entire automation infrastructure.**
 
-Con el sistema activo, NTE puede manejar **5x más proyectos** sin contratar personal adicional.
+With the system active, NTE can handle **5x more projects** without hiring additional staff.
 
-## Proyección de Ingresos Adicionales
+## Additional Revenue Projection
 
-| Fuente | Proyección Mensual (Q4 2026) |
+| Source | Monthly Projection (Q4 2026) |
 |---|---|
-| Proyectos web adicionales (×2) | +$5,000 |
-| Proyectos software (×1 adicional) | +$8,000 |
-| Leads convertidos por automatización | +$3,000 |
-| Ahorro en marketing freelance | +$3,200 |
-| **Total adicional estimado** | **+$19,200/mes** |
+| Additional web projects (×2) | +$5,000 |
+| Software projects (×1 additional) | +$8,000 |
+| Leads converted through automation | +$3,000 |
+| Savings on freelance marketing | +$3,200 |
+| **Estimated additional total** | **+$19,200/month** |
 
-*Inversión mensual: ~$550 → ROI: ~3,400%*
+*Monthly investment: ~$550 → ROI: ~3,400%*
 
-## Optimización de Costos de API
+## API Cost Optimization
 
-Para mantenerse en el rango $150-$300/mes de API:
+To stay within the $150-$300/month API range:
 
-| Estrategia | Impacto |
+| Strategy | Impact |
 |---|---|
-| Usar Haiku para tareas de alta frecuencia | -40% del costo total |
-| Cache de respuestas comunes en NTE-CX | -15% |
-| Límites de tokens por agente | -10% |
-| Alerta automática a Michael si supera $400 | Previene sorpresas |
+| Use Haiku for high-frequency tasks | -40% of total cost |
+| Cache common responses in NTE-CX | -15% |
+| Token limits per agent | -10% |
+| Automatic alert to Michael if it exceeds $400 | Prevents surprises |
 
-[← KPIs](../08-kpis/metricas-exito.md) | [Volver al inicio](../README.md)
+[← KPIs](../08-kpis/success-metrics.md) | [Back to home](../README.md)

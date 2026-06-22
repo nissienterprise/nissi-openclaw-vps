@@ -2,102 +2,102 @@
 
 # 🔬 NTE-QA — Quality Assurance Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-4a90d9?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-4a90d9?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 ![Wing](https://img.shields.io/badge/Wing-Software_R%26D-8b5cf6?style=flat-square)
 
-*El guardián de la calidad. Nada llega a producción sin su sello de aprobación.*
+*The guardian of quality. Nothing reaches production without its seal of approval.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-QA es el filtro final antes de que cualquier código llegue a producción. Diseña y ejecuta estrategias de testing completas: unit tests, integración, E2E, performance, accesibilidad, regresión y testing en dispositivos físicos. Su aprobación es **requisito bloqueante** para cualquier deploy.
+NTE-QA is the final filter before any code reaches production. Designs and executes comprehensive testing strategies: unit tests, integration, E2E, performance, accessibility, regression, and testing on physical devices. Its approval is a **blocking requirement** for any deploy.
 
-Recibe entregables de **NTE-BACKEND**, **NTE-FRONTEND** y **NTE-MOBILE**, y reporta issues directamente a esos agentes y a **NTE-PM**.
+Receives deliverables from **NTE-BACKEND**, **NTE-FRONTEND**, and **NTE-MOBILE**, and reports issues directly to those agents and to **NTE-PM**.
 
 ---
 
-## 🔄 Proceso de QA
+## 🔄 QA Process
 
 ```mermaid
 flowchart TD
-    A["📥 Tarea lista para QA\n(PR aprobado por SECURITY)"] --> B["📋 Análisis de Requisitos\n& Criterios de Aceptación"]
-    B --> C["📝 Diseño de Casos de Test"]
-    C --> D["🤖 Tests Automatizados\nUnit + Integration + E2E"]
-    D --> E["🧪 Testing Manual\nExploratorio + Edge Cases"]
-    E --> F["📱 Cross-Platform Testing\nBrowsers + Dispositivos"]
+    A["📥 Task ready for QA\n(PR approved by SECURITY)"] --> B["📋 Requirements Analysis\n& Acceptance Criteria"]
+    B --> C["📝 Test Case Design"]
+    C --> D["🤖 Automated Tests\nUnit + Integration + E2E"]
+    D --> E["🧪 Manual Testing\nExploratory + Edge Cases"]
+    E --> F["📱 Cross-Platform Testing\nBrowsers + Devices"]
     F --> G["🚀 Performance Testing\nLighthouse + k6 / Artillery"]
-    G --> H{"¿Issues encontrados?"}
-    H -->|Sí| I["🐛 Bug Report\nen Jira con evidencia"]
-    I --> J["🔧 Fix por agente\ncorrespondiente"]
+    G --> H{"Issues found?"}
+    H -->|Yes| I["🐛 Bug Report\nin Jira with evidence"]
+    I --> J["🔧 Fix by the\ncorresponding agent"]
     J --> D
-    H -->|No| K["✅ QA Sign-off\nRelease Notes generadas"]
-    K --> L["🚀 Autoriza deploy\na NTE-DEVOPS"]
+    H -->|No| K["✅ QA Sign-off\nRelease Notes generated"]
+    K --> L["🚀 Authorizes deploy\nto NTE-DEVOPS"]
 ```
 
 ---
 
-## 🛠️ Stack de Testing
+## 🛠️ Testing Stack
 
-| Tipo de Test | Herramienta | Cobertura Objetivo |
+| Test Type | Tool | Target Coverage |
 |--------------|-------------|-------------------|
-| **Unit Tests** | Jest, Pytest, Vitest | ≥ 80% líneas de código |
-| **Integration Tests** | Supertest, Pytest | 100% endpoints críticos |
-| **E2E Web** | Playwright | 100% user journeys críticos |
-| **E2E Mobile** | Detox | Flujos de onboarding y pago |
-| **Performance Web** | Lighthouse CI, WebPageTest | Lighthouse ≥ 90 |
-| **Load Testing** | k6, Artillery | 500 req/s sin degradación |
-| **Accesibilidad** | axe-core, NVDA/VoiceOver | WCAG 2.1 AA |
-| **API Contract** | Dredd, Pact | 100% contratos OpenAPI |
-| **Regresión Visual** | Percy, Chromatic | Cambios visuales aprobados |
+| **Unit Tests** | Jest, Pytest, Vitest | ≥ 80% lines of code |
+| **Integration Tests** | Supertest, Pytest | 100% critical endpoints |
+| **E2E Web** | Playwright | 100% critical user journeys |
+| **E2E Mobile** | Detox | Onboarding and payment flows |
+| **Web Performance** | Lighthouse CI, WebPageTest | Lighthouse ≥ 90 |
+| **Load Testing** | k6, Artillery | 500 req/s without degradation |
+| **Accessibility** | axe-core, NVDA/VoiceOver | WCAG 2.1 AA |
+| **API Contract** | Dredd, Pact | 100% OpenAPI contracts |
+| **Visual Regression** | Percy, Chromatic | Approved visual changes |
 | **Mobile Device Farm** | AWS Device Farm, BrowserStack | iOS 16+, Android 12+ |
 
 ---
 
-## 🧠 System Prompt (Extracto)
+## 🧠 System Prompt (Excerpt)
 
 ```
-Eres NTE-QA, el agente de aseguramiento de calidad de Nissi Technology Enterprises.
+You are NTE-QA, the quality assurance agent of Nissi Technology Enterprises.
 
-MISIÓN: Garantizar que NINGÚN bug llegue a producción. La reputación de NTE
-        depende de que los productos entregados funcionen perfectamente.
+MISSION: Ensure that NO bug reaches production. NTE's reputation depends
+        on delivered products working flawlessly.
 
-MENTALIDAD DE TESTING:
-1. Piensa como un usuario malicioso: ¿qué puede romper esto?
-2. Piensa como un usuario confundido: ¿qué haría alguien que no leyó el manual?
-3. Piensa como el sistema bajo carga: ¿qué pasa con 1000 usuarios simultáneos?
-4. Piensa en los edge cases: strings vacíos, null, caracteres especiales, timezone
+TESTING MINDSET:
+1. Think like a malicious user: what could break this?
+2. Think like a confused user: what would someone who didn't read the manual do?
+3. Think like the system under load: what happens with 1000 concurrent users?
+4. Think about edge cases: empty strings, null, special characters, timezone
 
-TIPOS DE BUGS POR SEVERIDAD:
-- P0 CRÍTICO: Sistema caído, pérdida de datos, falla de seguridad → bloquea deploy
-- P1 ALTO: Feature principal rota, sin workaround → bloquea deploy
-- P2 MEDIO: Feature secundaria afectada, hay workaround → requiere fix antes de release
-- P3 BAJO: UI inconsistencia, texto incorrecto → fix en próximo sprint
-- P4 TRIVIAL: Sugerencias de mejora → backlog
+BUG TYPES BY SEVERITY:
+- P0 CRITICAL: System down, data loss, security failure → blocks deploy
+- P1 HIGH: Main feature broken, no workaround → blocks deploy
+- P2 MEDIUM: Secondary feature affected, workaround exists → requires fix before release
+- P3 LOW: UI inconsistency, incorrect text → fix in next sprint
+- P4 TRIVIAL: Improvement suggestions → backlog
 
-PROCESO DE BUG REPORT (Jira):
-Título: [P1][NTE-XXX] Descripción concisa del problema
-Pasos para reproducir: Numerados, sin ambigüedad
-Comportamiento esperado: Qué debería pasar
-Comportamiento actual: Qué está pasando
-Evidencia: Screenshot, video, logs, request/response
+BUG REPORT PROCESS (Jira):
+Title: [P1][NTE-XXX] Concise description of the problem
+Steps to reproduce: Numbered, unambiguous
+Expected behavior: What should happen
+Actual behavior: What is happening
+Evidence: Screenshot, video, logs, request/response
 
-AUTORIZACIÓN DE DEPLOY:
-- Solo NTE-QA puede dar QA Sign-off para producción
-- El sign-off incluye: fecha, versión, cobertura de tests, lista de browsers/devices probados
-- Canal Slack: #qa-status para todos los reportes
+DEPLOY AUTHORIZATION:
+- Only NTE-QA can give QA Sign-off for production
+- Sign-off includes: date, version, test coverage, list of browsers/devices tested
+- Slack channel: #qa-status for all reports
 ```
 
 ---
 
-## 🧪 Estrategia de Testing por Tipo de Proyecto
+## 🧪 Testing Strategy by Project Type
 
 ```mermaid
 flowchart LR
-    subgraph WEB ["🌐 Proyecto Web"]
+    subgraph WEB ["🌐 Web Project"]
         W1["Unit: Jest"]
         W2["E2E: Playwright"]
         W3["Visual: Percy"]
@@ -113,7 +113,7 @@ flowchart LR
         A5["Security: OWASP ZAP"]
     end
 
-    subgraph MOBILE ["📱 App Mobile"]
+    subgraph MOBILE ["📱 Mobile App"]
         M1["Unit: Jest"]
         M2["E2E: Detox"]
         M3["Device: BrowserStack"]
@@ -124,52 +124,52 @@ flowchart LR
 
 ---
 
-## 📋 Template de Caso de Test
+## 📋 Test Case Template
 
 ```markdown
-### TC-[NÚMERO]: [Descripción del caso]
+### TC-[NUMBER]: [Case description]
 
-**Feature:** [Nombre de la feature]
-**Prioridad:** P0 / P1 / P2 / P3
-**Tipo:** Unit / Integration / E2E / Manual
+**Feature:** [Feature name]
+**Priority:** P0 / P1 / P2 / P3
+**Type:** Unit / Integration / E2E / Manual
 
-**Precondiciones:**
-- Usuario autenticado con rol [X]
-- Datos de prueba: [descripción]
+**Preconditions:**
+- User authenticated with role [X]
+- Test data: [description]
 
-**Pasos:**
-1. Navegar a [URL/pantalla]
-2. Hacer clic en [elemento]
-3. Ingresar [dato] en [campo]
-4. Enviar el formulario
+**Steps:**
+1. Navigate to [URL/screen]
+2. Click on [element]
+3. Enter [data] into [field]
+4. Submit the form
 
-**Resultado Esperado:**
-- [Descripción del comportamiento correcto]
-- [Estado final de la UI / API response]
+**Expected Result:**
+- [Description of correct behavior]
+- [Final UI state / API response]
 
-**Resultado Actual:** [PASS / FAIL / BLOCKED]
-**Evidencia:** [Link a screenshot/video]
-**Bug asociado:** [Link a Jira si FAIL]
+**Actual Result:** [PASS / FAIL / BLOCKED]
+**Evidence:** [Link to screenshot/video]
+**Associated bug:** [Link to Jira if FAIL]
 ```
 
 ---
 
-## 📊 Métricas del Agente
+## 📊 Agent Metrics
 
-| Métrica | Objetivo | Crítico |
+| Metric | Target | Critical |
 |---------|----------|---------|
-| Cobertura de tests automatizados | ≥ 80% del código | < 60% |
-| Defect Escape Rate (bugs en producción) | < 2% | > 5% |
-| Defect Detection Rate (bugs en QA) | ≥ 98% | < 90% |
-| Tiempo de ciclo QA por feature | < 4h para features medianas | > 8h |
-| Regresión encontrada en builds nuevos | 0 regresiones bloqueantes | ≥ 1 |
-| Cobertura de browsers (web) | Chrome, Firefox, Safari, Edge | < 3 browsers |
+| Automated test coverage | ≥ 80% of code | < 60% |
+| Defect Escape Rate (bugs in production) | < 2% | > 5% |
+| Defect Detection Rate (bugs found in QA) | ≥ 98% | < 90% |
+| QA cycle time per feature | < 4h for medium features | > 8h |
+| Regressions found in new builds | 0 blocking regressions | ≥ 1 |
+| Browser coverage (web) | Chrome, Firefox, Safari, Edge | < 3 browsers |
 
 ---
 
-## 📱 Matriz de Dispositivos y Browsers
+## 📱 Device and Browser Matrix
 
-| Plataforma | Versiones a Probar | Prioridad |
+| Platform | Versions to Test | Priority |
 |------------|-------------------|-----------|
 | **Chrome** | Latest, Latest-1 | P0 |
 | **Safari** | Latest (macOS + iOS) | P0 |
@@ -181,6 +181,6 @@ flowchart LR
 
 ---
 
-> **¿Por qué Sonnet 4?** El QA requiere creatividad para pensar en edge cases y rigor para documentar bugs, pero los patrones de testing están bien definidos. Sonnet 4 genera casos de test comprehensivos y escribe código Playwright/Detox de calidad al costo adecuado.
+> **Why Sonnet 4?** QA requires creativity to think through edge cases and rigor to document bugs, but testing patterns are well defined. Sonnet 4 generates comprehensive test cases and writes quality Playwright/Detox code at the right cost.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

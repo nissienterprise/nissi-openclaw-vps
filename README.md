@@ -3,46 +3,46 @@
 # 🧠 NTE · OpenClaw Intelligence Hub
 
 
-### Sistema de Automatización con IA — Guía Completa
+### AI Automation System — Complete Guide
 **Nissi Technology Enterprises Inc. · Miami, FL · 2026**
 
 ---
 
-*"La tecnología no es un fin, sino el medio por el cual transformamos organizaciones y comunidades."*
+*"Technology is not an end in itself, but the means by which we transform organizations and communities."*
 **— Nissi Technology Enterprises**
 
 ---
 
-[![Agentes Activos](https://img.shields.io/badge/Agentes_Activos-19-4a90d9?style=for-the-badge&logo=robot)](./documentacion/03-agentes/)
-[![Motor IA](https://img.shields.io/badge/Motor_IA-Claude_Anthropic-ff6b35?style=for-the-badge)](./documentacion/05-stack-tecnologico/)
-[![Plataforma](https://img.shields.io/badge/Plataforma-OpenClaw_VPS-1a3a5c?style=for-the-badge)](./documentacion/02-infraestructura/)
-[![Estado](https://img.shields.io/badge/Estado-En_Construcción_2026-5cb85c?style=for-the-badge)](./documentacion/06-roadmap/)
-[![Repositorios](https://img.shields.io/badge/Repos-GitHub-181717?style=for-the-badge&logo=github)](https://github.com)
-[![Secretos](https://img.shields.io/badge/Secretos-Azure_Key_Vault-0078D4?style=for-the-badge&logo=microsoftazure)](./documentacion/02-infraestructura/)
+[![Active Agents](https://img.shields.io/badge/Active_Agents-19-4a90d9?style=for-the-badge&logo=robot)](./documentation/03-agents/)
+[![AI Engine](https://img.shields.io/badge/AI_Engine-Claude_Anthropic-ff6b35?style=for-the-badge)](./documentation/05-tech-stack/)
+[![Platform](https://img.shields.io/badge/Platform-OpenClaw_VPS-1a3a5c?style=for-the-badge)](./documentation/02-infrastructure/)
+[![Status](https://img.shields.io/badge/Status-Under_Construction_2026-5cb85c?style=for-the-badge)](./documentation/06-roadmap/)
+[![Repos](https://img.shields.io/badge/Repos-GitHub-181717?style=for-the-badge&logo=github)](https://github.com)
+[![Secrets](https://img.shields.io/badge/Secrets-Azure_Key_Vault-0078D4?style=for-the-badge&logo=microsoftazure)](./documentation/02-infrastructure/)
 
 </div>
 
 ---
 
-## 📖 ¿Qué es este repositorio?
+## 📖 What is this repository?
 
-Este es el **repositorio central** del proyecto de automatización total de Nissi Technology Enterprises utilizando **OpenClaw** — una instancia del Claude Agent SDK desplegada en un VPS seguro en la nube.
+This is the **central repository** for Nissi Technology Enterprises' total automation project, built on **OpenClaw** — an instance of the Claude Agent SDK deployed on a secure cloud VPS.
 
-Aquí encontrarás dos cosas en uno:
-1. **La documentación completa** del ecosistema de 19 agentes de IA que automatizan las operaciones de NTE.
-2. **La configuración de OpenClaw** — templates, workspace configs y guías de despliegue para el VPS.
+Here you'll find two things in one:
+1. **The complete documentation** of the ecosystem of 19 AI agents that automate NTE's operations.
+2. **The OpenClaw configuration** — templates, workspace configs, and deployment guides for the VPS.
 
 ---
 
-## 🤖 El Equipo de Agentes — The Crew
+## 🤖 The Agent Team — The Crew
 
-Cada agente tiene nombre propio, rol definido y su propio email corporativo `@nissienterprise.com`.
+Each agent has its own name, a defined role, and its own corporate email at `@nissienterprise.com`.
 
 ```
 🧠 JARVIS (NTE-MAIN)          → jarvis@nissienterprise.com
-   └─ Main Orchestrator · Claude Opus 4 · Sin Sandbox (Full FS)
+   └─ Main Orchestrator · Claude Opus 4 · No Sandbox (Full FS)
 
-📋 WING ADMINISTRATIVA
+📋 ADMINISTRATIVE WING
    🎧 Samantha (NTE-CX)        → samantha@nissienterprise.com
    ✍️  WALL-E (NTE-CONTENT)     → walle@nissienterprise.com
    📊 HAL (NTE-ANALYTICS)      → hal@nissienterprise.com
@@ -57,7 +57,7 @@ Cada agente tiene nombre propio, rol definido y su propio email corporativo `@ni
    📥 EVA (NTE-LEAD-INTAKE)     → eva@nissienterprise.com
    🌱 TARS (NTE-LEAD-NURTURE)   → tars@nissienterprise.com
 
-⚙️  WING SOFTWARE R&D
+⚙️  SOFTWARE R&D WING
    🗂️  David (NTE-PM)            → david@nissienterprise.com
    ⚙️  Bishop (NTE-BACKEND)      → bishop@nissienterprise.com
    🎨 Sonny (NTE-FRONTEND)      → sonny@nissienterprise.com
@@ -71,49 +71,49 @@ Cada agente tiene nombre propio, rol definido y su propio email corporativo `@ni
 
 ---
 
-## 🗺️ Mapa de la Documentación
+## 🗺️ Documentation Map
 
 ```
 openclaw/
 │
-├── 📌 README.md                    ← Estás aquí (guía unificada)
+├── 📌 README.md                    ← You are here (unified guide)
 ├── 🔧 openclaw.json.example        ← Template config (safe to commit)
-├── 🔧 .env.example                 ← Template variables de entorno
+├── 🔧 .env.example                 ← Environment variable template
 │
-├── workspace/                      ← Configs del workspace de OpenClaw
-│   ├── IDENTITY.md                 ← Identidad/personalidad del agente
-│   ├── BOOTSTRAP.md                ← Scripts de inicialización
-│   ├── HEARTBEAT.md                ← Config de health check
-│   ├── AGENTS.md                   ← Setup multi-agente
-│   ├── TOOLS.md                    ← Herramientas disponibles
-│   ├── SOUL.md                     ← Valores y principios del agente
-│   └── USER.md                     ← Preferencias del usuario
+├── workspace/                      ← OpenClaw workspace configs
+│   ├── IDENTITY.md                 ← Agent identity/personality
+│   ├── BOOTSTRAP.md                ← Initialization scripts
+│   ├── HEARTBEAT.md                ← Health check config
+│   ├── AGENTS.md                   ← Multi-agent setup
+│   ├── TOOLS.md                    ← Available tools
+│   ├── SOUL.md                     ← Agent values and principles
+│   └── USER.md                     ← User preferences
 │
-└── documentacion/
-    ├── 01-empresa/                 ← Misión, visión, servicios
-    ├── 02-infraestructura/         ← VPS, Docker, Azure Key Vault, seguridad
-    ├── 03-agentes/                 ← Fichas de los 19 agentes
-    ├── 04-flujos/                  ← Diagramas de flujos de trabajo
-    ├── 05-stack-tecnologico/       ← Jira, QuickBooks, GitHub, etc.
-    ├── 06-roadmap/                 ← Plan de implementación 2026
-    ├── 07-prompts/                 ← System prompts de los agentes
-    ├── 08-kpis/                    ← Métricas y KPIs de éxito
-    ├── 09-presupuesto/             ← Costos y ROI proyectado
-    └── 10-ambientes/               ← Dev · Staging · Production
+└── documentation/
+    ├── 01-company/                 ← Mission, vision, services
+    ├── 02-infrastructure/          ← VPS, Docker, Azure Key Vault, security
+    ├── 03-agents/                  ← Profiles of the 19 agents
+    ├── 04-flows/                   ← Workflow diagrams
+    ├── 05-tech-stack/              ← Jira, QuickBooks, GitHub, etc.
+    ├── 06-roadmap/                 ← 2026 implementation plan
+    ├── 07-prompts/                 ← Agent system prompts
+    ├── 08-kpis/                    ← Success metrics and KPIs
+    ├── 09-budget/                  ← Costs and projected ROI
+    └── 10-environments/            ← Dev · Staging · Production
 ```
 
 ---
 
-## ⚡ Vista Rápida del Ecosistema
+## ⚡ Quick View of the Ecosystem
 
 ```mermaid
 mindmap
   root((🧠 JARVIS<br/>Opus 4))
-    🏢 Wing Administrativa
+    🏢 Administrative Wing
       🎧 Samantha<br/>Sonnet 4
       ✍️ WALL-E<br/>Sonnet 4
       📊 HAL<br/>Haiku 4
-    ⚙️ Wing Software R&D
+    ⚙️ Software R&D Wing
       🗂️ David<br/>Opus 4
       ⚙️ Bishop<br/>Sonnet 4
       🎨 Sonny<br/>Sonnet 4
@@ -135,115 +135,115 @@ mindmap
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Quick Start
 
-### Si quieres explorar la documentación:
+### If you want to explore the documentation:
 
-| Si quieres... | Ve a... |
+| If you want to... | Go to... |
 |---|---|
-| Ver todos los agentes y su jerarquía | [documentacion/03-agentes/README.md](./documentacion/03-agentes/README.md) |
-| Entender la visión completa de NTE | [documentacion/01-empresa/mision-vision-valores.md](./documentacion/01-empresa/mision-vision-valores.md) |
-| Configurar el servidor por primera vez | [documentacion/02-infraestructura/vps-setup.md](./documentacion/02-infraestructura/vps-setup.md) |
-| Ver el protocol de seguridad | [documentacion/02-infraestructura/seguridad.md](./documentacion/02-infraestructura/seguridad.md) |
-| Ver el prompt de Jarvis (NTE-MAIN) | [documentacion/07-prompts/nte-main-system-prompt.md](./documentacion/07-prompts/nte-main-system-prompt.md) |
-| Entender los 3 ambientes (Dev/Staging/Prod) | [documentacion/10-ambientes/ambientes.md](./documentacion/10-ambientes/ambientes.md) |
-| Ver el stack tecnológico completo | [documentacion/05-stack-tecnologico/herramientas.md](./documentacion/05-stack-tecnologico/herramientas.md) |
-| Revisar el roadmap de implementación | [documentacion/06-roadmap/implementacion-2026.md](./documentacion/06-roadmap/implementacion-2026.md) |
-| Ver los KPIs y métricas de éxito | [documentacion/08-kpis/metricas-exito.md](./documentacion/08-kpis/metricas-exito.md) |
+| See all agents and their hierarchy | [documentation/03-agents/README.md](./documentation/03-agents/README.md) |
+| Understand NTE's full vision | [documentation/01-company/mission-vision-values.md](./documentation/01-company/mission-vision-values.md) |
+| Set up the server for the first time | [documentation/02-infrastructure/vps-setup.md](./documentation/02-infrastructure/vps-setup.md) |
+| See the security protocol | [documentation/02-infrastructure/security.md](./documentation/02-infrastructure/security.md) |
+| See Jarvis's (NTE-MAIN) prompt | [documentation/07-prompts/nte-main-system-prompt.md](./documentation/07-prompts/nte-main-system-prompt.md) |
+| Understand the 3 environments (Dev/Staging/Prod) | [documentation/10-environments/environments.md](./documentation/10-environments/environments.md) |
+| See the full tech stack | [documentation/05-tech-stack/tools.md](./documentation/05-tech-stack/tools.md) |
+| Review the implementation roadmap | [documentation/06-roadmap/implementation-2026.md](./documentation/06-roadmap/implementation-2026.md) |
+| See KPIs and success metrics | [documentation/08-kpis/success-metrics.md](./documentation/08-kpis/success-metrics.md) |
 
-### Si quieres desplegar o configurar OpenClaw:
+### If you want to deploy or configure OpenClaw:
 
 ```bash
-# 1. Clonar el repositorio
+# 1. Clone the repository
 git clone https://github.com/[org]/openclaw-nte.git
 cd openclaw-nte
 
-# 2. Copiar templates
+# 2. Copy templates
 cp .env.example .env
 cp openclaw.json.example openclaw.json
 
-# 3. Configurar credenciales (desde Azure Key Vault)
-#    Ver: documentacion/02-infraestructura/vps-setup.md
+# 3. Configure credentials (from Azure Key Vault)
+#    See: documentation/02-infrastructure/vps-setup.md
 
-# 4. Sincronizar al VPS
-scp openclaw.json root@TU_VPS:/root/.openclaw/
-scp workspace/*.md root@TU_VPS:/root/.openclaw/workspace/
+# 4. Sync to the VPS
+scp openclaw.json root@YOUR_VPS:/root/.openclaw/
+scp workspace/*.md root@YOUR_VPS:/root/.openclaw/workspace/
 
-# 5. Reiniciar el gateway
-ssh root@TU_VPS "systemctl --user restart openclaw-gateway"
+# 5. Restart the gateway
+ssh root@YOUR_VPS "systemctl --user restart openclaw-gateway"
 ```
 
 ---
 
-## 🛡️ Seguridad — Puntos Críticos
+## 🛡️ Security — Critical Points
 
-> ⚠️ **NUNCA** subir a Git los archivos `openclaw.json` o `.env` — están en `.gitignore` por esta razón.
+> ⚠️ **NEVER** commit the `openclaw.json` or `.env` files to Git — they're in `.gitignore` for this reason.
 
-| Dato Sensible | Dónde se guarda |
+| Sensitive Data | Where it's stored |
 |---|---|
 | API Keys (Anthropic, QuickBooks, etc.) | **Azure Key Vault** |
 | Slack bot tokens | **Azure Key Vault** |
-| Credenciales de base de datos | **Azure Key Vault** |
-| Emails corporativos (`@nissienterprise.com`) | **Azure Key Vault** (SMTP credentials) |
-| Tokens de GitHub | **Azure Key Vault** |
-| Templates de config (sin datos) | Este repositorio ✅ |
-| Workspace configs de agentes | Este repositorio ✅ |
+| Database credentials | **Azure Key Vault** |
+| Corporate emails (`@nissienterprise.com`) | **Azure Key Vault** (SMTP credentials) |
+| GitHub tokens | **Azure Key Vault** |
+| Config templates (no data) | This repository ✅ |
+| Agent workspace configs | This repository ✅ |
 
 ### Workspace Files Reference
 
-| Archivo | Propósito |
+| File | Purpose |
 |---|---|
-| `IDENTITY.md` | Define el nombre, personalidad y emoji del agente |
-| `BOOTSTRAP.md` | Instrucciones iniciales y setup del agente |
-| `HEARTBEAT.md` | Configuración de monitoreo y health checks |
-| `AGENTS.md` | Configuración multi-agente y routing |
-| `TOOLS.md` | Herramientas disponibles y sus permisos |
-| `SOUL.md` | Valores, principios y guardrails del agente |
-| `USER.md` | Preferencias específicas del usuario (Michael) |
+| `IDENTITY.md` | Defines the agent's name, personality, and emoji |
+| `BOOTSTRAP.md` | Initial instructions and agent setup |
+| `HEARTBEAT.md` | Monitoring and health check configuration |
+| `AGENTS.md` | Multi-agent configuration and routing |
+| `TOOLS.md` | Available tools and their permissions |
+| `SOUL.md` | Agent values, principles, and guardrails |
+| `USER.md` | User-specific preferences (Michael) |
 
 ---
 
-## 🌿 Ambientes del Sistema
+## 🌿 System Environments
 
-El proyecto opera con **3 ambientes estrictamente separados**:
+The project operates with **3 strictly separated environments**:
 
-| Ambiente | Propósito | Datos | Branch Git |
+| Environment | Purpose | Data | Git Branch |
 |---|---|---|---|
-| **Development** | Desarrollo y configuración inicial | Fake data | `develop` |
-| **Staging** | Testing, demos y QA con data real | Data real | `staging` |
-| **Production** | Sistema en vivo para clientes | Data real | `main` |
+| **Development** | Initial development and configuration | Fake data | `develop` |
+| **Staging** | Testing, demos, and QA with real data | Real data | `staging` |
+| **Production** | Live system for clients | Real data | `main` |
 
-Ver guía completa → [documentacion/10-ambientes/ambientes.md](./documentacion/10-ambientes/ambientes.md)
-
----
-
-## 📧 Email Corporativo
-
-Todos los agentes usan el servidor de email de NTE (`@nissienterprise.com`). No se usa Gmail.
-
-```
-Servidor SMTP: mail.nissienterprise.com
-Dominio:       @nissienterprise.com
-Secretos:      Azure Key Vault → secret/nte-email-smtp
-```
+See the full guide → [documentation/10-environments/environments.md](./documentation/10-environments/environments.md)
 
 ---
 
-## 🖥️ Configuracion del Servidor VPS
+## 📧 Corporate Email
 
-**Host:** `0.0.0.0` · **Acceso:** `ssh root@0.0.0.0`
+All agents use NTE's email server (`@nissienterprise.com`). Gmail is not used.
 
-### Especificaciones
+```
+SMTP Server: mail.nissienterprise.com
+Domain:      @nissienterprise.com
+Secrets:     Azure Key Vault → secret/nte-email-smtp
+```
 
-| Parametro | Valor |
+---
+
+## 🖥️ VPS Server Configuration
+
+**Host:** `0.0.0.0` · **Access:** `ssh root@0.0.0.0`
+
+### Specifications
+
+| Parameter | Value |
 |---|---|
 | OS | Ubuntu 24.04.4 LTS (Noble) |
 | Kernel | 6.8.0-106-generic |
 | RAM | 15 GB |
-| Disco | 464 GB (`/dev/vda1`) |
-| Swap | 2 GB (`/swapfile`, persistente en `/etc/fstab`) |
+| Disk | 464 GB (`/dev/vda1`) |
+| Swap | 2 GB (`/swapfile`, persistent in `/etc/fstab`) |
 
-### Stack Instalado
+### Installed Stack
 
 | Software | Version |
 |---|---|
@@ -252,14 +252,14 @@ Secretos:      Azure Key Vault → secret/nte-email-smtp
 | OpenClaw | 2026.6.6 (8c802aa) |
 | ClaWHub | 0.9.0 |
 
-### Servicios y Puertos
+### Services and Ports
 
-| Servicio | Puerto | Acceso | Unit |
+| Service | Port | Access | Unit |
 |---|---|---|---|
-| `openclaw-gateway` | `127.0.0.1:18789`, `127.0.0.1:18791` | Solo localhost | `~/.config/systemd/user/openclaw-gateway.service` |
-| SSH | `0.0.0.0:22` | Publico | `ssh.service` |
+| `openclaw-gateway` | `127.0.0.1:18789`, `127.0.0.1:18791` | Localhost only | `~/.config/systemd/user/openclaw-gateway.service` |
+| SSH | `0.0.0.0:22` | Public | `ssh.service` |
 
-El gateway **no esta expuesto al exterior** — solo escucha en localhost.
+The gateway **is not exposed externally** — it only listens on localhost.
 
 ### Firewall (UFW)
 
@@ -268,9 +268,9 @@ Default: deny incoming, allow outgoing
 22/tcp  ALLOW IN  (SSH)
 ```
 
-### Fail2ban — Proteccion SSH
+### Fail2ban — SSH Protection
 
-Configuracion en `/etc/fail2ban/jail.local`:
+Configuration in `/etc/fail2ban/jail.local`:
 
 ```ini
 [DEFAULT]
@@ -286,39 +286,39 @@ bantime  = 24h
 ```
 
 ```bash
-fail2ban-client status sshd       # ver IPs baneadas
-fail2ban-client unban <IP>        # desbanear una IP
+fail2ban-client status sshd       # view banned IPs
+fail2ban-client unban <IP>        # unban an IP
 ```
 
-### Integraciones Activas
+### Active Integrations
 
-| Servicio | Estado | Notas |
+| Service | Status | Notes |
 |---|---|---|
-| Slack | Activo | Socket Mode, reconecta cada ~35 min (normal) |
-| OpenAI Codex (`gpt-5.4`) | ⚠️ Error de auth | Refresh token expirado — re-autenticar desde UI de OpenClaw |
-| Google Service Account | Configurado | `openclaw@nissiproject.iam.gserviceaccount.com` |
-| GitHub | Configurado | Usuario: `mmrodriguez1987` |
-| Jira | Configurado | `https://nissitechnology.atlassian.net/` |
+| Slack | Active | Socket Mode, reconnects every ~35 min (normal) |
+| OpenAI Codex (`gpt-5.4`) | ⚠️ Auth error | Refresh token expired — re-authenticate from the OpenClaw UI |
+| Google Service Account | Configured | `openclaw@nissiproject.iam.gserviceaccount.com` |
+| GitHub | Configured | User: `mmrodriguez1987` |
+| Jira | Configured | `https://nissitechnology.atlassian.net/` |
 
-### Acceso al Dashboard
+### Dashboard Access
 
-El gateway corre en `127.0.0.1:18789` del servidor y tiene dos interfaces: **web** (navegador) y **TUI** (terminal). Ambas requieren el token de autenticacion.
+The gateway runs on the server's `127.0.0.1:18789` and has two interfaces: **web** (browser) and **TUI** (terminal). Both require the authentication token.
 
 **Token:** `9d1014108ad2fdb57f692c5022096aff8d8c243e96203b60`
 
 ---
 
-#### Opcion A — Dashboard Web (recomendado)
+#### Option A — Web Dashboard (recommended)
 
-El dashboard web es una interfaz completa accesible desde el navegador. Como el gateway solo escucha en localhost del servidor, se accede via tunel SSH.
+The web dashboard is a full interface accessible from the browser. Since the gateway only listens on the server's localhost, it's accessed via an SSH tunnel.
 
-**Paso 1 — Configurar `~/.ssh/config`** (solo la primera vez):
+**Step 1 — Configure `~/.ssh/config`** (only needed once):
 
 ```bash
 nano ~/.ssh/config
 ```
 
-Agrega este bloque y guarda (`Ctrl+O`, `Enter`, `Ctrl+X`):
+Add this block and save (`Ctrl+O`, `Enter`, `Ctrl+X`):
 
 ```
 Host openclaw-vps
@@ -329,101 +329,101 @@ Host openclaw-vps
     ServerAliveCountMax 3
 ```
 
-Ajusta permisos:
+Adjust permissions:
 
 ```bash
 chmod 600 ~/.ssh/config
 ```
 
-**Paso 2 — Abrir el tunel** (dejar corriendo en una terminal):
+**Step 2 — Open the tunnel** (leave it running in a terminal):
 
 ```bash
 ssh -N openclaw-vps
 ```
 
-Te pedira la contrasena. La terminal quedara sin output — es correcto, el tunel esta activo.
+It will ask for the password. The terminal will show no output — that's expected, the tunnel is active.
 
-**Paso 3 — Abrir en el navegador:**
+**Step 3 — Open in the browser:**
 
 ```
 http://localhost:18789
 ```
 
-Si pide autenticacion, ingresa el token de arriba.
+If it asks for authentication, enter the token above.
 
-Para cerrar el tunel: `Ctrl+C` en esa terminal.
+To close the tunnel: `Ctrl+C` in that terminal.
 
 ---
 
-#### Opcion B — TUI (terminal)
+#### Option B — TUI (terminal)
 
-Acceso directo desde dentro del servidor, sin tunel.
+Direct access from inside the server, no tunnel needed.
 
 ```bash
-# 1. Conectarte al servidor
+# 1. Connect to the server
 ssh root@0.0.0.0
 
-# 2. Abrir el TUI
+# 2. Open the TUI
 openclaw tui --url ws://127.0.0.1:18789 --token xxxxxxxxx --session main
 ```
 
 ---
 
-### Pendientes de Seguridad
+### Security TODOs
 
-- [ ] **Re-autenticar OpenAI Codex** — Error `refresh_token_reused` activo. Hacerlo desde la UI de OpenClaw.
-- [ ] **Migrar servicio al usuario `openclaw`** — Actualmente corre como `root`. Config en `/root/.openclaw/`, mover en ventana de mantenimiento.
-- [ ] **Deshabilitar SSH por contrasena** — Activar solo llave publica: `PasswordAuthentication no` en `/etc/ssh/sshd_config`.
-- [ ] **Actualizar kernel** — Disponible `6.8.0-124-generic`. Requiere reinicio planificado.
+- [ ] **Re-authenticate OpenAI Codex** — `refresh_token_reused` error is active. Do this from the OpenClaw UI.
+- [ ] **Migrate the service to the `openclaw` user** — Currently running as `root`. Config is in `/root/.openclaw/`, move during a maintenance window.
+- [ ] **Disable SSH password auth** — Enable public key only: `PasswordAuthentication no` in `/etc/ssh/sshd_config`.
+- [ ] **Update the kernel** — `6.8.0-124-generic` is available. Requires a planned reboot.
 
 ---
 
-## 📋 Historial de Cambios del Servidor
+## 📋 Server Change History
 
 ### 2026-06-14
-- Revision inicial del servidor via SSH
-- Detectado error OAuth en integracion OpenAI Codex (`refresh_token_reused`)
+- Initial server review via SSH
+- Detected OAuth error in the OpenAI Codex integration (`refresh_token_reused`)
 
 ### 2026-06-15
-- **[+] Swap 2 GB** — Creado `/swapfile`, persistente via `/etc/fstab`
-- **[+] Fail2ban** — Instalado y configurado con jail SSH (3 intentos, ban 24h)
-- **[+] Usuario `openclaw`** — Creado usuario de sistema (`nologin`) para futura migracion del servicio
+- **[+] 2 GB Swap** — Created `/swapfile`, persistent via `/etc/fstab`
+- **[+] Fail2ban** — Installed and configured with an SSH jail (3 attempts, 24h ban)
+- **[+] `openclaw` user** — Created system user (`nologin`) for future service migration
 
 ---
 
-## 🔧 Comandos OpenClaw Frecuentes
+## 🔧 Frequent OpenClaw Commands
 
 ```bash
-# Verificar estado del sistema
+# Check system status
 openclaw status
 openclaw health
 openclaw gateway probe
 
-# Gestión de Slack
+# Slack management
 openclaw channels status --probe
 openclaw pairing list --channel slack
 openclaw pairing approve slack <code>
 
-# Ver logs en tiempo real
+# View logs in real time
 openclaw logs --follow
 
-# Validar configuración
+# Validate configuration
 openclaw config get channels.slack
 openclaw config validate
 ```
 
 ---
 
-## 🗓️ Actualizar la Configuración
+## 🗓️ Updating the Configuration
 
 ```bash
-# Después de hacer cambios en OpenClaw en el VPS:
+# After making changes to OpenClaw on the VPS:
 
-# 1. Exportar config actualizada (sanitizada)
-scp root@TU_VPS:/root/.openclaw/openclaw.json ./config/openclaw.json
-# Luego revisar y sanitizar antes de commitar
+# 1. Export the updated config (sanitized)
+scp root@YOUR_VPS:/root/.openclaw/openclaw.json ./config/openclaw.json
+# Then review and sanitize before committing
 
-# 2. Commitear cambios del workspace
+# 2. Commit workspace changes
 git add workspace/
 git commit -m "chore: update agent workspace config"
 git push origin develop
@@ -431,39 +431,57 @@ git push origin develop
 
 ---
 
-## 🧭 Principios de Diseño del Sistema
+## 🔄 Restoring Config
 
-> **1. Sandbox First** — Todos los sub-agentes corren en contenedores Docker efímeros. Jarvis (NTE-MAIN) es el único con acceso al filesystem del VPS.
+To restore from this backup:
 
-> **2. Human-in-the-Loop** — El sistema nunca toma decisiones críticas sin aprobación de Michael. Escala automáticamente por Slack.
-
-> **3. Modelo Mínimo Suficiente** — Cada agente usa el modelo de menor costo que cumpla su tarea con calidad. Opus solo donde el razonamiento complejo es imprescindible.
-
-> **4. Fe & Integridad** — Ningún agente ejecuta acciones que contradigan los valores cristianos de NTE. Esto está codificado en el system prompt de cada agente.
-
-> **5. Observabilidad Total** — Cada acción queda registrada. HAL (NTE-ANALYTICS) reporta KPIs semanalmente a Michael.
-
-> **6. Secretos en Azure Key Vault** — Cero passwords en código o en este repositorio. Todo secreto vive en Azure Key Vault.
-
-> **7. Comunicación Inter-Agente** — Los agentes se pasan trabajo entre sí directamente. Ver [documentacion/03-agentes/README.md](./documentacion/03-agentes/README.md) para el protocolo.
+1. Check git history for your desired version
+2. Manually merge changes or cherry-pick commits
+3. Sync back to the VPS as shown in the deploy steps above
 
 ---
 
-## 🔗 Recursos
+## 💬 Slack App Manifest
+
+For reference, the Slack app manifest that powers this integration is in the OpenClaw docs.
+See: `/usr/lib/node_modules/openclaw/docs/channels/slack.md` on your VPS.
+
+---
+
+## 🧭 System Design Principles
+
+> **1. Sandbox First** — All sub-agents run in ephemeral Docker containers. Jarvis (NTE-MAIN) is the only one with access to the VPS filesystem.
+
+> **2. Human-in-the-Loop** — The system never makes critical decisions without Michael's approval. It escalates automatically via Slack.
+
+> **3. Minimum Sufficient Model** — Each agent uses the lowest-cost model that can complete its task with quality. Opus only where complex reasoning is essential.
+
+> **4. Faith & Integrity** — No agent performs actions that contradict NTE's Christian values. This is encoded into every agent's system prompt.
+
+> **5. Total Observability** — Every action is logged. HAL (NTE-ANALYTICS) reports KPIs to Michael weekly.
+
+> **6. Secrets in Azure Key Vault** — Zero passwords in code or in this repository. Every secret lives in Azure Key Vault.
+
+> **7. Inter-Agent Communication** — Agents hand off work directly to each other. See [documentation/03-agents/README.md](./documentation/03-agents/README.md) for the protocol.
+
+---
+
+## 🔗 Resources
 
 - OpenClaw Docs: https://docs.openclaw.ai
 - Slack Integration: https://docs.openclaw.ai/channels/slack
 - Azure Key Vault: https://portal.azure.com
 - GitHub Org: https://github.com/[NTE-org]
 - Jira: https://[nte-workspace].atlassian.net
+- GitHub Issues: Report issues in the main repository
 
 ---
 
 <div align="center">
 
 **Nissi Technology Enterprises Inc.**
-Miami, FL · Fundada 2016 · Vianney & Michael Rodriguez
+Miami, FL · Founded 2016 · Vianney & Michael Rodriguez
 
-*Automatización con Propósito · Fe · Integridad · Innovación · Excelencia*
+*Automation with Purpose · Faith · Integrity · Innovation · Excellence*
 
 </div>

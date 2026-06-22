@@ -1,129 +1,129 @@
 <div align="center">
 
 # 🏢 Nissi Technology Enterprises
-### Misión · Visión · Valores · Propósito
+### Mission · Vision · Values · Purpose
 
-*La identidad que guía cada decisión de cada agente del sistema*
+*The identity that guides every decision made by every agent in the system*
 
 </div>
 
 ---
 
-## ⚡ Misión
+## ⚡ Mission
 
-> **Empoderar a empresas de todos los tamaños ofreciendo soluciones tecnológicas innovadoras, confiables y personalizadas que mejoran la eficiencia, impulsan el crecimiento y generan impacto sostenible — siempre guiados por valores cristianos y un compromiso con la excelencia.**
-
----
-
-## 🌟 Visión
-
-> **Transformar la manera en que empresas y comunidades experimentan la tecnología, integrando fe, innovación y excelencia. Visualizamos un mundo donde la transformación digital empodera a las personas, fortalece las organizaciones y cierra la brecha digital en las Américas.**
+> **To empower businesses of all sizes by offering innovative, reliable, and personalized technology solutions that improve efficiency, drive growth, and generate sustainable impact — always guided by Christian values and a commitment to excellence.**
 
 ---
 
-## 🎯 Propósito
+## 🌟 Vision
 
-En Nissi Technology Enterprises creemos que la tecnología no es solo una herramienta, sino **una forma de servir, empoderar y transformar vidas**.
-
-Hacemos lo que hacemos porque somos apasionados de ayudar a las organizaciones a crecer a través de la innovación, la integridad y la excelencia.
-
-Nuestro propósito es **tender un puente entre la tecnología y el potencial humano**, creando soluciones que no solo resuelven problemas sino que inspiran progreso.
+> **To transform the way businesses and communities experience technology by integrating faith, innovation, and excellence. We envision a world where digital transformation empowers people, strengthens organizations, and closes the digital divide across the Americas.**
 
 ---
 
-## 💎 Valores Centrales
+## 🎯 Purpose
+
+At Nissi Technology Enterprises we believe technology is not just a tool, but **a way to serve, empower, and transform lives**.
+
+We do what we do because we are passionate about helping organizations grow through innovation, integrity, and excellence.
+
+Our purpose is **to bridge technology and human potential**, creating solutions that not only solve problems but inspire progress.
+
+---
+
+## 💎 Core Values
 
 ```mermaid
 mindmap
-  root((💎 Valores<br/>NTE))
-    🙏 Fe
-      Dios como fundamento
-      Guía en cada decisión
-      Propósito más allá del negocio
-    🤝 Integridad
-      Transparencia total
-      Ética en todas las relaciones
-      Honestidad como base
-    💡 Innovación
-      Búsqueda constante de mejora
-      Anticipar necesidades
-      Tecnología de vanguardia
-    🏆 Excelencia
-      Calidad que supera expectativas
-      Entrega impecable
-      Mejora continua
-    ❤️ Servicio
-      Cliente al centro
-      Relaciones duraderas
-      Valor genuino
-    🤜🤛 Colaboración
-      Trabajo en equipo
-      Metas compartidas
-      Sinergia con clientes
+  root((💎 NTE<br/>Values))
+    🙏 Faith
+      God as the foundation
+      Guidance in every decision
+      Purpose beyond business
+    🤝 Integrity
+      Total transparency
+      Ethics in every relationship
+      Honesty as a baseline
+    💡 Innovation
+      Constant pursuit of improvement
+      Anticipating needs
+      Cutting-edge technology
+    🏆 Excellence
+      Quality that exceeds expectations
+      Flawless delivery
+      Continuous improvement
+    ❤️ Service
+      Customer at the center
+      Lasting relationships
+      Genuine value
+    🤜🤛 Collaboration
+      Teamwork
+      Shared goals
+      Synergy with clients
 ```
 
-| Valor | Definición | Cómo se aplica en los Agentes |
+| Value | Definition | How it applies to the Agents |
 |---|---|---|
-| 🙏 **Fe** | Reconocemos a Dios como fundamento de cada decisión | Los agentes no ejecutan acciones que contradigan valores éticos. NTE-MAIN tiene esto hardcoded en su system prompt |
-| 🤝 **Integridad** | Transparencia, ética y honestidad en todas las relaciones | Cada acción de cada agente queda registrada. Sin acciones ocultas ni manipulación |
-| 💡 **Innovación** | Búsqueda constante de mejores formas de operar | El sistema de agentes en sí ES la innovación. Se actualiza trimestralmente |
-| 🏆 **Excelencia** | Soluciones de la más alta calidad | Modelos Claude Opus/Sonnet para outputs de calidad premium. QA automatizado |
-| ❤️ **Servicio** | El cliente al centro de todo | NTE-CX responde en < 5 min. NTE-LEAD-NURTURE da seguimiento personalizado |
-| 🤜🤛 **Colaboración** | Equipo y clientes trabajando hacia metas compartidas | Los 19 agentes colaboran entre sí como un equipo cohesionado |
+| 🙏 **Faith** | We acknowledge God as the foundation of every decision | Agents do not perform actions that contradict ethical values. This is hardcoded into NTE-MAIN's system prompt |
+| 🤝 **Integrity** | Transparency, ethics, and honesty in every relationship | Every action by every agent is logged. No hidden actions or manipulation |
+| 💡 **Innovation** | Constant pursuit of better ways of operating | The agent system itself IS the innovation. It is updated quarterly |
+| 🏆 **Excellence** | Solutions of the highest quality | Claude Opus/Sonnet models for premium-quality outputs. Automated QA |
+| ❤️ **Service** | The customer at the center of everything | NTE-CX responds in < 5 min. NTE-LEAD-NURTURE provides personalized follow-up |
+| 🤜🤛 **Collaboration** | Team and clients working toward shared goals | The 19 agents collaborate with each other as a cohesive team |
 
 ---
 
-## 📅 Historia de NTE
+## 📅 NTE History
 
 ```mermaid
 timeline
-    title Historia de Nissi Technology Enterprises
-    2016 : Fundación en Miami por Vianney y Michael Rodriguez
-         : Inicio con soporte técnico a pequeñas empresas
-    2020 : Expansión estratégica
-         : Desarrollo de software personalizado
-         : Infraestructura tecnológica
+    title History of Nissi Technology Enterprises
+    2016 : Founded in Miami by Vianney and Michael Rodriguez
+         : Started with technical support for small businesses
+    2020 : Strategic expansion
+         : Custom software development
+         : Technology infrastructure
          : Business Intelligence & Big Data
-         : Adopción del trabajo remoto
-    2024 : Consolidación como partner de transformación digital
-         : Equipo distribuido USA + Latinoamérica
-    2026 : Implementación de OpenClaw
-         : 19 agentes de IA automatizando operaciones
-         : Escala sin incrementar costos linealmente
+         : Adoption of remote work
+    2024 : Consolidation as a digital transformation partner
+         : Distributed team across the USA + Latin America
+    2026 : OpenClaw implementation
+         : 19 AI agents automating operations
+         : Scaling without linearly increasing costs
 ```
 
 ---
 
-## 🎯 Mercado Objetivo
+## 🎯 Target Market
 
 ```mermaid
-pie title Segmentos de Clientes NTE
-    "PyMEs (Small & Medium Businesses)" : 60
-    "Startups & Emprendedores" : 25
-    "Gobierno & ONGs" : 15
+pie title NTE Customer Segments
+    "SMBs (Small & Medium Businesses)" : 60
+    "Startups & Entrepreneurs" : 25
+    "Government & NGOs" : 15
 ```
 
-### Segmento A: PyMEs
-Representan el 99% de las empresas en EE.UU. Buscan optimizar procesos, automatizar tareas y mejorar su presencia digital. NTE les ofrece soluciones accesibles y escalables.
+### Segment A: SMBs
+They represent 99% of businesses in the U.S. They seek to optimize processes, automate tasks, and improve their digital presence. NTE offers them accessible, scalable solutions.
 
-### Segmento B: Startups & Emprendedores
-Necesitan lanzar productos tech, plataformas eCommerce, CRMs y apps móviles. NTE acelera su time-to-market con soluciones ágiles.
+### Segment B: Startups & Entrepreneurs
+They need to launch tech products, eCommerce platforms, CRMs, and mobile apps. NTE accelerates their time-to-market with agile solutions.
 
-### Segmento C: Gobierno & ONGs
-Invierten en modernización digital, seguridad de datos y eficiencia operacional. NTE accede a contratos federales y estatales gracias a sus certificaciones Minority-Owned y Women-Owned.
-
----
-
-## 🌎 Posicionamiento
-
-> NTE se posiciona como una empresa **boutique con enfoque humano**, precios competitivos y una fuerte orientación hacia valores cristianos y servicio comunitario — diferenciándose de firmas como Globant, Wizeline o Koombea.
-
-**Diferenciadores clave:**
-- Oferta integral: Software + Marketing + Infraestructura + AI + BI bajo una sola marca
-- Valores corporativos auténticos integrados en la cultura
-- Modelo remoto USA + LATAM que reduce costos sin sacrificar calidad
-- Atención personalizada directa con el cliente
+### Segment C: Government & NGOs
+They invest in digital modernization, data security, and operational efficiency. NTE accesses federal and state contracts thanks to its Minority-Owned and Women-Owned certifications.
 
 ---
 
-[← Volver al inicio](../README.md) | [Servicios →](./servicios.md)
+## 🌎 Positioning
+
+> NTE positions itself as a **boutique, human-centered company**, with competitive pricing and a strong orientation toward Christian values and community service — differentiating itself from firms like Globant, Wizeline, or Koombea.
+
+**Key differentiators:**
+- Comprehensive offering: Software + Marketing + Infrastructure + AI + BI under a single brand
+- Authentic corporate values built into the culture
+- USA + LATAM remote model that reduces costs without sacrificing quality
+- Direct, personalized customer attention
+
+---
+
+[← Back to home](../README.md) | [Services →](./services.md)

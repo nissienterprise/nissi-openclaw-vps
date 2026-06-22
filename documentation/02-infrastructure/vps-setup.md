@@ -1,26 +1,26 @@
 <div align="center">
 
-# 🖥️ Infraestructura Base
-### VPS + OpenClaw + Docker + Azure Key Vault — Configuración y Despliegue
+# 🖥️ Base Infrastructure
+### VPS + OpenClaw + Docker + Azure Key Vault — Setup and Deployment
 
 </div>
 
 ---
 
-## Especificaciones del Servidor
+## Server Specifications
 
-| Componente | Requerimiento Mínimo | Recomendado NTE |
+| Component | Minimum Requirement | NTE Recommended |
 |---|---|---|
 | **CPU** | 2 vCPUs | 4 vCPUs |
 | **RAM** | 4 GB | 8 GB |
-| **Almacenamiento** | 40 GB SSD | 80 GB NVMe SSD |
-| **Sistema Operativo** | Ubuntu 20.04 | **Ubuntu 22.04 LTS** |
-| **Ancho de Banda** | 2 TB/mes | 4 TB/mes |
-| **Proveedor** | Cualquiera | DigitalOcean Droplet (~$48/mes) |
+| **Storage** | 40 GB SSD | 80 GB NVMe SSD |
+| **Operating System** | Ubuntu 20.04 | **Ubuntu 22.04 LTS** |
+| **Bandwidth** | 2 TB/month | 4 TB/month |
+| **Provider** | Any | DigitalOcean Droplet (~$48/month) |
 
 ---
 
-## Arquitectura del Sistema
+## System Architecture
 
 ```mermaid
 graph TB
@@ -34,11 +34,11 @@ graph TB
     end
 
     subgraph AZURE["☁️ Microsoft Azure"]
-        AKV["🔐 Azure Key Vault\n(nte-keyvault)\nTodos los secretos"]
+        AKV["🔐 Azure Key Vault\n(nte-keyvault)\nAll secrets"]
     end
 
     subgraph VPS["🖥️ VPS Ubuntu 22.04 (DigitalOcean)"]
-        subgraph SECURITY_LAYER["🔒 Capa de Seguridad"]
+        subgraph SECURITY_LAYER["🔒 Security Layer"]
             FIREWALL["🛡️ UFW Firewall"]
             FAIL2BAN["🚫 Fail2Ban"]
             CF["☁️ Cloudflare WAF"]
@@ -49,18 +49,18 @@ graph TB
             JARVIS["🧠 JARVIS (NTE-MAIN)\n(Full FS Access)\nManaged Identity → AKV"]
         end
 
-        subgraph DOCKER_LAYER["🐳 Docker Sandbox (Sub-agentes — Un contenedor por agente)"]
+        subgraph DOCKER_LAYER["🐳 Docker Sandbox (Sub-agents — One container per agent)"]
             D1["🎧 Samantha (NTE-CX)"]
             D2["✍️ WALL-E (NTE-CONTENT)"]
             D3["📊 HAL (NTE-ANALYTICS)"]
             D4["🗂️ David (NTE-PM)"]
             D5["⚙️ Bishop (NTE-BACKEND)"]
-            D6["... 14 agentes más"]
+            D6["... 14 more agents"]
         end
 
-        subgraph STORAGE["💾 Almacenamiento"]
-            WORKSPACE["📁 /workspace\n(Proyectos)"]
-            LOGS["📋 /logs\n(Auditoría)"]
+        subgraph STORAGE["💾 Storage"]
+            WORKSPACE["📁 /workspace\n(Projects)"]
+            LOGS["📋 /logs\n(Audit)"]
             CONFIG["⚙️ ~/.openclaw\n(chmod 700)"]
         end
     end
@@ -68,7 +68,7 @@ graph TB
     MICHAEL -->|"SSH Tunnel\nPort 18789"| GATEWAY
     GATEWAY --> JARVIS
     JARVIS -->|"Managed Identity"| AKV
-    AKV -->|"Secretos inyectados"| JARVIS
+    AKV -->|"Injected secrets"| JARVIS
     JARVIS --> DOCKER_LAYER
     JARVIS <--> STORAGE
     DOCKER_LAYER --> WORKSPACE
@@ -83,97 +83,97 @@ graph TB
 
 ---
 
-## Comandos de Instalación
+## Installation Commands
 
-### 1. Preparación del Servidor
+### 1. Server Preparation
 
 ```bash
-# Actualizar el sistema
+# Update the system
 sudo apt update && sudo apt upgrade -y
 
-# Instalar dependencias
+# Install dependencies
 sudo apt install -y docker.io docker-compose git curl ufw fail2ban
 
-# Instalar Azure CLI
+# Install Azure CLI
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-# Crear usuario dedicado (NUNCA usar root)
+# Create dedicated user (NEVER use root)
 sudo adduser openclaw --disabled-password
 sudo usermod -aG docker openclaw
 
-# Configurar firewall
+# Configure firewall
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw enable
 ```
 
-### 2. Instalar OpenClaw
+### 2. Install OpenClaw
 
 ```bash
-# Como usuario openclaw
+# As the openclaw user
 su - openclaw
 
-# Instalar OpenClaw (Claude Code SDK)
+# Install OpenClaw (Claude Code SDK)
 npm install -g @anthropic-ai/claude-code
 
-# Configurar permisos restrictivos
+# Set restrictive permissions
 chmod 700 -R ~/.openclaw
 ```
 
-### 3. Configurar Azure Key Vault (Managed Identity)
+### 3. Configure Azure Key Vault (Managed Identity)
 
 ```bash
-# En el VPS — Configurar acceso a Azure Key Vault
-# (usar Managed Identity del VPS si está en Azure, o Service Principal para DigitalOcean)
+# On the VPS — Configure access to Azure Key Vault
+# (use the VPS's Managed Identity if it's on Azure, or a Service Principal for DigitalOcean)
 
-# Login con Service Principal
+# Login with Service Principal
 az login --service-principal \
   --username [app-id] \
   --password [client-secret] \
   --tenant [tenant-id]
 
-# Verificar acceso al vault
+# Verify access to the vault
 az keyvault secret list --vault-name "nte-keyvault"
 
-# Obtener un secreto (ejemplo)
+# Retrieve a secret (example)
 export ANTHROPIC_API_KEY=$(az keyvault secret show \
   --name "anthropic-api-key" \
   --vault-name "nte-keyvault" \
   --query "value" -o tsv)
 ```
 
-### 4. Configuración Segura del Gateway
+### 4. Secure Gateway Configuration
 
 ```bash
 # ~/.openclaw/config.json
 {
   "gateway": {
-    "host": "127.0.0.1",      # NUNCA 0.0.0.0
+    "host": "127.0.0.1",      # NEVER 0.0.0.0
     "port": 18789,
     "auth_mode": "token"
   },
   "sandbox": {
-    "mode": "non_main",        # Jarvis tiene FS, sub-agentes en Docker
+    "mode": "non_main",        # Jarvis has FS access, sub-agents run in Docker
     "docker_image": "openclaw-sandbox:latest"
   }
 }
 ```
 
-### 5. Acceso via SSH Tunnel (desde tu máquina local)
+### 5. Access via SSH Tunnel (from your local machine)
 
 ```bash
-# Conectarte al gateway de forma segura
-ssh -L 18789:localhost:18789 openclaw@TU_VPS_IP
+# Connect to the gateway securely
+ssh -L 18789:localhost:18789 openclaw@YOUR_VPS_IP
 
-# Luego en el navegador:
-# http://localhost:18789?token=TU_TOKEN
+# Then in the browser:
+# http://localhost:18789?token=YOUR_TOKEN
 ```
 
-### 6. Inyección de Secretos desde Azure Key Vault
+### 6. Secret Injection from Azure Key Vault
 
 ```bash
-# Script de arranque — carga secretos desde Azure KV al entorno
+# Startup script — loads secrets from Azure KV into the environment
 #!/bin/bash
 
 VAULT="nte-keyvault"
@@ -191,18 +191,18 @@ echo "✅ Secrets loaded from Azure Key Vault"
 
 ---
 
-## 🐳 Docker — Un Contenedor por Agente
+## 🐳 Docker — One Container per Agent
 
-Cada sub-agente corre en su propio contenedor Docker. Esto garantiza:
-- **Aislamiento total** — si un agente es comprometido, no afecta a los demás
-- **Recursos controlados** — límites de CPU y RAM por agente
-- **Reproducibilidad** — mismo comportamiento en Dev, Staging y Production
+Each sub-agent runs in its own Docker container. This guarantees:
+- **Total isolation** — if one agent is compromised, it doesn't affect the others
+- **Controlled resources** — CPU and RAM limits per agent
+- **Reproducibility** — same behavior across Dev, Staging, and Production
 
 ```bash
-# Construir imagen de un agente
+# Build an agent's image
 docker build -t nte-samantha:latest ./nte-agents-docker/samantha/
 
-# Lanzar agente con secretos inyectados (sin hardcodear nada)
+# Launch agent with injected secrets (nothing hardcoded)
 docker run --rm \
   --name nte-samantha \
   --network nte-restricted \
@@ -213,11 +213,11 @@ docker run --rm \
   -e NTE_SMTP_PASS \
   nte-samantha:latest
 
-# Ver agentes corriendo
+# View running agents
 docker ps --filter "name=nte-"
 ```
 
-### Docker Compose para el equipo completo
+### Docker Compose for the full team
 
 ```yaml
 # /workspace/docker-compose.yml
@@ -248,23 +248,23 @@ services:
       - WORDPRESS_API_KEY
       - BUFFER_API_KEY
 
-  # ... (un servicio por cada sub-agente)
+  # ... (one service per sub-agent)
 
 networks:
   nte-restricted:
     driver: bridge
-    # Solo permite salida a IPs/dominios específicos via reglas de firewall
+    # Only allows outbound traffic to specific IPs/domains via firewall rules
 ```
 
 ---
 
-## 🌿 Configuración por Ambiente
+## 🌿 Configuration by Environment
 
 ```bash
-# Los secretos están separados por ambiente en Azure Key Vault
-# Prefijos: dev/, staging/, prod/
+# Secrets are separated by environment in Azure Key Vault
+# Prefixes: dev/, staging/, prod/
 
-# Desarrollo
+# Development
 az keyvault secret set --vault-name "nte-keyvault" \
   --name "dev/anthropic-api-key" --value "sk-ant-..."
 
@@ -277,33 +277,33 @@ az keyvault secret set --vault-name "nte-keyvault" \
   --name "prod/anthropic-api-key" --value "sk-ant-..."
 ```
 
-Ver guía completa de ambientes → [../10-ambientes/ambientes.md](../10-ambientes/ambientes.md)
+See the full environments guide → [../10-environments/environments.md](../10-environments/environments.md)
 
 ---
 
-## Estructura de Directorios
+## Directory Structure
 
 ```
 /home/openclaw/
-├── .openclaw/              ← chmod 700 | Config de OpenClaw
+├── .openclaw/              ← chmod 700 | OpenClaw config
 │   ├── config.json
 │   └── tokens/
 │
 /workspace/
-├── projects/               ← Proyectos de clientes
+├── projects/               ← Client projects
 │   ├── client-001/
 │   └── client-002/
-├── agents/                 ← Configuraciones de agentes
+├── agents/                 ← Agent configurations
 │   ├── jarvis/
-│   ├── wing-administrativa/
-│   └── wing-software/
-├── content/                ← Artículos del blog en draft
-├── leads/                  ← Base de leads (encriptada)
-└── logs/                   ← Auditoría de todas las acciones
+│   ├── administrative-wing/
+│   └── software-wing/
+├── content/                ← Blog articles in draft
+├── leads/                  ← Lead database (encrypted)
+└── logs/                   ← Audit log of all actions
     ├── openclaw-audit.log
-    └── agent-comms.log     ← Comunicaciones inter-agente
+    └── agent-comms.log     ← Inter-agent communications
 ```
 
 ---
 
-[← Volver al inicio](../README.md) | [Seguridad →](./seguridad.md)
+[← Back to home](../README.md) | [Security →](./security.md)

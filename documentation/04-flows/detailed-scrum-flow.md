@@ -1,18 +1,18 @@
 <div align="center">
 
-# ⚙️ Workflow de Desarrollo: SCRUM con Jira
-### Cómo el Wing Software R&D ejecuta proyectos de forma ágil
+# ⚙️ Development Workflow: SCRUM with Jira
+### How the Software R&D Wing executes projects in an agile way
 
 </div>
 
 ---
 
-## 1. Estructura General del SCRUM en NTE
+## 1. General SCRUM Structure at NTE
 
-NTE opera con **sprints semanales** (lunes a viernes). Cada proyecto de cliente tiene su propio Jira board bajo el proyecto **`NTE-SW`**. David (NTE-PM) es el Scrum Master funcional y lleva la relación directa con Michael como Product Owner delegado.
+NTE operates with **weekly sprints** (Monday to Friday). Each client project has its own Jira board under the **`NTE-SW`** project. David (NTE-PM) is the functional Scrum Master and maintains the direct relationship with Michael as the delegated Product Owner.
 
 ```
-Sprint = 1 semana (Lunes 9am → Viernes 5pm ET)
+Sprint = 1 week (Monday 9am → Friday 5pm ET)
 Jira Project: NTE-SW
 Board type: Scrum
 Slack channel: #nte-dev
@@ -20,43 +20,43 @@ Slack channel: #nte-dev
 
 ---
 
-## 2. Jerarquía de Tickets en Jira
+## 2. Jira Ticket Hierarchy
 
 ```
 Epic  →  Story  →  Task / Subtask  →  Bug
 ```
 
-| Tipo | Prefijo | Descripción | Responsable |
+| Type | Prefix | Description | Owner |
 |------|---------|-------------|-------------|
-| **Epic** | `NTE-SW-XXX` | Módulo grande del proyecto (ej. "Autenticación de usuarios") | David (NTE-PM) |
-| **Story** | `NTE-SW-XXX` | Feature entregable desde el punto de vista del usuario | David (NTE-PM) |
-| **Task** | `NTE-SW-XXX` | Trabajo técnico concreto asignado a un agente | Agente asignado |
-| **Subtask** | `NTE-SW-XXX` | Pasos internos de una Task | Agente asignado |
-| **Bug** | `NTE-SW-XXX` | Defecto reportado por AVA o producción | AVA → agente correspondiente |
+| **Epic** | `NTE-SW-XXX` | Large project module (e.g. "User Authentication") | David (NTE-PM) |
+| **Story** | `NTE-SW-XXX` | Deliverable feature from the user's perspective | David (NTE-PM) |
+| **Task** | `NTE-SW-XXX` | Concrete technical work assigned to an agent | Assigned agent |
+| **Subtask** | `NTE-SW-XXX` | Internal steps of a Task | Assigned agent |
+| **Bug** | `NTE-SW-XXX` | Defect reported by AVA or production | AVA → corresponding agent |
 
-### Campos obligatorios en cada ticket
+### Mandatory fields on every ticket
 
-| Campo | Descripción |
+| Field | Description |
 |-------|-------------|
-| `Assignee` | El agente responsable (ej. `bishop@nissienterprise.com`) |
-| `Sprint` | Sprint activo al que pertenece |
-| `Epic Link` | Epic padre |
-| `Story Points` | Estimación en puntos (1, 2, 3, 5, 8, 13) |
+| `Assignee` | The responsible agent (e.g. `bishop@nissienterprise.com`) |
+| `Sprint` | Active sprint it belongs to |
+| `Epic Link` | Parent Epic |
+| `Story Points` | Point estimate (1, 2, 3, 5, 8, 13) |
 | `Priority` | P0 / P1 / P2 / P3 / P4 |
 | `Labels` | `backend`, `frontend`, `mobile`, `data`, `qa`, `security`, `devops`, `docs` |
-| `Fix Version` | Versión semántica del release (ej. `v1.2.0`) |
-| `Acceptance Criteria` | Criterios de aceptación en el campo Description |
+| `Fix Version` | Semantic release version (e.g. `v1.2.0`) |
+| `Acceptance Criteria` | Acceptance criteria in the Description field |
 
 ---
 
-## 3. Columnas del Board Jira (NTE-SW)
+## 3. Jira Board Columns (NTE-SW)
 
 ```mermaid
 flowchart LR
     A["📥 Backlog"] --> B["🔍 Refinement\n(Ready for Sprint)"]
     B --> C["📋 Sprint\nBacklog"]
     C --> D["🏃 In Progress"]
-    D --> E["🔁 In Review\n(PR Abierto)"]
+    D --> E["🔁 In Review\n(PR Open)"]
     E --> F["🔬 QA Testing"]
     F --> G["🔐 Security\nReview"]
     G --> H["🚀 Ready to\nDeploy"]
@@ -66,176 +66,176 @@ flowchart LR
     E -->|"Review comments"| D
 ```
 
-| Columna | Trigger de entrada | Responsable |
+| Column | Entry trigger | Owner |
 |---------|-------------------|-------------|
-| **Backlog** | David crea el ticket | David (NTE-PM) |
-| **Refinement** | Ticket estimado y con criterios de aceptación | David (NTE-PM) |
-| **Sprint Backlog** | Sprint Planning lo incluye en el sprint activo | David (NTE-PM) |
-| **In Progress** | Agente abre branch `feature/NTE-SW-XXX-descripcion` | Agente asignado |
-| **In Review** | PR abierto contra `develop`, ticket linkeado | Agente asignado |
-| **QA Testing** | T-800 aprueba el PR → AVA toma el ticket | AVA (NTE-QA) |
-| **Security Review** | AVA da QA Sign-off → T-800 hace scan final | T-800 (NTE-SECURITY) |
-| **Ready to Deploy** | T-800 aprueba → Optimus schedula deploy | Optimus (NTE-DEVOPS) |
-| **Done** | Deploy a producción exitoso → Marvin documenta | David cierra ticket |
+| **Backlog** | David creates the ticket | David (NTE-PM) |
+| **Refinement** | Ticket estimated with acceptance criteria | David (NTE-PM) |
+| **Sprint Backlog** | Sprint Planning includes it in the active sprint | David (NTE-PM) |
+| **In Progress** | Agent opens branch `feature/NTE-SW-XXX-description` | Assigned agent |
+| **In Review** | PR opened against `develop`, ticket linked | Assigned agent |
+| **QA Testing** | T-800 approves the PR → AVA picks up the ticket | AVA (NTE-QA) |
+| **Security Review** | AVA gives QA Sign-off → T-800 does final scan | T-800 (NTE-SECURITY) |
+| **Ready to Deploy** | T-800 approves → Optimus schedules deploy | Optimus (NTE-DEVOPS) |
+| **Done** | Successful production deploy → Marvin documents | David closes the ticket |
 
 ---
 
-## 4. Ceremonias SCRUM
+## 4. SCRUM Ceremonies
 
-### 4.1 Sprint Planning — Lunes 9:00 AM ET
+### 4.1 Sprint Planning — Monday 9:00 AM ET
 
-**Participantes:** David (NTE-PM) · Michael (Product Owner) · Agentes de desarrollo (pasivos)
+**Participants:** David (NTE-PM) · Michael (Product Owner) · Development agents (passive)
 
 **Agenda:**
-1. David presenta el Sprint Goal propuesto
-2. Michael aprueba prioridades del backlog refinado
-3. David asigna Stories/Tasks a cada agente según capacidad
-4. Se define el Sprint Backlog final en Jira
-5. David confirma en `#nte-dev`: resumen del sprint + tickets asignados
+1. David presents the proposed Sprint Goal
+2. Michael approves priorities of the refined backlog
+3. David assigns Stories/Tasks to each agent based on capacity
+4. The final Sprint Backlog is defined in Jira
+5. David confirms in `#nte-dev`: sprint summary + assigned tickets
 
-**Output en Jira:**
-- Sprint activo creado con nombre: `NTE-SW Sprint YYYY-WW` (ej. `NTE-SW Sprint 2026-18`)
-- Todos los tickets movidos a columna **Sprint Backlog**
-- Story points comprometidos documentados en la descripción del sprint
+**Output in Jira:**
+- Active sprint created with name: `NTE-SW Sprint YYYY-WW` (e.g. `NTE-SW Sprint 2026-18`)
+- All tickets moved to the **Sprint Backlog** column
+- Committed story points documented in the sprint description
 
 ---
 
-### 4.2 Daily Standup — Lunes a Viernes (Async, 9:30 AM ET)
+### 4.2 Daily Standup — Monday to Friday (Async, 9:30 AM ET)
 
-**Canal:** `#nte-dev`
+**Channel:** `#nte-dev`
 
-Cada agente activo publica su update en formato estándar:
+Each active agent posts its update in standard format:
 
 ```
-🤖 [NOMBRE AGENTE] — NTE-SW Daily
-✅ Completado: [qué terminé ayer / esta mañana]
-🏃 En progreso: [en qué estoy trabajando] — [NTE-SW-XXX]
-🚧 Bloqueadores: [impedimentos o dependencias] / Ninguno
-📅 Plan hoy: [qué voy a completar hoy]
+🤖 [AGENT NAME] — NTE-SW Daily
+✅ Completed: [what I finished yesterday / this morning]
+🏃 In progress: [what I'm working on] — [NTE-SW-XXX]
+🚧 Blockers: [impediments or dependencies] / None
+📅 Plan today: [what I'm going to complete today]
 ```
 
-**Ejemplo real:**
+**Real example:**
 ```
 🤖 BISHOP — NTE-SW Daily
-✅ Completado: Endpoint POST /auth/login con JWT — NTE-SW-042
-🏃 En progreso: Middleware de autorización por roles — NTE-SW-043
-🚧 Bloqueadores: Esperando schema final de CASE para tabla users
-📅 Plan hoy: Completar middleware + unit tests (≥ 80%)
+✅ Completed: POST /auth/login endpoint with JWT — NTE-SW-042
+🏃 In progress: Role-based authorization middleware — NTE-SW-043
+🚧 Blockers: Waiting on final schema from CASE for users table
+📅 Plan today: Complete middleware + unit tests (≥ 80%)
 ```
 
-David monitorea `#nte-dev` y escala a Michael cualquier bloqueador crítico via `#nte-alerts`.
+David monitors `#nte-dev` and escalates any critical blocker to Michael via `#nte-alerts`.
 
 ---
 
-### 4.3 Backlog Refinement — Miércoles 2:00 PM ET
+### 4.3 Backlog Refinement — Wednesday 2:00 PM ET
 
-**Participantes:** David (NTE-PM) · Michael (si hay nuevas historias del cliente)
+**Participants:** David (NTE-PM) · Michael (if there are new client stories)
 
 **Agenda:**
-1. David revisa tickets del backlog sin estimar
-2. Agrega/clarifica criterios de aceptación
-3. Asigna story points usando la serie Fibonacci (1, 2, 3, 5, 8, 13)
-4. Prioriza con labels `must-have`, `should-have`, `nice-to-have`
-5. Mueve tickets listos a columna **Refinement**
+1. David reviews unestimated backlog tickets
+2. Adds/clarifies acceptance criteria
+3. Assigns story points using the Fibonacci series (1, 2, 3, 5, 8, 13)
+4. Prioritizes with labels `must-have`, `should-have`, `nice-to-have`
+5. Moves ready tickets to the **Refinement** column
 
-**Regla:** Nunca entra al sprint un ticket sin story points y sin criterios de aceptación.
+**Rule:** No ticket enters the sprint without story points and acceptance criteria.
 
 ---
 
-### 4.4 Sprint Review — Viernes 3:00 PM ET
+### 4.4 Sprint Review — Friday 3:00 PM ET
 
-**Participantes:** David (NTE-PM) · Michael · (Cliente si corresponde)
+**Participants:** David (NTE-PM) · Michael · (Client if applicable)
 
 **Agenda:**
-1. David presenta los tickets completados en el sprint
-2. Demo de features en ambiente staging (Optimus provee URL)
-3. Michael/Cliente acepta o rechaza items
-4. Tickets rechazados vuelven al Backlog con comentario
-5. David actualiza velocidad del equipo (story points completados)
-6. David envía email de reporte semanal al cliente via `david@nissienterprise.com`
+1. David presents the tickets completed in the sprint
+2. Feature demo on the staging environment (Optimus provides URL)
+3. Michael/Client accepts or rejects items
+4. Rejected tickets return to the Backlog with comments
+5. David updates team velocity (completed story points)
+6. David sends weekly report email to the client via `david@nissienterprise.com`
 
-**Template email de reporte:**
+**Report email template:**
 ```
-Asunto: [Proyecto X] — Reporte Sprint NTE-SW Sprint 2026-WW
+Subject: [Project X] — NTE-SW Sprint Report Sprint 2026-WW
 
-Hola [Cliente],
+Hi [Client],
 
-Esta semana completamos:
-• [Feature 1] — ✅ Disponible en staging
-• [Feature 2] — ✅ Disponible en staging
-• [Feature 3] — 🔄 En QA, disponible lunes
+This week we completed:
+• [Feature 1] — ✅ Available on staging
+• [Feature 2] — ✅ Available on staging
+• [Feature 3] — 🔄 In QA, available Monday
 
-Próxima semana trabajaremos en:
+Next week we will work on:
 • [Next Sprint items]
 
-URL Staging: https://staging.[proyecto].nissienterprise.com
-Próxima demo: [fecha]
+Staging URL: https://staging.[project].nissienterprise.com
+Next demo: [date]
 
-Saludos,
-Equipo NTE
+Regards,
+NTE Team
 ```
 
 ---
 
-### 4.5 Sprint Retrospectiva — Viernes 4:00 PM ET (Interna)
+### 4.5 Sprint Retrospective — Friday 4:00 PM ET (Internal)
 
-**Participantes:** David (NTE-PM) — reporta a Michael
+**Participants:** David (NTE-PM) — reports to Michael
 
-**Formato (en Confluence, sección del proyecto):**
+**Format (in Confluence, project section):**
 
-| ✅ Qué salió bien | 🔧 Qué mejorar | 💡 Acciones para próximo sprint |
+| ✅ What went well | 🔧 What to improve | 💡 Actions for next sprint |
 |-------------------|----------------|--------------------------------|
-| [Logros técnicos] | [Problemas detectados] | [Mejoras concretas] |
+| [Technical achievements] | [Issues detected] | [Concrete improvements] |
 
-David guarda cada retrospectiva en Confluence bajo: `NTE > Software R&D > [Proyecto] > Retrospectivas`
+David saves each retrospective in Confluence under: `NTE > Software R&D > [Project] > Retrospectives`
 
 ---
 
-## 5. Lifecycle Completo de un Ticket
+## 5. Complete Ticket Lifecycle
 
 ```mermaid
 flowchart TD
-    A["📝 David crea ticket\nen Jira Backlog"] --> B["✏️ David refina:\ncriterios de aceptación\nestimación en puntos"]
-    B --> C["📋 Sprint Planning:\nticket entra al sprint"]
-    C --> D["🏃 Agente crea branch:\nfeature/NTE-SW-XXX-nombre"]
-    D --> E["💻 Agente desarrolla\n+ escribe unit tests"]
-    E --> F["🔁 Agente abre PR\ncontra develop\n+ linkea ticket Jira"]
-    F --> G["🔐 T-800 revisa PR:\nSAST · deps · secrets · OWASP"]
+    A["📝 David creates ticket\nin Jira Backlog"] --> B["✏️ David refines:\nacceptance criteria\npoint estimation"]
+    B --> C["📋 Sprint Planning:\nticket enters the sprint"]
+    C --> D["🏃 Agent creates branch:\nfeature/NTE-SW-XXX-name"]
+    D --> E["💻 Agent develops\n+ writes unit tests"]
+    E --> F["🔁 Agent opens PR\nagainst develop\n+ links Jira ticket"]
+    F --> G["🔐 T-800 reviews PR:\nSAST · deps · secrets · OWASP"]
     G -->|"Changes requested"| E
-    G -->|"Aprobado"| H["🔬 AVA toma el ticket\nQA Testing completo"]
-    H -->|"Bug P0/P1"| I["🐛 Bug reportado en Jira\nasignado al agente"]
+    G -->|"Approved"| H["🔬 AVA picks up the ticket\nfull QA Testing"]
+    H -->|"Bug P0/P1"| I["🐛 Bug reported in Jira\nassigned to the agent"]
     I --> E
-    H -->|"QA Sign-off ✅"| J["🚀 Optimus ejecuta\ndeploy a staging"]
-    J --> K["✅ Smoke tests pasan"]
-    K --> L["📋 David mueve ticket\na Done"]
-    L --> M["📝 Marvin documenta\nen Confluence"]
+    H -->|"QA Sign-off ✅"| J["🚀 Optimus runs\ndeploy to staging"]
+    J --> K["✅ Smoke tests pass"]
+    K --> L["📋 David moves ticket\nto Done"]
+    L --> M["📝 Marvin documents\nin Confluence"]
 ```
 
 ---
 
-## 6. Estrategia de Branches (Git Flow adaptado)
+## 6. Branching Strategy (Adapted Git Flow)
 
 ```
-main          ← Producción. Solo Optimus hace merge aquí.
-staging       ← Pre-producción. Requiere QA Sign-off.
-develop       ← Integración continua. Target de todos los PRs de features.
+main          ← Production. Only Optimus merges here.
+staging       ← Pre-production. Requires QA Sign-off.
+develop       ← Continuous integration. Target of all feature PRs.
 │
 ├── feature/NTE-SW-042-auth-login-endpoint    ← Bishop (backend)
 ├── feature/NTE-SW-043-login-ui-form          ← Sonny (frontend)
 ├── feature/NTE-SW-044-auth-db-schema         ← CASE (data)
 ├── feature/NTE-SW-045-login-e2e-tests        ← AVA (qa)
-└── hotfix/NTE-SW-099-fix-token-expiry        ← Emergencia en producción
+└── hotfix/NTE-SW-099-fix-token-expiry        ← Production emergency
 ```
 
-### Convención de nombres de branch
+### Branch naming convention
 
 ```
-feature/NTE-SW-[NÚMERO]-[descripcion-en-kebab-case]
-bugfix/NTE-SW-[NÚMERO]-[descripcion-en-kebab-case]
-hotfix/NTE-SW-[NÚMERO]-[descripcion-en-kebab-case]
+feature/NTE-SW-[NUMBER]-[description-in-kebab-case]
+bugfix/NTE-SW-[NUMBER]-[description-in-kebab-case]
+hotfix/NTE-SW-[NUMBER]-[description-in-kebab-case]
 ```
 
-### Convención de commits (Conventional Commits)
+### Commit convention (Conventional Commits)
 
 ```
 feat(NTE-SW-042): add JWT authentication endpoint
@@ -245,193 +245,193 @@ docs(NTE-SW-001): update API authentication docs
 chore(NTE-SW-010): upgrade dependencies to latest
 ```
 
-### Reglas de PRs
+### PR Rules
 
-| Regla | Detalle |
+| Rule | Detail |
 |-------|---------|
-| Target branch | Siempre `develop` (nunca directo a `main` o `staging`) |
-| Título del PR | `[NTE-SW-XXX] Descripción concisa` |
-| Link Jira | Smart commit automático o link manual en el PR |
-| Reviewers | T-800 (siempre) + David (en features críticas) |
-| Checks requeridos | CI verde + T-800 approval + AVA sign-off |
-| Squash commits | Sí, al hacer merge a `develop` |
+| Target branch | Always `develop` (never directly to `main` or `staging`) |
+| PR title | `[NTE-SW-XXX] Concise description` |
+| Jira link | Automatic smart commit or manual link in the PR |
+| Reviewers | T-800 (always) + David (on critical features) |
+| Required checks | Green CI + T-800 approval + AVA sign-off |
+| Squash commits | Yes, when merging to `develop` |
 
 ---
 
 ## 7. Definition of Done (DoD)
 
-Un ticket solo puede marcarse **Done** en Jira cuando cumple **todos** los criterios:
+A ticket can only be marked **Done** in Jira when it meets **all** the criteria:
 
-### Desarrollo
-- [ ] Código implementado según criterios de aceptación del ticket
-- [ ] Unit tests escritos con cobertura ≥ 80% (Jest / Pytest)
-- [ ] Integration tests para todos los endpoints críticos
-- [ ] Sin errores de linting (ESLint / Pylint)
-- [ ] Sin secrets hardcodeados en el código
-- [ ] Branch feature mergeada a `develop` mediante PR
+### Development
+- [ ] Code implemented per the ticket's acceptance criteria
+- [ ] Unit tests written with ≥ 80% coverage (Jest / Pytest)
+- [ ] Integration tests for all critical endpoints
+- [ ] No linting errors (ESLint / Pylint)
+- [ ] No hardcoded secrets in the code
+- [ ] Feature branch merged to `develop` via PR
 
-### Revisión de Código
-- [ ] T-800 aprobó el PR (SAST Semgrep + audit de dependencias)
-- [ ] Sin vulnerabilidades críticas (CVE-7.0+) en dependencias
-- [ ] Convenciones de commits seguidas (Conventional Commits)
+### Code Review
+- [ ] T-800 approved the PR (SAST Semgrep + dependency audit)
+- [ ] No critical vulnerabilities (CVE-7.0+) in dependencies
+- [ ] Commit conventions followed (Conventional Commits)
 
 ### QA
-- [ ] AVA ejecutó el plan de tests completo
-- [ ] 0 bugs P0 o P1 abiertos relacionados al ticket
-- [ ] Tests E2E pasando en browsers objetivo (Chrome, Safari, Firefox, Edge)
-- [ ] Performance: Lighthouse ≥ 90 (si aplica a frontend)
-- [ ] AVA emitió QA Sign-off en `#qa-status`
+- [ ] AVA ran the complete test plan
+- [ ] 0 open P0 or P1 bugs related to the ticket
+- [ ] E2E tests passing on target browsers (Chrome, Safari, Firefox, Edge)
+- [ ] Performance: Lighthouse ≥ 90 (if applicable to frontend)
+- [ ] AVA issued QA Sign-off in `#qa-status`
 
 ### Deployment
-- [ ] Code mergeado a `staging` y desplegado por Optimus
-- [ ] Smoke tests automáticos pasando en staging
-- [ ] Métricas normales post-deploy (30 min monitoreo Grafana)
+- [ ] Code merged to `staging` and deployed by Optimus
+- [ ] Automatic smoke tests passing on staging
+- [ ] Normal metrics post-deploy (30 min Grafana monitoring)
 
-### Documentación
-- [ ] Marvin actualizó documentación técnica en Confluence
-- [ ] README del repo actualizado si cambia la arquitectura
-- [ ] Changelog actualizado con la versión correspondiente
+### Documentation
+- [ ] Marvin updated technical documentation in Confluence
+- [ ] Repo README updated if architecture changes
+- [ ] Changelog updated with the corresponding version
 
 ---
 
-## 8. Roles de Cada Agente en el SCRUM
+## 8. Each Agent's Role in SCRUM
 
-| Agente | Modelo | Rol SCRUM | Ceremonies que participa |
+| Agent | Model | SCRUM Role | Ceremonies attended |
 |--------|--------|-----------|--------------------------|
-| **David** (NTE-PM) | Opus 4 | Scrum Master funcional | Todas |
-| **Bishop** (NTE-BACKEND) | Sonnet 4 | Developer | Daily · Sprint Planning (pasivo) |
-| **Sonny** (NTE-FRONTEND) | Sonnet 4 | Developer | Daily · Sprint Planning (pasivo) |
-| **BB-8** (NTE-MOBILE) | Sonnet 4 | Developer | Daily · Sprint Planning (pasivo) |
-| **CASE** (NTE-DATA) | Sonnet 4 | Developer | Daily · Sprint Planning (pasivo) |
+| **David** (NTE-PM) | Opus 4 | Functional Scrum Master | All |
+| **Bishop** (NTE-BACKEND) | Sonnet 4 | Developer | Daily · Sprint Planning (passive) |
+| **Sonny** (NTE-FRONTEND) | Sonnet 4 | Developer | Daily · Sprint Planning (passive) |
+| **BB-8** (NTE-MOBILE) | Sonnet 4 | Developer | Daily · Sprint Planning (passive) |
+| **CASE** (NTE-DATA) | Sonnet 4 | Developer | Daily · Sprint Planning (passive) |
 | **AVA** (NTE-QA) | Sonnet 4 | QA Lead | Daily · Sprint Review (demo support) |
-| **T-800** (NTE-SECURITY) | Opus 4 | Security Gate | PR reviews (continuo) · Sprint Review |
+| **T-800** (NTE-SECURITY) | Opus 4 | Security Gate | PR reviews (continuous) · Sprint Review |
 | **Optimus** (NTE-DEVOPS) | Sonnet 4 | DevOps | Sprint Review (staging deploy) |
-| **Marvin** (NTE-DOCS) | Haiku 4 | Technical Writer | Sprint Review (docs al final) |
+| **Marvin** (NTE-DOCS) | Haiku 4 | Technical Writer | Sprint Review (docs at the end) |
 | **Michael** | — | Product Owner | Sprint Planning · Sprint Review |
 
 ---
 
-## 9. Flujo Completo: Del Brief al Deploy
+## 9. Complete Flow: From Brief to Deploy
 
 ```mermaid
 flowchart TD
-    START["📥 Brief del cliente\nvía Samantha o Michael"] --> PM1
+    START["📥 Client brief\nvia Samantha or Michael"] --> PM1
 
-    subgraph SEMANA_0 ["SEMANA 0 — Kick-off"]
-        PM1["David: Análisis de requisitos\nCreación de Épicas en Jira"]
-        PM1 --> PM2["David: Descomposición en Stories\nEstimación inicial (story points)"]
-        PM2 --> ARCH["Bishop + Sonny + CASE:\nArquitectura técnica\nT-800: Risk review inicial"]
-        ARCH --> PM3["David: Sprint 1 Planning\nAssign tickets a agentes"]
+    subgraph SEMANA_0 ["WEEK 0 — Kick-off"]
+        PM1["David: Requirements analysis\nEpic creation in Jira"]
+        PM1 --> PM2["David: Breakdown into Stories\nInitial estimation (story points)"]
+        PM2 --> ARCH["Bishop + Sonny + CASE:\nTechnical architecture\nT-800: Initial risk review"]
+        ARCH --> PM3["David: Sprint 1 Planning\nAssign tickets to agents"]
     end
 
     PM3 --> SPRINT
 
-    subgraph SPRINT ["SPRINT SEMANAL (se repite)"]
+    subgraph SPRINT ["WEEKLY SPRINT (repeats)"]
         direction TB
-        MON["Lunes 9am\nSprint Planning"] --> DAILY
-        DAILY["Daily Standup\n9:30am — #nte-dev\nLunes a Viernes"] --> DEV
-        DEV["Desarrollo paralelo:\nBishop · Sonny · BB-8 · CASE"] --> PR
-        PR["PR abierto → develop\nConvencional Commits"] --> T800
+        MON["Monday 9am\nSprint Planning"] --> DAILY
+        DAILY["Daily Standup\n9:30am — #nte-dev\nMonday to Friday"] --> DEV
+        DEV["Parallel development:\nBishop · Sonny · BB-8 · CASE"] --> PR
+        PR["PR opened → develop\nConventional Commits"] --> T800
         T800["T-800: Security Review\nSAST · deps · secrets"] --> QA
         QA["AVA: QA Testing\nUnit · Integration · E2E · Perf"] --> BUGS
-        BUGS{"Bugs P0/P1?"} -->|Sí| DEV
+        BUGS{"Bugs P0/P1?"} -->|Yes| DEV
         BUGS -->|No - Sign-off ✅| STAGING
-        STAGING["Optimus: Deploy a Staging\nSmoke tests automáticos"] --> REVIEW
-        REVIEW["Viernes 3pm\nSprint Review con Michael/Cliente\nDemo en staging"] --> RETRO
-        RETRO["Viernes 4pm\nRetrospectiva interna\nDavid actualiza Confluence"]
+        STAGING["Optimus: Deploy to Staging\nAutomatic smoke tests"] --> REVIEW
+        REVIEW["Friday 3pm\nSprint Review with Michael/Client\nDemo on staging"] --> RETRO
+        RETRO["Friday 4pm\nInternal retrospective\nDavid updates Confluence"]
     end
 
-    SPRINT -->|"Sprint siguiente"| SPRINT
-    SPRINT -->|"Release aprobado\npor Michael"| PROD
+    SPRINT -->|"Next sprint"| SPRINT
+    SPRINT -->|"Release approved\nby Michael"| PROD
 
-    subgraph ENTREGA ["RELEASE FINAL"]
-        PROD["Optimus: Deploy a Producción\ncon aprobación de Michael\n+ rollout gradual"]
-        PROD --> DOCS["Marvin: Documentación final\nen Confluence"]
-        DOCS --> CLOSE["David: Cierre del proyecto\nen Jira + email al cliente\n+ solicitud de testimonio"]
+    subgraph ENTREGA ["FINAL RELEASE"]
+        PROD["Optimus: Production deploy\nwith Michael's approval\n+ gradual rollout"]
+        PROD --> DOCS["Marvin: Final documentation\nin Confluence"]
+        DOCS --> CLOSE["David: Project closeout\nin Jira + client email\n+ testimonial request"]
     end
 ```
 
 ---
 
-## 10. Integración Jira ↔ GitHub ↔ Slack
+## 10. Jira ↔ GitHub ↔ Slack Integration
 
 ```mermaid
 flowchart LR
-    DEV["👨‍💻 Agente\nescribe código"] --> GIT["git commit\n'feat(NTE-SW-042): ...'"]
-    GIT --> PR_OPEN["GitHub PR abierto"]
-    PR_OPEN --> JIRA1["Jira: ticket → In Review\n(Smart commit automático)"]
-    PR_OPEN --> SLACK1["Slack #nte-dev:\nnotificación de PR abierto"]
-    JIRA1 --> T800_REVIEW["T-800 revisa PR"]
+    DEV["👨‍💻 Agent\nwrites code"] --> GIT["git commit\n'feat(NTE-SW-042): ...'"]
+    GIT --> PR_OPEN["GitHub PR opened"]
+    PR_OPEN --> JIRA1["Jira: ticket → In Review\n(Automatic smart commit)"]
+    PR_OPEN --> SLACK1["Slack #nte-dev:\nPR opened notification"]
+    JIRA1 --> T800_REVIEW["T-800 reviews PR"]
     T800_REVIEW --> GH_APPROVE["GitHub: PR approved"]
-    GH_APPROVE --> AVA_NOTIF["Slack #qa-status:\nAVA notificada para QA"]
-    AVA_NOTIF --> AVA_TEST["AVA ejecuta tests"]
-    AVA_TEST --> SIGNOFF["AVA publica QA Sign-off\nen #qa-status"]
+    GH_APPROVE --> AVA_NOTIF["Slack #qa-status:\nAVA notified for QA"]
+    AVA_NOTIF --> AVA_TEST["AVA runs tests"]
+    AVA_TEST --> SIGNOFF["AVA posts QA Sign-off\nin #qa-status"]
     SIGNOFF --> JIRA2["Jira: ticket → Ready to Deploy"]
-    JIRA2 --> OPTIMUS["Optimus deploya a staging\nnotifica en #infra-ops"]
-    OPTIMUS --> JIRA3["Jira: ticket → Done\ntras deploy a producción"]
-    JIRA3 --> MARVIN["Marvin documenta\nen Confluence"]
+    JIRA2 --> OPTIMUS["Optimus deploys to staging\nnotifies in #infra-ops"]
+    OPTIMUS --> JIRA3["Jira: ticket → Done\nafter production deploy"]
+    JIRA3 --> MARVIN["Marvin documents\nin Confluence"]
 ```
 
-### Slack Channels por función
+### Slack Channels by function
 
-| Channel | Uso |
+| Channel | Use |
 |---------|-----|
-| `#nte-dev` | Daily standups, updates del sprint, PRs, decisiones técnicas |
-| `#qa-status` | AVA publica sign-offs y reportes de bugs |
-| `#infra-ops` | Optimus publica deploys, alertas de infraestructura |
-| `#nte-alerts` | Escalaciones críticas a Michael (P0, contratos, seguridad) |
-| `#nte-reports` | Reportes semanales de David al cierre del sprint |
+| `#nte-dev` | Daily standups, sprint updates, PRs, technical decisions |
+| `#qa-status` | AVA posts sign-offs and bug reports |
+| `#infra-ops` | Optimus posts deploys, infrastructure alerts |
+| `#nte-alerts` | Critical escalations to Michael (P0, contracts, security) |
+| `#nte-reports` | David's weekly reports at sprint close |
 
 ---
 
-## 11. Gestión de Hotfixes (Bugs en Producción)
+## 11. Hotfix Management (Production Bugs)
 
 ```mermaid
 flowchart TD
-    BUG["🚨 Bug reportado\nen producción"] --> SEV{"Severidad"}
-    SEV -->|"P0 Sistema caído"| P0["Alerta inmediata\n#nte-alerts → Michael\nT-800 + Bishop responden < 30min"]
-    SEV -->|"P1 Feature crítica rota"| P1["Ticket hotfix en Jira\nAsignación inmediata\nFix en < 2h"]
-    SEV -->|"P2/P3"| P2["Bug en Jira\nPrioridad en siguiente sprint"]
-    P0 --> HOTFIX["Branch hotfix/NTE-SW-XXX\ndesde main"]
+    BUG["🚨 Bug reported\nin production"] --> SEV{"Severity"}
+    SEV -->|"P0 System down"| P0["Immediate alert\n#nte-alerts → Michael\nT-800 + Bishop respond < 30min"]
+    SEV -->|"P1 Critical feature broken"| P1["Hotfix ticket in Jira\nImmediate assignment\nFix in < 2h"]
+    SEV -->|"P2/P3"| P2["Bug in Jira\nPrioritized in next sprint"]
+    P0 --> HOTFIX["Branch hotfix/NTE-SW-XXX\nfrom main"]
     P1 --> HOTFIX
-    HOTFIX --> FAST_QA["AVA: QA acelerado\n(solo casos críticos)"]
-    FAST_QA --> T800_HOT["T-800: Security review rápido"]
-    T800_HOT --> DEPLOY_HOT["Optimus: Deploy directo\na main con aprobación Michael"]
-    DEPLOY_HOT --> MERGE_BACK["Merge de hotfix a develop\ny staging"]
-    MERGE_BACK --> POSTMORTEM["Post-mortem en Confluence\n48h después del fix"]
+    HOTFIX --> FAST_QA["AVA: Accelerated QA\n(critical cases only)"]
+    FAST_QA --> T800_HOT["T-800: Quick security review"]
+    T800_HOT --> DEPLOY_HOT["Optimus: Direct deploy\nto main with Michael's approval"]
+    DEPLOY_HOT --> MERGE_BACK["Merge hotfix to develop\nand staging"]
+    MERGE_BACK --> POSTMORTEM["Post-mortem in Confluence\n48h after the fix"]
 ```
 
-**Regla de oro:** Todo hotfix a `main` requiere aprobación explícita de Michael vía `#nte-alerts`.
+**Golden rule:** Every hotfix to `main` requires explicit approval from Michael via `#nte-alerts`.
 
 ---
 
-## 12. KPIs del Proceso SCRUM
+## 12. SCRUM Process KPIs
 
-| Métrica | Objetivo | Crítico | Responsable |
+| Metric | Target | Critical | Owner |
 |---------|----------|---------|-------------|
-| **Velocity** (SP por sprint) | Creciente sprint a sprint | Caída > 30% dos sprints | David |
-| **Sprint Commitment Rate** | ≥ 85% de SP comprometidos completados | < 70% | David |
-| **Cycle Time** (In Progress → Done) | < 3 días para tasks estándar | > 5 días | David |
-| **Defect Escape Rate** | < 2% de bugs llegan a producción | > 5% | AVA |
-| **PR Review Time** (T-800) | < 4 horas | > 24 horas | T-800 |
-| **Deploy Lead Time** (Done → Producción) | < 24 horas | > 72 horas | Optimus |
-| **MTTR** (tiempo de recovery en P0) | < 30 minutos | > 2 horas | Optimus + Bishop |
+| **Velocity** (SP per sprint) | Increasing sprint over sprint | Drop > 30% across two sprints | David |
+| **Sprint Commitment Rate** | ≥ 85% of committed SP completed | < 70% | David |
+| **Cycle Time** (In Progress → Done) | < 3 days for standard tasks | > 5 days | David |
+| **Defect Escape Rate** | < 2% of bugs reach production | > 5% | AVA |
+| **PR Review Time** (T-800) | < 4 hours | > 24 hours | T-800 |
+| **Deploy Lead Time** (Done → Production) | < 24 hours | > 72 hours | Optimus |
+| **MTTR** (P0 recovery time) | < 30 minutes | > 2 hours | Optimus + Bishop |
 
-David reporta estas métricas en el Sprint Review y en `#nte-reports` cada viernes.
+David reports these metrics at Sprint Review and in `#nte-reports` every Friday.
 
 ---
 
-## 13. Herramientas y Configuración
+## 13. Tools and Configuration
 
-| Herramienta | Uso | Configuración |
+| Tool | Use | Configuration |
 |-------------|-----|---------------|
-| **Jira** | Board NTE-SW, sprints, epics, stories, bugs | Proyecto tipo Scrum, sprints semanales |
-| **Confluence** | Wiki técnica, retrospectivas, ADRs, docs finales | Space: NTE > Software R&D |
-| **GitHub** | Código fuente, PRs, CI/CD | Branch protection: `main` y `staging` requieren PR + reviews |
-| **GitHub Actions** | CI/CD pipeline automático | Corre en cada PR: build + tests + SAST |
-| **Slack** | Comunicación async del equipo | Bots: Jira notificaciones, GitHub PR alerts |
-| **Grafana** | Monitoreo post-deploy | Alertas integradas con `#infra-ops` |
+| **Jira** | NTE-SW board, sprints, epics, stories, bugs | Scrum-type project, weekly sprints |
+| **Confluence** | Technical wiki, retrospectives, ADRs, final docs | Space: NTE > Software R&D |
+| **GitHub** | Source code, PRs, CI/CD | Branch protection: `main` and `staging` require PR + reviews |
+| **GitHub Actions** | Automatic CI/CD pipeline | Runs on every PR: build + tests + SAST |
+| **Slack** | Async team communication | Bots: Jira notifications, GitHub PR alerts |
+| **Grafana** | Post-deploy monitoring | Alerts integrated with `#infra-ops` |
 
 ---
 
-[← Todos los flujos](./README.md)
+[← All flows](./README.md)

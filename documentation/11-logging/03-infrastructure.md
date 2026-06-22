@@ -1,22 +1,22 @@
 <div align="center">
 
-# 🖥️ Infraestructura del Sistema de Logging
-### Configuración de Loki · Promtail · Grafana
+# 🖥️ Logging System Infrastructure
+### Loki · Promtail · Grafana Configuration
 
 </div>
 
-> **Nota:** Este documento es referencia de diseño. La implementación se realizará en la Fase 1 del roadmap.
+> **Note:** This document is a design reference. The implementation will take place in Phase 1 of the roadmap.
 
 ---
 
-## Docker Compose — Stack Completo
+## Docker Compose — Full Stack
 
-Archivo de referencia: `workspace/logging/docker-compose.logging.yml`
+Reference file: `workspace/logging/docker-compose.logging.yml`
 
 ```yaml
-# ── Arrancar: docker-compose -f docker-compose.logging.yml up -d
-# ── Detener:  docker-compose -f docker-compose.logging.yml down
-# ── Acceso Grafana: SSH tunnel → ssh -L 3000:localhost:3000 openclaw@VPS_IP
+# ── Start: docker-compose -f docker-compose.logging.yml up -d
+# ── Stop:  docker-compose -f docker-compose.logging.yml down
+# ── Grafana access: SSH tunnel → ssh -L 3000:localhost:3000 openclaw@VPS_IP
 
 version: '3.8'
 
@@ -24,7 +24,7 @@ networks:
   nte-logging:
     name: nte-logging
     driver: bridge
-  nte-agents:          # Red compartida con los contenedores de agentes
+  nte-agents:          # Network shared with the agent containers
     external: true
     name: nte-agents
 
@@ -49,7 +49,7 @@ services:
     container_name: nte-loki
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3100:3100"   # Solo localhost — nunca exponer al exterior
+      - "127.0.0.1:3100:3100"   # Localhost only — never expose externally
     volumes:
       - ./loki-config.yml:/etc/loki/local-config.yaml
       - loki_data:/loki
@@ -83,7 +83,7 @@ services:
     container_name: nte-grafana
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3000:3000"   # Solo via SSH tunnel
+      - "127.0.0.1:3000:3000"   # Only via SSH tunnel
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
@@ -100,16 +100,16 @@ services:
           cpus: '0.5'
 ```
 
-**Consumo total estimado: ~900 MB RAM** — dentro del presupuesto del VPS de 8 GB.
+**Estimated total consumption: ~900 MB RAM** — within the 8 GB VPS budget.
 
 ---
 
-## Configuración de Loki
+## Loki Configuration
 
-Archivo de referencia: `workspace/logging/loki-config.yml`
+Reference file: `workspace/logging/loki-config.yml`
 
 ```yaml
-auth_enabled: false   # Single-tenant (NTE no necesita multi-tenancy)
+auth_enabled: false   # Single-tenant (NTE does not need multi-tenancy)
 
 server:
   http_listen_port: 3100
@@ -126,7 +126,7 @@ ingester:
       replication_factor: 1
   chunk_idle_period: 1h
   max_chunk_age: 1h
-  chunk_target_size: 1048576   # 1 MB por chunk
+  chunk_target_size: 1048576   # 1 MB per chunk
 
 schema_config:
   configs:
@@ -136,7 +136,7 @@ schema_config:
       schema: v11
       index:
         prefix: loki_index_
-        period: 24h              # Un índice por día
+        period: 24h              # One index per day
 
 storage_config:
   boltdb_shipper:
@@ -147,27 +147,27 @@ storage_config:
   filesystem:
     directory: /loki/chunks
 
-# ── Retención de logs ────────────────────────────────────────────
+# ── Log retention ────────────────────────────────────────────
 compactor:
   working_directory: /loki/boltdb-shipper-compactor
   shared_store:      filesystem
   retention_enabled: true
 
 limits_config:
-  retention_period:       2160h   # 90 días en producción
+  retention_period:       2160h   # 90 days in production
   ingestion_rate_mb:      16
   ingestion_burst_size_mb: 32
-  max_query_length:       720h    # Consultar hasta 30 días a la vez
+  max_query_length:       720h    # Query up to 30 days at a time
   max_entries_limit_per_query: 5000
 ```
 
 ---
 
-## Configuración de Promtail
+## Promtail Configuration
 
-Archivo de referencia: `workspace/logging/promtail-config.yml`
+Reference file: `workspace/logging/promtail-config.yml`
 
-Promtail detecta **automáticamente** todos los contenedores Docker con el label `nte.agent=true` y les asigna los labels correctos en Loki.
+Promtail **automatically** detects all Docker containers with the label `nte.agent=true` and assigns them the correct labels in Loki.
 
 ```yaml
 server:
@@ -182,7 +182,7 @@ clients:
 
 scrape_configs:
 
-  # ── Agentes NTE vía Docker ─────────────────────────────────────
+  # ── NTE agents via Docker ─────────────────────────────────────
   - job_name: nte-agents
 
     docker_sd_configs:
@@ -190,10 +190,10 @@ scrape_configs:
         refresh_interval: 15s
         filters:
           - name: label
-            values: ["nte.agent=true"]   # Solo containers marcados como agentes NTE
+            values: ["nte.agent=true"]   # Only containers marked as NTE agents
 
     relabel_configs:
-      # Extrae los labels de cada container Docker → labels de Loki
+      # Extract labels from each Docker container → Loki labels
       - source_labels: ['__meta_docker_container_label_nte_agent_name']
         target_label: agent
       - source_labels: ['__meta_docker_container_label_nte_agent_id']
@@ -204,24 +204,24 @@ scrape_configs:
         target_label: environment
 
     pipeline_stages:
-      # Parsear el JSON que emite Pino
+      # Parse the JSON emitted by Pino
       - json:
           expressions:
             level:       level
             event_type:  event_type
             trace_id:    trace_id
             status:      status
-      # Convertir los campos extraídos en labels de Loki
+      # Convert the extracted fields into Loki labels
       - labels:
           level:
           event_type:
           status:
-      # Timestamp desde el JSON de Pino
+      # Timestamp from the Pino JSON
       - timestamp:
           source: time
           format: RFC3339Nano
 
-  # ── Logs de sistema del VPS (Jarvis, fuera de Docker) ──────────
+  # ── VPS system logs (Jarvis, outside Docker) ──────────
   - job_name: nte-system-logs
     static_configs:
       - targets: [localhost]
@@ -235,26 +235,26 @@ scrape_configs:
 
 ---
 
-## Labels de Docker Requeridos en Cada Agente
+## Required Docker Labels on Each Agent
 
-Cada `Dockerfile` de agente debe incluir estos labels para que Promtail lo detecte:
+Each agent's `Dockerfile` must include these labels so Promtail can detect it:
 
 ```dockerfile
-# ── OBLIGATORIO en cada Dockerfile de agente ──────────────────────
+# ── REQUIRED in every agent Dockerfile ──────────────────────
 LABEL nte.agent="true"
-LABEL nte.agent.name="Samantha"          # Nombre del personaje
-LABEL nte.agent.id="NTE-CX"             # ID técnico
-LABEL nte.wing="administrativa"          # Wing de pertenencia
-LABEL nte.environment="${NTE_ENV}"       # Se inyecta al hacer docker run
+LABEL nte.agent.name="Samantha"          # Character name
+LABEL nte.agent.id="NTE-CX"             # Technical ID
+LABEL nte.wing="administrativa"          # Wing it belongs to
+LABEL nte.environment="${NTE_ENV}"       # Injected on docker run
 LABEL nte.email="samantha@nissienterprise.com"
 ```
 
-| Agente | `nte.agent.name` | `nte.agent.id` | `nte.wing` |
+| Agent | `nte.agent.name` | `nte.agent.id` | `nte.wing` |
 |---|---|---|---|
 | Jarvis | Jarvis | NTE-MAIN | orchestrator |
-| Samantha | Samantha | NTE-CX | administrativa |
-| WALL-E | WALL-E | NTE-CONTENT | administrativa |
-| HAL | HAL | NTE-ANALYTICS | administrativa |
+| Samantha | Samantha | NTE-CX | administrative |
+| WALL-E | WALL-E | NTE-CONTENT | administrative |
+| HAL | HAL | NTE-ANALYTICS | administrative |
 | Johnny 5 | Johnny 5 | NTE-TREND-SCOUT | blog |
 | C-3PO | C-3PO | NTE-COPYWRITER | blog |
 | R2-D2 | R2-D2 | NTE-PUBLISHER | blog |
@@ -273,44 +273,44 @@ LABEL nte.email="samantha@nissienterprise.com"
 
 ---
 
-## Script de Arranque
+## Startup Script
 
-Archivo de referencia: `workspace/logging/setup-logging.sh`
+Reference file: `workspace/logging/setup-logging.sh`
 
 ```bash
 #!/bin/bash
-# Uso: bash setup-logging.sh [development|staging|production]
+# Usage: bash setup-logging.sh [development|staging|production]
 
 ENVIRONMENT="${1:-production}"
 VAULT="nte-keyvault"
 
-# 1. Crear directorios de datos
+# 1. Create data directories
 mkdir -p /workspace/logs/loki /workspace/logs/grafana
 chmod 777 /workspace/logs/loki /workspace/logs/grafana
 
-# 2. Obtener password de Grafana desde Azure Key Vault
+# 2. Get Grafana password from Azure Key Vault
 export GRAFANA_ADMIN_PASSWORD=$(az keyvault secret show \
   --name "${ENVIRONMENT}/grafana-admin-password" \
   --vault-name "${VAULT}" \
   --query "value" -o tsv)
 
-# 3. Crear redes Docker
+# 3. Create Docker networks
 docker network create nte-agents  2>/dev/null || true
 docker network create nte-logging 2>/dev/null || true
 
-# 4. Arrancar el stack
+# 4. Start the stack
 export NTE_ENV="${ENVIRONMENT}"
 docker-compose -f workspace/logging/docker-compose.logging.yml up -d
 
-# 5. Esperar a que estén listos
+# 5. Wait until ready
 until curl -s http://localhost:3100/ready | grep -q "ready"; do sleep 2; done
 until curl -s http://localhost:3000/api/health | grep -q "ok";  do sleep 2; done
 
-echo "✅ Logging stack operativo"
-echo "📊 Grafana: http://localhost:3000 (vía SSH tunnel)"
-echo "   ssh -L 3000:localhost:3000 openclaw@TU_VPS_IP"
+echo "✅ Logging stack operational"
+echo "📊 Grafana: http://localhost:3000 (via SSH tunnel)"
+echo "   ssh -L 3000:localhost:3000 openclaw@YOUR_VPS_IP"
 ```
 
 ---
 
-[← README del Logging](./README.md) | [Grafana Dashboards →](./04-grafana.md)
+[← Logging README](./README.md) | [Grafana Dashboards →](./04-grafana.md)

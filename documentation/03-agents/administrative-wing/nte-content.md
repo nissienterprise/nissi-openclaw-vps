@@ -3,55 +3,55 @@
 # ✍️ NTE-CONTENT
 ### Content & Marketing Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-cc7700?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-cc7700?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
-![Frecuencia](https://img.shields.io/badge/Frecuencia-Diaria-4a90d9?style=flat-square)
+![Frequency](https://img.shields.io/badge/Frequency-Daily-4a90d9?style=flat-square)
 
-*La voz digital de NTE. Genera, programa y distribuye contenido alineado con la marca.*
+*NTE's digital voice. Generates, schedules, and distributes content aligned with the brand.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-Ejecuta el **calendario editorial mensual** de NTE de forma autónoma. Coordina con NTE-TREND-SCOUT para los artículos del blog y gestiona el contenido evergreen de las redes sociales.
+Autonomously runs NTE's **monthly editorial calendar**. Coordinates with NTE-TREND-SCOUT for blog articles and manages evergreen social media content.
 
 ---
 
-## 📅 Calendario Editorial
+## 📅 Editorial Calendar
 
-| Canal | Frecuencia | Tipo de contenido |
+| Channel | Frequency | Content type |
 |---|---|---|
-| Blog WordPress | 2 artículos/semana | SEO · Educativo · Casos de uso |
-| LinkedIn | 5 posts/semana | Profesional · Thought leadership |
-| Instagram | 1 post + 3 stories/día | Visual · Tips · Behind the scenes |
-| Facebook | 3 posts/semana | Comunidad · Noticias · Testimonios |
-| Twitter/X | 2 tweets/día | Rápido · Tips · Noticias tech |
-| Newsletter | 1 email/mes | Resumen + novedades NTE |
+| WordPress Blog | 2 articles/week | SEO · Educational · Use cases |
+| LinkedIn | 5 posts/week | Professional · Thought leadership |
+| Instagram | 1 post + 3 stories/day | Visual · Tips · Behind the scenes |
+| Facebook | 3 posts/week | Community · News · Testimonials |
+| Twitter/X | 2 tweets/day | Quick · Tips · Tech news |
+| Newsletter | 1 email/month | Summary + NTE updates |
 
 ---
 
-## 🔧 Pipeline de Contenido
+## 🔧 Content Pipeline
 
 ```mermaid
 flowchart LR
-    TS["🔍 NTE-TREND-SCOUT\nTemas trending"] --> CW["✍️ NTE-COPYWRITER\nArtículo completo"]
-    CW --> PUB["🚀 NTE-PUBLISHER\nPublica en WP"]
-    PUB --> PROP["📡 NTE-PROPAGATOR\nAdapta para RRSS"]
+    TS["🔍 NTE-TREND-SCOUT\nTrending topics"] --> CW["✍️ NTE-COPYWRITER\nFull article"]
+    CW --> PUB["🚀 NTE-PUBLISHER\nPublishes on WP"]
+    PUB --> PROP["📡 NTE-PROPAGATOR\nAdapts for social media"]
     
-    CONTENT["✍️ NTE-CONTENT\nCoordina todo"] -.->|"Supervisa"| TS & CW & PUB & PROP
+    CONTENT["✍️ NTE-CONTENT\nCoordinates everything"] -.->|"Oversees"| TS & CW & PUB & PROP
 ```
 
 ---
 
-## 🛠️ Herramientas & APIs
+## 🛠️ Tools & APIs
 
-- **WordPress REST API** — Publicación del blog
-- **Buffer API** — Programación de redes sociales
-- **SendGrid / Mailchimp** — Newsletter mensual
-- **DALL-E / Stable Diffusion** — Imágenes para contenido
-- **Semrush API** — Keywords y análisis SEO
+- **WordPress REST API** — Blog publishing
+- **Buffer API** — Social media scheduling
+- **SendGrid / Mailchimp** — Monthly newsletter
+- **DALL-E / Stable Diffusion** — Content images
+- **Semrush API** — Keywords and SEO analysis
 
 ---
 

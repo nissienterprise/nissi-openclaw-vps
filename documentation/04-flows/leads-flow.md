@@ -1,15 +1,15 @@
 <div align="center">
 
-# 🎯 Flujo: Gestión de Leads Multicanal
-### De Extraño a Cliente en Tiempo Real
+# 🎯 Flow: Multichannel Lead Management
+### From Stranger to Customer in Real Time
 
 </div>
 
-## Diagrama del Ciclo de Vida del Lead
+## Lead Lifecycle Diagram
 
 ```mermaid
 flowchart TD
-    subgraph ENTRADA["📥 CANALES 24/7"]
+    subgraph ENTRADA["📥 24/7 CHANNELS"]
         WF["🌐 Website\nForms"] 
         WA["📱 WhatsApp\nBusiness"]
         SM["📘 Social\nMedia DMs"]
@@ -17,23 +17,23 @@ flowchart TD
         EM["📧 Email\n@nissienterprise.com"]
     end
 
-    INTAKE["📥 EVA (NTE-LEAD-INTAKE)\nNormaliza · Clasifica · Responde < 5min"]
+    INTAKE["📥 EVA (NTE-LEAD-INTAKE)\nNormalizes · Classifies · Responds < 5min"]
 
-    HOT["🔴 HOT\nServicio específico + budget"]
-    WARM["🟡 WARM\nInterés + preguntas"]
-    COLD["🔵 COLD\nSolo información"]
+    HOT["🔴 HOT\nSpecific service + budget"]
+    WARM["🟡 WARM\nInterest + questions"]
+    COLD["🔵 COLD\nInfo only"]
 
-    ALERT["🚨 Alerta Slack\n#nte-leads\n< 15 minutos"]
-    NURTURE["📧 TARS (NTE-LEAD-NURTURE)\nSecuencia 5 toques · 14 días · Email + WA"]
-    EDUCATE["📚 TARS (NTE-LEAD-NURTURE)\nSecuencia 3 emails · 30 días + Newsletter"]
+    ALERT["🚨 Slack Alert\n#nte-leads\n< 15 minutes"]
+    NURTURE["📧 TARS (NTE-LEAD-NURTURE)\n5-touch sequence · 14 days · Email + WA"]
+    EDUCATE["📚 TARS (NTE-LEAD-NURTURE)\n3-email sequence · 30 days + Newsletter"]
 
-    MICHAEL["👤 Michael\nContacto directo"]
-    DISCOVERY["📞 Llamada\nDiscovery 30min"]
-    PROPOSAL["💰 Cotización\nSamantha genera (QuickBooks estimado)"]
-    PROJECT["⚙️ Proyecto\nDavid (NTE-PM) inicia en Jira"]
+    MICHAEL["👤 Michael\nDirect contact"]
+    DISCOVERY["📞 Discovery\nCall 30min"]
+    PROPOSAL["💰 Quote\nSamantha generates (QuickBooks estimate)"]
+    PROJECT["⚙️ Project\nDavid (NTE-PM) starts in Jira"]
 
-    RECLASS["♻️ Re-clasifica\nsegún engagement"]
-    ARCHIVE["📁 Archiva\nsin actividad 60 días"]
+    RECLASS["♻️ Re-classifies\nbased on engagement"]
+    ARCHIVE["📁 Archives\nno activity for 60 days"]
 
     ENTRADA --> INTAKE
     INTAKE --> HOT & WARM & COLD
@@ -42,8 +42,8 @@ flowchart TD
     COLD --> EDUCATE
     NURTURE --> RECLASS
     EDUCATE --> RECLASS
-    RECLASS -->|"Calienta"| HOT
-    RECLASS -->|"Sin actividad"| ARCHIVE
+    RECLASS -->|"Warms up"| HOT
+    RECLASS -->|"No activity"| ARCHIVE
 
     style HOT fill:#8B0000,color:#fff,stroke:#CC0000
     style WARM fill:#7B6000,color:#fff,stroke:#CC9900
@@ -52,14 +52,14 @@ flowchart TD
     style MICHAEL fill:#2d5016,color:#fff,stroke:#5cb85c
 ```
 
-## Métricas del Pipeline
+## Pipeline Metrics
 
-| Métrica | Meta |
+| Metric | Target |
 |---|---|
-| Tiempo de primera respuesta | < 5 minutos |
-| Tasa de conversión COLD → WARM | > 20% en 30 días |
-| Tasa de conversión WARM → HOT | > 15% en 14 días |
-| HOT leads cerrados | > 30% |
-| Consultas resueltas sin escalada | > 70% |
+| First response time | < 5 minutes |
+| COLD → WARM conversion rate | > 20% in 30 days |
+| WARM → HOT conversion rate | > 15% in 14 days |
+| HOT leads closed | > 30% |
+| Inquiries resolved without escalation | > 70% |
 
-[← Todos los flujos](./README.md)
+[← All flows](./README.md)

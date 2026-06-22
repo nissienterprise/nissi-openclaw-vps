@@ -2,45 +2,45 @@
 
 # 🔐 NTE-SECURITY — Security Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Opus_4-ff6b35?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Opus_4-ff6b35?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 
-*El guardián de la integridad del código y la infraestructura de NTE.*
+*The guardian of NTE's code and infrastructure integrity.*
 
 </div>
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-Realiza auditorías de seguridad automáticas en cada release: análisis estático de código (SAST), dependencias vulnerables, configuraciones de servidor y tests de penetración básicos.
+Performs automatic security audits on every release: static code analysis (SAST), vulnerable dependencies, server configurations, and basic penetration tests.
 
-## 🔍 Tipos de Auditoría
+## 🔍 Audit Types
 
-| Tipo | Frecuencia | Herramienta |
+| Type | Frequency | Tool |
 |---|---|---|
-| SAST — Análisis de Código | Cada PR | Semgrep |
-| Dependencias Vulnerables | Cada PR | npm audit · pip-audit |
-| Config de Servidor | Semanal | Custom scripts |
-| Penetration Test Básico | Cada release | OWASP ZAP |
-| Review de Secretos en Código | Cada commit | git-secrets |
+| SAST — Code Analysis | Every PR | Semgrep |
+| Vulnerable Dependencies | Every PR | npm audit · pip-audit |
+| Server Configuration | Weekly | Custom scripts |
+| Basic Penetration Test | Every release | OWASP ZAP |
+| Secrets-in-Code Review | Every commit | git-secrets |
 
-## 🚨 Niveles de Alerta
+## 🚨 Alert Levels
 
 ```mermaid
 flowchart LR
-    CRITICAL["🔴 CRÍTICO\nAlerta inmediata\na Michael"] 
-    HIGH["🟠 ALTO\nBloquea el deploy\nhasta resolver"]
-    MEDIUM["🟡 MEDIO\nCrea ticket en Jira\nresolver en próximo sprint"]
-    LOW["🟢 BAJO\nRegistra en log\npara revisión mensual"]
+    CRITICAL["🔴 CRITICAL\nImmediate alert\nto Michael"] 
+    HIGH["🟠 HIGH\nBlocks the deploy\nuntil resolved"]
+    MEDIUM["🟡 MEDIUM\nCreates a Jira ticket\nresolve in next sprint"]
+    LOW["🟢 LOW\nLogs for\nmonthly review"]
 ```
 
-## 🛠️ Herramientas
+## 🛠️ Tools
 
-- **Semgrep** — Análisis estático de código (SAST)
-- **OWASP ZAP** — Tests de penetración automatizados
-- **npm audit / pip-audit** — Dependencias vulnerables
-- **GitHub Security Advisories** — CVEs en dependencias
-- **git-secrets** — Previene commit de credenciales
+- **Semgrep** — Static code analysis (SAST)
+- **OWASP ZAP** — Automated penetration tests
+- **npm audit / pip-audit** — Vulnerable dependencies
+- **GitHub Security Advisories** — CVEs in dependencies
+- **git-secrets** — Prevents committing credentials
 
-> **¿Por qué Opus 4?** Interpretar vulnerabilidades requiere razonamiento profundo sobre vectores de ataque, contexto del código y priorización de riesgos. Los errores aquí tienen consecuencias críticas para los clientes de NTE.
+> **Why Opus 4?** Interpreting vulnerabilities requires deep reasoning about attack vectors, code context, and risk prioritization. Mistakes here have critical consequences for NTE's clients.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)

@@ -123,7 +123,6 @@ def file_display_name(filename):
     name = filename.stem
     titles = {
         "README": "README - Índice",
-        "README_CONFIG": "README - Configuración",
         "mision-vision-valores": "Misión, Visión y Valores",
         "servicios": "Servicios",
         "seguridad": "Seguridad",
@@ -185,7 +184,7 @@ def main():
     print(f"Space homepage ID: {homepage_id}")
 
     # === ROOT: Documentación ===
-    print("\n[1/3] Creating root 'Documentación OpenClaw'...")
+    print("\n[1/2] Creating root 'Documentación OpenClaw'...")
     root_html = md_to_storage(read_md(PROJECT_ROOT / "README.md"))
     root_id = create_or_update_page("Documentación OpenClaw", root_html, parent_id=homepage_id)
     if not root_id:
@@ -193,13 +192,8 @@ def main():
         return
     print(f"  Root page ID: {root_id}")
 
-    # === README_CONFIG ===
-    print("\n[2/3] Creating README_CONFIG...")
-    config_html = md_to_storage(read_md(PROJECT_ROOT / "README_CONFIG.md"))
-    create_or_update_page("README - Configuración", config_html, parent_id=root_id)
-
     # === WORKSPACE ===
-    print("\n[3/3] Creating Workspace pages...")
+    print("\n[2/2] Creating Workspace pages...")
     workspace_dir = PROJECT_ROOT / "workspace"
     workspace_id = create_or_update_page(
         "Workspace / Sistema",

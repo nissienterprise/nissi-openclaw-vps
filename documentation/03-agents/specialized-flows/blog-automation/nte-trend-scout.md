@@ -3,54 +3,54 @@
 # 🔍 NTE-TREND-SCOUT
 ### Trend Research Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-cc7700?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-cc7700?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
-![Activación](https://img.shields.io/badge/Activación-Lunes_2AM_EST-4a90d9?style=flat-square)
+![Activation](https://img.shields.io/badge/Activation-Monday_2AM_EST-4a90d9?style=flat-square)
 
 </div>
 
-## 🎯 Qué hace
+## 🎯 What it does
 
-Cada lunes a las 2:00 AM EST, NTE-TREND-SCOUT se activa y analiza el internet en busca de los temas tecnológicos más relevantes de la semana que estén alineados con los servicios de NTE.
+Every Monday at 2:00 AM EST, NTE-TREND-SCOUT activates and scans the internet for the most relevant technology topics of the week that align with NTE's services.
 
-## 🔎 Proceso de Investigación
+## 🔎 Research Process
 
 ```mermaid
 flowchart TD
-    A["⏰ Activación automática\nLunes 2:00 AM EST"] --> B["🌐 Consulta fuentes"]
+    A["⏰ Automatic activation\nMonday 2:00 AM EST"] --> B["🌐 Queries sources"]
     B --> C["Google Trends\nSemrush\nReddit r/technology\nLinkedIn Trending\nHacker News"]
-    C --> D["🎯 Filtra por servicios NTE\nSoftware · AI · Web · Mobile\nBI · Infrastructure · Marketing"]
-    D --> E["📊 Scoring por potencial\nVolumen búsqueda · Competencia\nRelevancia NTE · Trending velocity"]
-    E --> F["🏆 Selecciona Top 2 temas"]
-    F --> G["📋 Genera Briefing completo\nTema · Keywords · Audiencia\nÁngulo editorial · CTA objetivo"]
-    G --> H["✍️ Envía a NTE-COPYWRITER"]
+    C --> D["🎯 Filters by NTE services\nSoftware · AI · Web · Mobile\nBI · Infrastructure · Marketing"]
+    D --> E["📊 Scores by potential\nSearch volume · Competition\nNTE relevance · Trending velocity"]
+    E --> F["🏆 Selects Top 2 topics"]
+    F --> G["📋 Generates full Briefing\nTopic · Keywords · Audience\nEditorial angle · Target CTA"]
+    G --> H["✍️ Sends to NTE-COPYWRITER"]
 ```
 
-## 📋 Formato del Briefing
+## 📋 Briefing Format
 
 ```markdown
-## BRIEFING SEMANAL NTE-TREND-SCOUT
-Semana: [fecha]
+## NTE-TREND-SCOUT WEEKLY BRIEFING
+Week: [date]
 
-### ARTÍCULO 1
-- **Tema:** [título tentativo]
-- **Keyword Principal:** [keyword con volumen X búsquedas/mes]
-- **Keywords Secundarias:** [lista]
-- **Audiencia Objetivo:** [perfil del lector ideal]
-- **Ángulo Editorial:** [por qué es relevante AHORA para clientes NTE]
-- **Servicios NTE Relacionados:** [qué servicios podemos vincular]
-- **CTA Sugerido:** [qué acción queremos que tome el lector]
-- **Longitud Recomendada:** [1200-1800 palabras]
+### ARTICLE 1
+- **Topic:** [tentative title]
+- **Primary Keyword:** [keyword with volume X searches/month]
+- **Secondary Keywords:** [list]
+- **Target Audience:** [profile of the ideal reader]
+- **Editorial Angle:** [why it's relevant NOW for NTE clients]
+- **Related NTE Services:** [which services we can tie in]
+- **Suggested CTA:** [what action we want the reader to take]
+- **Recommended Length:** [1200-1800 words]
 
-### ARTÍCULO 2
-[misma estructura]
+### ARTICLE 2
+[same structure]
 ```
 
-## 🛠️ APIs Utilizadas
+## 🛠️ APIs Used
 
-- **Google Trends API (Unofficial)** — Trending topics por región
-- **Semrush API** — Volumen de búsqueda y dificultad de keyword
-- **Reddit API** — Hilos más populares en subreddits tech
+- **Google Trends API (Unofficial)** — Trending topics by region
+- **Semrush API** — Search volume and keyword difficulty
+- **Reddit API** — Most popular threads in tech subreddits
 - **RSS Feeds** — Hacker News, TechCrunch, The Verge
 
 [← Blog Pipeline](./README.md) | [NTE-COPYWRITER →](./nte-copywriter.md)

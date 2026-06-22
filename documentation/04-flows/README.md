@@ -1,11 +1,11 @@
-# 🔄 Flujos de Automatización
+# 🔄 Automation Flows
 
-| Flujo | Descripción | Agentes |
+| Flow | Description | Agents |
 |---|---|---|
-| [📝 Blog Semanal](./flujo-blog-semanal.md) | Del trend al tweet automatizado | TREND-SCOUT · COPYWRITER · PUBLISHER · PROPAGATOR |
-| [🎯 Gestión de Leads](./flujo-leads.md) | Captación y nurturing multicanal | LEAD-INTAKE · LEAD-NURTURE |
-| [⚙️ Desarrollo de Software](./flujo-desarrollo-software.md) | Las 6 fases automatizadas | PM · BACKEND · FRONTEND · QA · DEVOPS · SECURITY · DOCS |
-| [🏃 SCRUM Detallado](./flujo-scrum-detallado.md) | Workflow ágil completo con Jira: ceremonias, tickets, branches, DoD | Wing Software R&D completo |
-| [🎧 Atención al Cliente](./flujo-customer-service.md) | Omnicanal < 5 min | NTE-CX |
+| [📝 Weekly Blog](./weekly-blog-flow.md) | From trend to automated tweet | TREND-SCOUT · COPYWRITER · PUBLISHER · PROPAGATOR |
+| [🎯 Lead Management](./leads-flow.md) | Multichannel acquisition and nurturing | LEAD-INTAKE · LEAD-NURTURE |
+| [⚙️ Software Development](./software-development-flow.md) | The 6 automated phases | PM · BACKEND · FRONTEND · QA · DEVOPS · SECURITY · DOCS |
+| [🏃 Detailed SCRUM](./detailed-scrum-flow.md) | Complete agile workflow with Jira: ceremonies, tickets, branches, DoD | Full Software R&D Wing |
+| [🎧 Customer Service](./customer-service-flow.md) | Omnichannel < 5 min | NTE-CX |
 
-[← Volver al inicio](../README.md)
+[← Back to home](../README.md)

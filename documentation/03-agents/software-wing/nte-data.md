@@ -2,47 +2,47 @@
 
 # 📊 NTE-DATA — Data Engineering Agent
 
-![Modelo](https://img.shields.io/badge/Modelo-Claude_Sonnet_4-4a90d9?style=flat-square)
+![Model](https://img.shields.io/badge/Model-Claude_Sonnet_4-4a90d9?style=flat-square)
 ![Sandbox](https://img.shields.io/badge/Sandbox-Docker_✓-5cb85c?style=flat-square)
 ![Wing](https://img.shields.io/badge/Wing-Software_R%26D-8b5cf6?style=flat-square)
 
-*El guardián de los datos. Convierte ruido en señal accionable para NTE y sus clientes.*
+*The guardian of data. Turns noise into actionable signal for NTE and its clients.*
 
 </div>
 
 ---
 
-## 🎯 Responsabilidades
+## 🎯 Responsibilities
 
-NTE-DATA diseña e implementa pipelines de datos (ETL/ELT), warehouses, dashboards de business intelligence y modelos de machine learning básicos para los proyectos de clientes. Garantiza la calidad, integridad y disponibilidad de los datos en todo el ecosistema NTE.
+NTE-DATA designs and implements data pipelines (ETL/ELT), warehouses, business intelligence dashboards, and basic machine learning models for client projects. Ensures the quality, integrity, and availability of data across the entire NTE ecosystem.
 
-No debe confundirse con **NTE-ANALYTICS** (que genera reportes internos de NTE) — NTE-DATA construye la infraestructura de datos de los *productos de los clientes*.
+Should not be confused with **NTE-ANALYTICS** (which generates internal NTE reports) — NTE-DATA builds the data infrastructure for *client products*.
 
 ---
 
-## 🔄 Pipeline de Datos
+## 🔄 Data Pipeline
 
 ```mermaid
 flowchart LR
-    subgraph SOURCES ["📥 Fuentes"]
-        DB["🗄️ Bases de\nDatos"]
-        API["🔗 APIs\nExternas"]
+    subgraph SOURCES ["📥 Sources"]
+        DB["🗄️ Databases"]
+        API["🔗 External\nAPIs"]
         FILES["📁 CSV / Excel\n/ Sheets"]
         EVENTS["📡 Event\nStreams"]
     end
 
     subgraph PIPELINE ["⚙️ NTE-DATA Pipeline"]
-        E["Extract\nConectores"]
+        E["Extract\nConnectors"]
         T["Transform\ndbt / Pandas"]
         L["Load\nWarehouse"]
         Q["Quality\nChecks"]
     end
 
-    subgraph OUTPUT ["📤 Destinos"]
+    subgraph OUTPUT ["📤 Destinations"]
         DW["🏛️ Data\nWarehouse"]
         DASH["📊 Dashboard\nMetabase / Looker"]
-        ML["🤖 Features\nML Model"]
-        API2["🔗 API\nEnriquecida"]
+        ML["🤖 ML Model\nFeatures"]
+        API2["🔗 Enriched\nAPI"]
     end
 
     SOURCES --> E
@@ -57,78 +57,78 @@ flowchart LR
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Technology Stack
 
-| Categoría | Tecnologías |
+| Category | Technologies |
 |-----------|-------------|
 | **ETL / ELT** | dbt, Apache Airflow, Prefect |
-| **Procesamiento** | Python + Pandas, PySpark (grandes volúmenes) |
-| **Warehouse** | BigQuery, Snowflake, DuckDB (proyectos pequeños) |
+| **Processing** | Python + Pandas, PySpark (large volumes) |
+| **Warehouse** | BigQuery, Snowflake, DuckDB (small projects) |
 | **Streaming** | Apache Kafka, Redis Streams |
 | **BI / Dashboards** | Metabase, Looker Studio, Grafana |
 | **ML** | scikit-learn, XGBoost, HuggingFace Transformers |
-| **Calidad** | Great Expectations, dbt tests |
-| **Orquestación** | Airflow DAGs, Prefect Flows, Cron |
+| **Quality** | Great Expectations, dbt tests |
+| **Orchestration** | Airflow DAGs, Prefect Flows, Cron |
 | **Storage** | AWS S3, GCP Cloud Storage |
 
 ---
 
-## 🧠 System Prompt (Extracto)
+## 🧠 System Prompt (Excerpt)
 
 ```
-Eres NTE-DATA, el agente de ingeniería de datos de Nissi Technology Enterprises.
+You are NTE-DATA, the data engineering agent of Nissi Technology Enterprises.
 
-MISIÓN: Construir la infraestructura de datos que permita a los clientes de NTE
-        tomar decisiones basadas en evidencia, no en intuición.
+MISSION: Build the data infrastructure that enables NTE clients to make
+        evidence-based decisions, not gut-feel decisions.
 
-RESPONSABILIDADES PRINCIPALES:
-1. Diseñar pipelines ETL/ELT que sean idempotentes y re-ejecutables
-2. Implementar data quality checks antes de cargar al warehouse
-3. Crear modelos dbt documentados con tests en cada capa (staging/intermediate/mart)
-4. Construir dashboards que cuenten historias, no solo mostrar números
-5. Modelar datos para ML cuando el cliente necesita predicciones
+CORE RESPONSIBILITIES:
+1. Design ETL/ELT pipelines that are idempotent and re-runnable
+2. Implement data quality checks before loading into the warehouse
+3. Create documented dbt models with tests at every layer (staging/intermediate/mart)
+4. Build dashboards that tell stories, not just display numbers
+5. Model data for ML when the client needs predictions
 
-PRINCIPIOS DE CALIDAD DE DATOS:
-- Nunca cargar datos sin validación previa (Great Expectations o dbt tests)
-- Siempre implementar SCD Type 2 para datos históricos críticos
-- Documentar el linaje de datos en cada modelo dbt
-- Los pipelines deben ser idempotentes: ejecutar 2 veces = mismo resultado
+DATA QUALITY PRINCIPLES:
+- Never load data without prior validation (Great Expectations or dbt tests)
+- Always implement SCD Type 2 for critical historical data
+- Document data lineage in every dbt model
+- Pipelines must be idempotent: running twice = same result
 
-MODELADO:
-- Star schema para warehouses OLAP (facts + dimensions)
-- Normalización 3NF para OLTP (bases de datos transaccionales)
-- One Big Table para queries exploratorias con DuckDB
+MODELING:
+- Star schema for OLAP warehouses (facts + dimensions)
+- 3NF normalization for OLTP (transactional databases)
+- One Big Table for exploratory queries with DuckDB
 
-COMUNICACIÓN:
-- Canal Slack: #dev-data
-- Comparte catálogos de datos con NTE-DOCS para documentación
-- Coordina con NTE-BACKEND para endpoints de datos enriquecidos
-- Notifica a NTE-PM cuando un pipeline tiene data quality failures
+COMMUNICATION:
+- Slack channel: #dev-data
+- Share data catalogs with NTE-DOCS for documentation
+- Coordinate with NTE-BACKEND for enriched data endpoints
+- Notify NTE-PM when a pipeline has data quality failures
 ```
 
 ---
 
-## 📐 Arquitectura del Data Warehouse (Medallion)
+## 📐 Data Warehouse Architecture (Medallion)
 
 ```mermaid
 flowchart TD
     subgraph BRONZE ["🥉 Bronze Layer — Raw"]
-        B1["Datos crudos\nsin transformar"]
-        B2["Schema original\nde la fuente"]
-        B3["Nunca modificar\ndespués de cargar"]
+        B1["Raw data\nuntransformed"]
+        B2["Original schema\nfrom the source"]
+        B3["Never modify\nafter loading"]
     end
 
     subgraph SILVER ["🥈 Silver Layer — Cleaned"]
-        S1["Datos limpios\ny normalizados"]
-        S2["Tipos de datos\ncorrectos"]
-        S3["Duplicados\neliminados"]
+        S1["Clean and\nnormalized data"]
+        S2["Correct\ndata types"]
+        S3["Duplicates\nremoved"]
         S4["dbt staging\nmodels"]
     end
 
     subgraph GOLD ["🥇 Gold Layer — Business"]
-        G1["Métricas\nde negocio"]
-        G2["Agregaciones\nprecalculadas"]
-        G3["Listas para\ndashboards y APIs"]
+        G1["Business\nmetrics"]
+        G2["Precomputed\naggregations"]
+        G3["Ready for\ndashboards and APIs"]
         G4["dbt mart\nmodels"]
     end
 
@@ -142,55 +142,55 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A["📥 Datos\nentrantes"] --> B["🔍 Schema\nValidation"]
+    A["📥 Incoming\ndata"] --> B["🔍 Schema\nValidation"]
     B --> C["📊 Statistical\nChecks"]
     C --> D["🔗 Referential\nIntegrity"]
     D --> E["⏰ Freshness\nCheck"]
-    E --> F{"¿Todo OK?"}
-    F -->|Sí| G["✅ Cargar al\nWarehouse"]
-    F -->|No| H["🚨 Alerta Slack\n#dev-data"]
+    E --> F{"All OK?"}
+    F -->|Yes| G["✅ Load to\nWarehouse"]
+    F -->|No| H["🚨 Slack Alert\n#dev-data"]
     H --> I["🔒 Quarantine\nTable"]
-    I --> J["🔧 NTE-PM\nreview y fix"]
+    I --> J["🔧 NTE-PM\nreview and fix"]
 ```
 
-### Checks Obligatorios por Columna Crítica
+### Mandatory Checks per Critical Column
 
-| Check | Descripción | Severity |
+| Check | Description | Severity |
 |-------|-------------|----------|
-| `not_null` | Campo no puede ser nulo | ERROR |
-| `unique` | Sin duplicados en PK | ERROR |
-| `accepted_values` | Enum dentro del rango esperado | WARNING |
-| `relationships` | FK existe en tabla padre | ERROR |
-| `freshness` | Datos no más antiguos que X horas | WARNING |
-| `row_count` | Número de filas dentro del rango esperado | WARNING |
+| `not_null` | Field cannot be null | ERROR |
+| `unique` | No duplicates in PK | ERROR |
+| `accepted_values` | Enum within expected range | WARNING |
+| `relationships` | FK exists in parent table | ERROR |
+| `freshness` | Data not older than X hours | WARNING |
+| `row_count` | Row count within expected range | WARNING |
 
 ---
 
-## 📊 Tipos de Entregables
+## 📊 Deliverable Types
 
-| Entregable | Herramienta | Actualización |
+| Deliverable | Tool | Update |
 |------------|-------------|---------------|
-| Dashboard ejecutivo (KPIs) | Metabase | Tiempo real |
-| Reporte semanal de ventas | dbt + Looker Studio | Cada lunes 7am |
-| Pipeline de sincronización CRM | Airflow DAG | Cada hora |
-| Modelo de scoring de leads | scikit-learn | Semanal, re-training |
-| API de recomendaciones | FastAPI + Redis cache | Tiempo real |
-| Análisis de cohortes de usuarios | DuckDB + Jupyter | Ad-hoc |
+| Executive dashboard (KPIs) | Metabase | Real time |
+| Weekly sales report | dbt + Looker Studio | Every Monday 7am |
+| CRM sync pipeline | Airflow DAG | Hourly |
+| Lead scoring model | scikit-learn | Weekly, re-training |
+| Recommendations API | FastAPI + Redis cache | Real time |
+| User cohort analysis | DuckDB + Jupyter | Ad-hoc |
 
 ---
 
-## 📊 Métricas del Agente
+## 📊 Agent Metrics
 
-| Métrica | Objetivo | Crítico |
+| Metric | Target | Critical |
 |---------|----------|---------|
-| Pipeline success rate | ≥ 99% | < 95% → alerta |
-| Data freshness (lag) | < 1 hora | > 4 horas → crítico |
-| Data quality score | ≥ 98% filas válidas | < 95% → bloqueo |
-| Query performance P95 | < 5s en warehouse | > 30s → optimizar |
-| Cobertura de tests dbt | 100% en Gold layer | < 80% → bloqueante |
+| Pipeline success rate | ≥ 99% | < 95% → alert |
+| Data freshness (lag) | < 1 hour | > 4 hours → critical |
+| Data quality score | ≥ 98% valid rows | < 95% → blocking |
+| Query performance P95 | < 5s on warehouse | > 30s → optimize |
+| dbt test coverage | 100% on Gold layer | < 80% → blocking |
 
 ---
 
-> **¿Por qué Sonnet 4?** Los pipelines de datos involucran lógica de transformación compleja y diseño de modelos, pero siguen patrones bien definidos (ELT, Star Schema, dbt). Sonnet 4 ejecuta estas tareas con alta calidad sin el costo de Opus.
+> **Why Sonnet 4?** Data pipelines involve complex transformation logic and model design, but follow well-defined patterns (ELT, Star Schema, dbt). Sonnet 4 executes these tasks with high quality without the cost of Opus.
 
-[← Todos los agentes](../README.md)
+[← All agents](../README.md)
